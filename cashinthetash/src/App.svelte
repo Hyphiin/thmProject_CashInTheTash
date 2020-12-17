@@ -27,7 +27,7 @@
                     <a class="navbar-item">FAQ</a>
                 </div>
                 <div class="navbar-item has-dropdown is-hoverable">
-                    <a class="navbar-link" href="/documentation/overview/start/">
+                    <a class="navbar-link" href="">
                         Team
                     </a>
                     <div class="navbar-dropdown is-boxed">
