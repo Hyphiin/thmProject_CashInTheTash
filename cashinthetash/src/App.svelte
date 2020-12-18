@@ -33,9 +33,9 @@
                         FAQ
                     </a>
                     <div class="navbar-item has-dropdown is-hoverable">
-                        <a class="navbar-link" href="#">
+                        <span class="navbar-link">
                             Team
-                        </a>
+                        </span>
                         <div class="navbar-dropdown is-boxed">
                             <p class="navbar-item" href="">
                                 Felix
