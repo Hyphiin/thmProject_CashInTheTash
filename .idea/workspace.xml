@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="427de112-bf1a-4f05-9f6a-be44a7f01a5c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/cashinthetash/public/images/Finance.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cashinthetash/public/images/Finance2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cashinthetash/public/images/Finance3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cashinthetash/public/images/Finance4.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cashinthetash/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/cashinthetash/public/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cashinthetash/src/App.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/cashinthetash/src/App.svelte" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

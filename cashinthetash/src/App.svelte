@@ -7,50 +7,51 @@
 </svelte:head>
 
 <main>
-    <nav class="navbar has-shadow is-white">
-        <div class="navbar">
+    <nav class="navbar">
+        <div class="container">
             <div class="navbar-brand">
                 <a class="navbar-item" href="javascript:window.location.href=window.location.href">
-                    <img src="https://images.vexels.com/media/users/3/143188/isolated/preview/5f44f3160a09b51b4fa4634ecdff62dd-money-icon-by-vexels.png"
-                         alt="Logo">
+                    <img src='https://images.vexels.com/media/users/3/143188/isolated/preview/5f44f3160a09b51b4fa4634ecdff62dd-money-icon-by-vexels.png' alt="Logo">
                 </a>
-                <div class="navbar-burger burger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
+                <span class="navbar-item">
+                    <h1 class="title is-6">
+                        CashInTheTash
+                    </h1>
+                </span>
+                <span class="navbar-burger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
             </div>
             <div class="navbar-menu">
-                <div class="navbar-start">
-                    <a class="navbar-item" href="http://localhost:5000/">Home</a>
-                    <a class="navbar-item">FAQ</a>
-                </div>
-                <div class="navbar-item has-dropdown is-hoverable">
-                    <a class="navbar-link">
-                        Team
-                    </a>
-                    <div class="navbar-dropdown is-boxed">
-                        <p class="navbar-item">
-                            Felix Wegener
-                        </p>
-                        <p class="navbar-item">
-                            Chiara Knipprath
-                        </p>
-                    </div>
-                </div>
                 <div class="navbar-end">
-                    <div class="navbar-item">
-                            <p class="control">
-                                <a class="button is-dark">
-								<span>
-                				Login
-              					</span>
-                                </a>
+                    <a class="navbar-item">
+                        Home
+                    </a>
+                    <a class="navbar-item">
+                        FAQ
+                    </a>
+                    <div class="navbar-item has-dropdown is-hoverable">
+                        <a class="navbar-link" href="#">
+                            Team
+                        </a>
+                        <div class="navbar-dropdown is-boxed">
+                            <p class="navbar-item" href="">
+                                Felix
                             </p>
+                            <p class="navbar-item" href="">
+                                Chiara
+                            </p>
+                        </div>
                     </div>
+                    <span class="navbar-item">
+              <a class="button is-primary">
+                <span>Login</span>
+              </a>
+            </span>
                 </div>
             </div>
-
         </div>
     </nav>
     <section class="hero is-primary has-text-centered is-bold" >
@@ -67,27 +68,3 @@
     </section>
 
 </main>
-
-
-<style>
-    main {
-        display: flex;
-        text-align: center;
-        width: 100%;
-        height: 100%;
-        flex-direction: column;
-    }
-
-    h1 {
-        color: #ff3e00;
-        text-transform: uppercase;
-        font-size: 4em;
-        font-weight: 100;
-    }
-
-    @media (min-width: 640px) {
-        main {
-            max-width: none;
-        }
-    }
-</style>
