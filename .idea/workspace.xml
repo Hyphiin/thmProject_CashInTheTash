@@ -2,8 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="427de112-bf1a-4f05-9f6a-be44a7f01a5c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/cashinthetash/public/images/Finance.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cashinthetash/public/images/Finance2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cashinthetash/public/images/Finance3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cashinthetash/public/images/Finance4.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cashinthetash/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/cashinthetash/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cashinthetash/src/App.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/cashinthetash/src/App.svelte" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,7 +37,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../fireapp" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/cashinthetash/public/images" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -43,6 +48,16 @@
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\felix\PhpstormProjects\cashinthetash\cashinthetash\public\images" />
+      <recent name="C:\Users\felix\PhpstormProjects\cashinthetash\cashinthetash\public" />
+      <recent name="C:\Users\felix\PhpstormProjects\cashinthetash\cashinthetash\src" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\felix\PhpstormProjects\cashinthetash\cashinthetash\src" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="dev" type="js.build_tools.npm" nameIsGenerated="true">
@@ -69,7 +84,7 @@
       <workItem from="1608048534574" duration="6000" />
       <workItem from="1608048605927" duration="12000" />
       <workItem from="1608217779980" duration="6079000" />
-      <workItem from="1608292345791" duration="146000" />
+      <workItem from="1608292345791" duration="4370000" />
     </task>
     <servers />
   </component>
