@@ -1,5 +1,15 @@
 <script>
+    import Profile from './Profile.svelte';
+    import {auth, googleProvider} from './firebase';
+    import {authState} from 'rxfire/auth';
 
+    let user;
+
+    const unsubscribe = authState(auth).subscribe(u => user = u);
+
+    function login() {
+        auth.signInWithPopup(googleProvider);
+    }
 </script>
 
 <svelte:head>
@@ -49,7 +59,13 @@
                     </div>
                     <span class="navbar-item">
               <a class="button is-info">
-                <span>Login</span>
+                {#if user}
+                <button class="button is-info" on:click={ () => auth.signOut() }>Logout</button>
+                {:else}
+                <button class="button is-info" on:click={login}>
+                    Login
+                </button>
+                {/if}
               </a>
             </span>
                 </div>
@@ -70,6 +86,19 @@
     </section>
     <section class="section has-text-centered">
         <p class="tag is-info is-light is-large">Hier kommt ein Bild hin!</p>
+        <figure class="image container is-128x128">
+            <img class="is-rounded" src="images/Finance4.jpg">
+        </figure>
+    </section>
+    <section class="section has-text-centered">
+        {#if user}
+            <Profile {...user}/>
+            <button class="button is-info" on:click={ () => auth.signOut() }>Logout</button>
+        {:else}
+            <button class="button is-info" on:click={login}>
+                Signin with Google
+            </button>
+        {/if}
     </section>
 
 </main>
