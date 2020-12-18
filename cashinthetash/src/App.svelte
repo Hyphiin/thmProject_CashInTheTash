@@ -11,7 +11,9 @@
         <div class="container">
             <div class="navbar-brand">
                 <a class="navbar-item" href="javascript:window.location.href=window.location.href">
-                    <img src='https://images.vexels.com/media/users/3/143188/isolated/preview/5f44f3160a09b51b4fa4634ecdff62dd-money-icon-by-vexels.png' alt="Logo">
+                    <img class="tag is-info is-light is-rounded"
+                         src='https://images.vexels.com/media/users/3/143188/isolated/preview/5f44f3160a09b51b4fa4634ecdff62dd-money-icon-by-vexels.png'
+                         alt="Logo">
                 </a>
                 <span class="navbar-item">
                     <h1 class="title is-6">
@@ -46,7 +48,7 @@
                         </div>
                     </div>
                     <span class="navbar-item">
-              <a class="button is-primary">
+              <a class="button is-info">
                 <span>Login</span>
               </a>
             </span>
@@ -54,8 +56,8 @@
             </div>
         </div>
     </nav>
-    <section class="hero is-primary has-text-centered is-bold" >
-        <div class="hero-body" >
+    <section class="hero is-info has-text-centered is-bold">
+        <div class="hero-body">
             <div class="container">
                 <h1 class="title is-1">
                     CashInTheTash
@@ -65,6 +67,9 @@
                 </h6>
             </div>
         </div>
+    </section>
+    <section class="section has-text-centered">
+        <p class="tag is-info is-light is-large">Hier kommt ein Bild hin!</p>
     </section>
 
 </main>
