@@ -86,9 +86,9 @@
     </section>
     <section class="section has-text-centered">
         <p class="tag is-info is-light is-large">Hier kommt ein Bild hin!</p>
-        <figure class="image container is-128x128">
+        <!--<figure class="image container is-128x128">
             <img class="is-rounded" src="images/Finance4.jpg">
-        </figure>
+        </figure>-->
     </section>
     <section class="section has-text-centered">
         {#if user}
