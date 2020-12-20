@@ -3,6 +3,7 @@
     import {auth, googleProvider} from './firebase';
     import {authState} from 'rxfire/auth';
     import Navbar from "./components/Navbar.svelte";
+    import Footer from "./components/Footer.svelte";
 
     let user;
 
