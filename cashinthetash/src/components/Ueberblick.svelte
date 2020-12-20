@@ -9,7 +9,6 @@
 </script>
 
 <main>
-    <Navbar/>
     <section class="section">
         <div class="container">
             <h1 class="title">Finanzplaner</h1>
@@ -37,5 +36,4 @@
             </div>
         </div>
     </div>
-    <Footer/>
 </main>

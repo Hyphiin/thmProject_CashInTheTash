@@ -4,6 +4,7 @@
     import {authState} from 'rxfire/auth';
     import Navbar from "./components/Navbar.svelte";
     import Footer from "./components/Footer.svelte";
+    import Ueberblick from "./components/Ueberblick.svelte";
 
     let user;
 
@@ -38,6 +39,7 @@
         {#if user}
             <Profile {...user}/>
             <button class="button is-info" on:click={ () => auth.signOut() }>Logout</button>
+            <Ueberblick/>
         {:else}
             <button class="button is-info" on:click={login}>
                 Signin with Google
