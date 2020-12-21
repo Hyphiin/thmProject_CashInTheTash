@@ -1,8 +1,6 @@
 <script>
     import {fade, slide, scale} from 'svelte/transition';
     import {flip} from 'svelte/animate';
-    import Navbar from "./Navbar.svelte";
-    import Footer from "./Footer.svelte";
     import ListStore from "../ListStore"
     import ListenKurzDetails from "./ListenKurzDetails.svelte";
 

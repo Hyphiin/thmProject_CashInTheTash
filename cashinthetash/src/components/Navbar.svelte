@@ -1,5 +1,4 @@
 <script>
-    import Profile from './Profile.svelte';
     import {auth, googleProvider} from '../firebase';
     import {authState} from 'rxfire/auth';
 
@@ -11,10 +10,6 @@
         auth.signInWithPopup(googleProvider);
     }
 </script>
-
-<svelte:head>
-    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css'>
-</svelte:head>
 
 <main>
     <nav class="navbar">
@@ -31,9 +26,9 @@
                     </h1>
                 </span>
                 <span class="navbar-burger">
-            <span></span>
-            <span></span>
-            <span></span>
+            <span>A</span>
+            <span>B</span>
+            <span>C</span>
           </span>
             </div>
             <div class="navbar-menu">
