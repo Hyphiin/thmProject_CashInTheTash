@@ -6,13 +6,15 @@
 
     const deleteFinance = () => {
         db.collection('finance').doc(id).delete()
+        console.log('erfolgreich gelöscht!');
     }
 
     const updateFinance = () => {
         db.collection('finance').doc(id).update({
-            Betrag : finance.Betrag,
-            Kategorie : finance.Kategorie
+            Betrag: finance.Betrag,
+            Kategorie: finance.Kategorie
         })
+        console.log('erfolgreich geupdated!');
     }
 
 </script>
@@ -21,9 +23,9 @@
     <div class="column">
         <div class="notification is-info">
             <h2 class="subtitle has-text-centered">Erstellungsdatum: {finance.Datum}</h2>
-            <input on:input={updateFinance} type="text" bind:value={finance.Betrag}/>
-            <input on:input={updateFinance} type="text" bind:value={finance.Kategorie}/>
-            <button on:click={deleteFinance}>Delete</button>
+            <input class="input" on:input={updateFinance} type="text" bind:value={finance.Betrag}/>
+            <input class="input" on:input={updateFinance} type="text" bind:value={finance.Kategorie}/>
+            <button class="button is-info is-inverted" on:click={deleteFinance}>Delete</button>
         </div>
     </div>
 </section>

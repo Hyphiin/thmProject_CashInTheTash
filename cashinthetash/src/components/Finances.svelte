@@ -8,20 +8,19 @@
 
     let Betrag = '';
     let Kategorie = '';
-    let Datum = '';
 
-    db.collection('finance').onSnapshot(data => {
+    db.collection('finance').orderBy('Datum').onSnapshot(data => {
         finances = data.docs
     })
 
-    const addFinance = () =>{
+    const addFinance = () => {
+        const Datum = Date.now();
         db.collection('finance').add({
-            Betrag, Kategorie, Datum: Date.now()
+            Betrag, Kategorie, Datum
         })
-
+        console.log('erfolgreich hinzugefügt!');
         Betrag = ''
         Kategorie = ''
-        Datum = ''
     }
 </script>
 
@@ -34,13 +33,19 @@
     </div>
 </section>
 
-<div>
-    <form on:submit|preventDefault={addFinance}>
-        <input type="text" bind:value={Betrag}/>
-        <input type="text" bind:value={Kategorie}/>
-        <button>ADD</button>
-    </form>
-</div>
+<section class="section">
+    <div class="container">
+        <div class="columns is-multiline is-variable is-2 is-centered">
+            <div class="notification is-info">
+                <form on:submit|preventDefault={addFinance}>
+                    <input class="input is-info" type="text" placeholder="Betrag" bind:value={Betrag}/>
+                    <input class="input is-info" type="text" placeholder="Kategorie" bind:value={Kategorie}/>
+                    <button class="button is-info">ADD</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
 
 <div class="container">
     <div class="columns is-multiline is-variable is-2">
