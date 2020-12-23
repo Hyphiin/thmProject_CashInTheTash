@@ -6,19 +6,42 @@
 
     let finances = [];
 
+    let Betrag = '';
+    let Kategorie = '';
+    let Datum = '';
+
     db.collection('finance').onSnapshot(data => {
         finances = data.docs
     })
+
+    const addFinance = () =>{
+        db.collection('finance').add({
+            Betrag, Kategorie, Datum: Date.now()
+        })
+
+        Betrag = ''
+        Kategorie = ''
+        Datum = ''
+    }
 </script>
 
 <section class="section">
     <div class="container">
-        <h1 class="title">Finanzplaner</h1>
+        <h1 class="title">Angelegte Einträge</h1>
         <h2 class="subtitle">
-            Wähle deinen Plan
+            Wähle deinen Eintrag
         </h2>
     </div>
 </section>
+
+<div>
+    <form on:submit|preventDefault={addFinance}>
+        <input type="text" bind:value={Betrag}/>
+        <input type="text" bind:value={Kategorie}/>
+        <button>ADD</button>
+    </form>
+</div>
+
 <div class="container">
     <div class="columns is-multiline is-variable is-2">
         {#each finances as finance}
@@ -26,15 +49,5 @@
                 <Finance id={finance.id} finance={finance.data()}/>
             </div>
         {/each}
-        <div class="column is-narrow">
-            <div class="notification is-info">
-                <h1 class="subtitle">Neue Liste erstellen</h1>
-                <a class="button is-rounded is-large ml-6">
-                        <span class="icon is-large">
-                            <img src='images/plus.jpg' alt="plus">
-                        </span>
-                </a>
-            </div>
-        </div>
     </div>
 </div>

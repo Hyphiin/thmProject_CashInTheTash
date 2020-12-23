@@ -1,6 +1,6 @@
 import { writable } from 'svelte/store';
 
-const Listen = writable([
+const Finanzen = writable([
     {
         id: 1,
         name: 'WG Liste',
@@ -38,4 +38,4 @@ const Listen = writable([
     },
 ]);
 
-export default Listen;
+export default Finanzen;

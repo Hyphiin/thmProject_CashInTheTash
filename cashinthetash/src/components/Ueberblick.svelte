@@ -1,7 +1,7 @@
 <script>
     import {fade, slide, scale} from 'svelte/transition';
     import {flip} from 'svelte/animate';
-    import ListStore from "../ListStore"
+    import FinanceStore from "../FinanceStore"
     import ListenKurzDetails from "./ListenKurzDetails.svelte";
 
 </script>
@@ -17,7 +17,7 @@
     </section>
     <div class="container">
         <div class="columns is-multiline is-variable is-2">
-        {#each $ListStore as list (list.id)}
+        {#each $FinanceStore as list (list.id)}
             <div in:fade out:scale|local animate:flip={{duration: 500}}>
                 <ListenKurzDetails {list} />
             </div>
