@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="427de112-bf1a-4f05-9f6a-be44a7f01a5c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cashinthetash/src/components/ListeErstellen.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/cashinthetash/src/components/ListeErstellen.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cashinthetash/src/components/LoginSection.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/cashinthetash/src/components/LoginSection.svelte" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +25,8 @@
         <option value="ListeErstellen" />
         <option value="Banner" />
         <option value="LoginSection" />
+        <option value="Finance" />
+        <option value="Finances" />
       </list>
     </option>
   </component>

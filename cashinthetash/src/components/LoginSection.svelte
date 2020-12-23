@@ -3,6 +3,7 @@
     import Ueberblick from "./Ueberblick.svelte";
     import {authState} from "rxfire/auth";
     import {auth, googleProvider} from "../firebase";
+    import Finances from "./Finances.svelte";
 
 
     let user;
@@ -18,7 +19,7 @@
     {#if user}
         <Profile {...user}/>
         <button class="button is-info" on:click={ () => auth.signOut() }>Logout</button>
-        <Ueberblick/>
+        <Finances/>
     {:else}
         <button class="button is-info" on:click={login}>
             Signin with Google
