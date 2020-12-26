@@ -8,6 +8,7 @@
 
     let Betrag = '';
     let Kategorie = '';
+    export let planID;
 
     db.collection('finance').orderBy('Datum').onSnapshot(data => {
         finances = data.docs
@@ -15,22 +16,13 @@
 
     const addFinance = () => {
         db.collection('finance').add({
-            Betrag, Kategorie, Datum: Date.now(), PlanID: 1
+            Betrag, Kategorie, Datum: Date.now(), planID
         })
         console.log('erfolgreich hinzugefügt!');
         Betrag = ''
         Kategorie = ''
     }
 </script>
-
-<section class="section">
-    <div class="container">
-        <h1 class="title">Angelegte Einträge</h1>
-        <h2 class="subtitle">
-            Wähle deinen Eintrag
-        </h2>
-    </div>
-</section>
 
 <section class="section">
     <div class="container">

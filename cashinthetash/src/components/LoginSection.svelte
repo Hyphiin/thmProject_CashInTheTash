@@ -21,7 +21,6 @@
         <Profile {...user}/>
         <button class="button is-info" on:click={ () => auth.signOut() }>Logout</button>
         <Plans/>
-        <Finances/>
         <!--<Ueberblick/>-->
     {:else}
         <button class="button is-info" on:click={login}>
