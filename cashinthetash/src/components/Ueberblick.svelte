@@ -36,7 +36,7 @@
                 <ListenKurzDetails {list} />
             </div>
         {/each}
-            <div class="column is-narrow">
+            <!--<div class="column is-narrow">
                 <div class="notification is-info">
                     <h1 class="subtitle">Neue Liste erstellen</h1>
                     <form on:submit|preventDefault={addToArray}>
@@ -44,7 +44,7 @@
                         <button class="button is-info is-inverted">ADD</button>
                     </form>
                 </div>
-            </div>
+            </div>-->
         </div>
     </div>
 </main>
