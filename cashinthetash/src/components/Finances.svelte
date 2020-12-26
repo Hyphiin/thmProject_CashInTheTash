@@ -14,9 +14,8 @@
     })
 
     const addFinance = () => {
-        const Datum = Date.now();
         db.collection('finance').add({
-            Betrag, Kategorie, Datum
+            Betrag, Kategorie, Datum: Date.now(), PlanID: 1
         })
         console.log('erfolgreich hinzugefügt!');
         Betrag = ''
