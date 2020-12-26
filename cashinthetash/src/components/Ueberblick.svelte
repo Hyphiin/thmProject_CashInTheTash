@@ -2,7 +2,21 @@
     import {fade, slide, scale} from 'svelte/transition';
     import {flip} from 'svelte/animate';
     import FinanceStore from "../FinanceStore"
+    import {Finanzen} from '../FinanceStore';
     import ListenKurzDetails from "./ListenKurzDetails.svelte";
+
+
+    let name = '';
+    export let uid;
+
+    //Liste zum Array hinzufügen
+    const addToArray = () => {
+        $Finanzen = [...$Finanzen, {
+            id: $Finanzen.length+1, name, datum: Date.now(), userid: uid
+        }];
+        console.log($Finanzen);
+        name = '';
+    };
 
 </script>
 
@@ -25,11 +39,10 @@
             <div class="column is-narrow">
                 <div class="notification is-info">
                     <h1 class="subtitle">Neue Liste erstellen</h1>
-                    <a class="button is-rounded is-large ml-6">
-                        <span class="icon is-large">
-                            <img src='images/plus.jpg' alt="plus">
-                        </span>
-                    </a>
+                    <form on:submit|preventDefault={addToArray}>
+                        <input class="input is-info" type="text" placeholder="Titel" bind:value={name}/>
+                        <button class="button is-info is-inverted">ADD</button>
+                    </form>
                 </div>
             </div>
         </div>

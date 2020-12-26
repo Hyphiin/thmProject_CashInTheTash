@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="427de112-bf1a-4f05-9f6a-be44a7f01a5c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cashinthetash/src/components/Finance.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/cashinthetash/src/components/Finance.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cashinthetash/src/components/Finances.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/cashinthetash/src/components/Finances.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cashinthetash/src/FinanceStore.js" beforeDir="false" afterPath="$PROJECT_DIR$/cashinthetash/src/FinanceStore.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cashinthetash/src/components/Ueberblick.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/cashinthetash/src/components/Ueberblick.svelte" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,6 +96,7 @@
       <workItem from="1608048605927" duration="12000" />
       <workItem from="1608217779980" duration="6079000" />
       <workItem from="1608292345791" duration="4370000" />
+      <workItem from="1608978603943" duration="2147000" />
     </task>
     <servers />
   </component>
