@@ -23,7 +23,7 @@
         <div class="notification is-info">
             <h2 class="subtitle has-text-centered">Erstellungsdatum: {plan.Datum}</h2>
             <input class="input" on:input={updatePlan} type="text" bind:value={plan.Titel}/>
-            <button class="button is-info is-inverted" on:click={deletePlan}>Delete</button>
+            <a class="delete is-large is-danger" on:click={deletePlan}></a>
         </div>
     </div>
 </section>

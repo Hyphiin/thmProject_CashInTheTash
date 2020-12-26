@@ -35,7 +35,8 @@
             <div class="notification is-info">
                 <form on:submit|preventDefault={addPlan}>
                     <input class="input is-info" type="text" placeholder="Titel" bind:value={Titel}/>
-                    <button class="button is-info">ADD</button>
+                    <hr/>
+                    <button class="button is-info is-inverted">ADD</button>
                 </form>
             </div>
         </div>
