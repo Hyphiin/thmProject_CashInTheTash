@@ -20,12 +20,11 @@
         console.log('erfolgreich hinzugefügt!');
         Titel = ''
     }
-    import {createEventDispatcher} from 'svelte';
 
-    let dispatch = createEventDispatcher();
+    export let show;
 
-    export let items;
-    export let activeItem;
+    
+
 </script>
 
 <section class="section">
@@ -43,7 +42,7 @@
     <div class="columns is-multiline is-variable is-2">
         {#each plans as plan}
             <div in:fade out:scale|local animate:flip={{duration: 500}}
-                 class="section" on:click={() => {activeItem = 'Finances'}}>
+                 class="section" on:click={() => {show = true}}>
                 <Plan id={plan.id} plan={plan.data()}/>
             </div>
         {/each}

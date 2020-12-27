@@ -18,13 +18,8 @@
     }
 
     // sides
-    let items = ['Plans', 'Finances'];
-    let activeItem = 'Plans';
-    const sideChange = (e) => activeItem = e.detail;
+    let show = false;
 
-    const handleAdd = () => {
-        activeItem = 'Plans';
-    }
 </script>
 
 <section class="section has-text-centered">
@@ -32,10 +27,10 @@
         <Profile {...user}/>
         <button class="button is-info" on:click={ () => auth.signOut() }>Logout</button>
 
-        {#if activeItem === 'Plans'}
+        {#if show = false}
             <Plans />
-        {:else if activeItem === 'Finances'}
-            <Finance on:add={handleAdd} />
+        {:else if show = true}
+            <Finance/>
         {/if}
 
     {:else}
