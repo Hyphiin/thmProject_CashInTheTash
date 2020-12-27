@@ -41,8 +41,7 @@
 <div class="container">
     <div class="columns is-multiline is-variable is-2">
         {#each plans as plan}
-            <div in:fade out:scale|local animate:flip={{duration: 500}}
-                 class="section" on:click={() => {show = true}}>
+            <div class="section">
                 <Plan id={plan.id} plan={plan.data()}/>
             </div>
         {/each}

@@ -5,8 +5,9 @@
     import {auth, googleProvider} from "../firebase";
     import Finances from "./Finances.svelte";
     import Plans from "./Plans.svelte";
-    import Sides from "./Sides.svelte";
+
     import Finance from "./Finance.svelte";
+
 
 
     let user;
@@ -20,6 +21,8 @@
     // sides
     let show = false;
 
+
+
 </script>
 
 <section class="section has-text-centered">
@@ -27,10 +30,10 @@
         <Profile {...user}/>
         <button class="button is-info" on:click={ () => auth.signOut() }>Logout</button>
 
-        {#if show = false}
+        {#if show === false}
             <Plans />
-        {:else if show = true}
-            <Finance/>
+        {:else if show === true}
+            <Finances/>
         {/if}
 
     {:else}
