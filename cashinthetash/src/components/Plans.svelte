@@ -1,6 +1,8 @@
 <script>
     import {db} from '../firebase';
     import Plan from './Plan.svelte';
+    import {fade, slide, scale} from 'svelte/transition';
+    import {flip} from 'svelte/animate';
 
     let plans = [];
 
@@ -18,6 +20,12 @@
         console.log('erfolgreich hinzugefügt!');
         Titel = ''
     }
+    import {createEventDispatcher} from 'svelte';
+
+    let dispatch = createEventDispatcher();
+
+    export let items;
+    export let activeItem;
 </script>
 
 <section class="section">
@@ -28,6 +36,19 @@
         </h2>
     </div>
 </section>
+
+
+
+<div class="container">
+    <div class="columns is-multiline is-variable is-2">
+        {#each plans as plan}
+            <div in:fade out:scale|local animate:flip={{duration: 500}}
+                 class="section" on:click={() => {activeItem = 'Finances'}}>
+                <Plan id={plan.id} plan={plan.data()}/>
+            </div>
+        {/each}
+    </div>
+</div>
 
 <section class="section">
     <div class="container">
@@ -42,13 +63,3 @@
         </div>
     </div>
 </section>
-
-<div class="container">
-    <div class="columns is-multiline is-variable is-2">
-        {#each plans as plan}
-            <div class="section">
-                <Plan id={plan.id} plan={plan.data()}/>
-            </div>
-        {/each}
-    </div>
-</div>
