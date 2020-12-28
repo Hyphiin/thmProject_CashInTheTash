@@ -4,6 +4,7 @@
     import {db} from '../firebase';
     import Finance from './Finance.svelte';
     import firebase from "firebase";
+    import SimpleList from "./SimpleList.svelte";
 
     let finances = [];
 
@@ -77,5 +78,7 @@
                 <Finance id={finance.id} finance={finance.data()}/>
             </div>
         {/each}
+        <SimpleList planID={planID}/>
     </div>
 </div>
+

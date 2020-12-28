@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="427de112-bf1a-4f05-9f6a-be44a7f01a5c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cashinthetash/src/components/Navbar.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/cashinthetash/src/components/Navbar.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cashinthetash/src/components/Finances.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/cashinthetash/src/components/Finances.svelte" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +30,8 @@
         <option value="Plan" />
         <option value="Plans" />
         <option value="Sides" />
+        <option value="SimpleList" />
+        <option value="SimpleListItem" />
       </list>
     </option>
   </component>
@@ -103,6 +105,7 @@
       <workItem from="1608991272253" duration="1607000" />
       <workItem from="1609156755016" duration="1022000" />
       <workItem from="1609162647079" duration="34000" />
+      <workItem from="1609184277888" duration="2478000" />
     </task>
     <servers />
   </component>
