@@ -1,14 +1,9 @@
 <script>
     import Profile from './Profile.svelte';
-    import Ueberblick from "./Ueberblick.svelte";
     import {authState} from "rxfire/auth";
     import {auth, googleProvider} from "../firebase";
     import Finances from "./Finances.svelte";
     import Plans from "./Plans.svelte";
-
-    import Finance from "./Finance.svelte";
-
-
 
     let user;
 
@@ -20,7 +15,6 @@
 
     // sides
     let show = false;
-
 
 
 </script>
