@@ -25,7 +25,7 @@
         <button class="button is-info" on:click={ () => auth.signOut() }>Logout</button>
 
         {#if show === false}
-            <Plans />
+            <Plans {...user}/>
         {:else if show === true}
             <Finances/>
         {/if}

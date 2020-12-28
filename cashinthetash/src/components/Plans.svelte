@@ -4,6 +4,8 @@
     import {fade, slide, scale} from 'svelte/transition';
     import {flip} from 'svelte/animate';
 
+    export let uid;
+
     let plans = [];
 
     let Titel = '';
@@ -15,15 +17,13 @@
     const addPlan = () => {
         const Datum = Date.now();
         db.collection('plans').add({
-            Titel, Datum, UserID: 1
+            Titel, Datum, UserID: {uid}
         })
         console.log('erfolgreich hinzugefügt!');
         Titel = ''
     }
 
     export let show;
-
-    
 
 </script>
 
