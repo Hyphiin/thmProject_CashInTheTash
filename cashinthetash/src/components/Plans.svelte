@@ -1,23 +1,30 @@
 <script>
     import {db} from '../firebase';
     import Plan from './Plan.svelte';
+    import {fade, slide, scale} from 'svelte/transition';
+    import {flip} from 'svelte/animate';
+
+    export let uid;
 
     let plans = [];
 
     let Titel = '';
 
-    db.collection('plans').orderBy('Datum').onSnapshot(data => {
+    db.collection('plans').orderBy('Datum').where("UserID", "==", uid).onSnapshot(data => {
         plans = data.docs
     })
 
     const addPlan = () => {
         const Datum = Date.now();
         db.collection('plans').add({
-            Titel, Datum, UserID: 1
+            Titel, Datum, UserID: uid
         })
         console.log('erfolgreich hinzugefügt!');
         Titel = ''
     }
+
+    export let show;
+
 </script>
 
 <section class="section">
@@ -28,6 +35,18 @@
         </h2>
     </div>
 </section>
+
+
+
+<div class="container">
+    <div class="columns is-multiline is-variable is-2">
+        {#each plans as plan}
+            <div class="section">
+                <Plan id={plan.id} plan={plan.data()}/>
+            </div>
+        {/each}
+    </div>
+</div>
 
 <section class="section">
     <div class="container">
@@ -42,13 +61,3 @@
         </div>
     </div>
 </section>
-
-<div class="container">
-    <div class="columns is-multiline is-variable is-2">
-        {#each plans as plan}
-            <div class="section">
-                <Plan id={plan.id} plan={plan.data()}/>
-            </div>
-        {/each}
-    </div>
-</div>

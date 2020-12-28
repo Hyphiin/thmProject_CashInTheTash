@@ -14,7 +14,7 @@
 
     export let planID;
 
-    db.collection('finance').orderBy('Datum').onSnapshot(data => {
+    db.collection('finance').orderBy('Datum').where("planID", "==", planID).onSnapshot(data => {
         finances = data.docs
     })
 
@@ -25,6 +25,12 @@
         console.log('erfolgreich hinzugefügt!');
         Betrag = ''
         Kategorie = ''
+
+        console.log(planID);
+    }
+
+    const showPlan = () => {
+        console.log(planID);
     }
 </script>
 
