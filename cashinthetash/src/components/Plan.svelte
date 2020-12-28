@@ -31,11 +31,11 @@
 
 <section>
     <div class="column" >
-        <div class="notification is-info" on:click={getID}>
+        <div class="notification is-info" >
             <h2 class="subtitle has-text-centered">Erstellungsdatum: {plan.Datum}</h2>
             <input class="input" on:input={updatePlan} type="text" bind:value={plan.Titel}/>
             {#if show === true}
-                <Finances {planID}/>
+                <Finances planID={id}/>
             {/if}
             <a class="delete is-large is-danger" on:click={deletePlan}></a>
             <p> {id} </p>

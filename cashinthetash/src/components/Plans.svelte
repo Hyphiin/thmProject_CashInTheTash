@@ -10,14 +10,14 @@
 
     let Titel = '';
 
-    db.collection('plans').orderBy('Datum').onSnapshot(data => {
+    db.collection('plans').orderBy('Datum').where("UserID", "==", uid).onSnapshot(data => {
         plans = data.docs
     })
 
     const addPlan = () => {
         const Datum = Date.now();
         db.collection('plans').add({
-            Titel, Datum, UserID: {uid}
+            Titel, Datum, UserID: uid
         })
         console.log('erfolgreich hinzugefügt!');
         Titel = ''
