@@ -3,6 +3,7 @@
     import Plan from './Plan.svelte';
     import {fade, slide, scale} from 'svelte/transition';
     import {flip} from 'svelte/animate';
+    import firebase from "firebase/app";
 
     export let uid;
 
@@ -15,7 +16,7 @@
     })
 
     const addPlan = () => {
-        const Datum = Date.now();
+        const Datum = firebase.firestore.Timestamp.fromDate(new Date());
         db.collection('plans').add({
             Titel, Datum, UserID: uid
         })

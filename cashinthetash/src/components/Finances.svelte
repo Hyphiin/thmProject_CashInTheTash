@@ -3,6 +3,7 @@
     import {flip} from 'svelte/animate';
     import {db} from '../firebase';
     import Finance from './Finance.svelte';
+    import firebase from "firebase";
 
     let finances = [];
 
@@ -19,8 +20,9 @@
     })
 
     const addFinance = () => {
+        const Datum = firebase.firestore.Timestamp.fromDate(new Date());
         db.collection('finance').add({
-            Betrag, Kategorie, Datum: Date.now(), planID, Wiederkehrend, Einnahme, Ausgabe
+            Betrag, Kategorie, Datum, planID, Wiederkehrend, Einnahme, Ausgabe
         })
         console.log('erfolgreich hinzugefügt!');
         Betrag = ''

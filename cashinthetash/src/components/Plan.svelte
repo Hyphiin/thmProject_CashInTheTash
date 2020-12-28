@@ -27,18 +27,18 @@
 
     export let show;
 
+    let date= plan.Datum.toDate().toDateString();
 </script>
 
 <section>
     <div class="column" >
         <div class="notification is-info" >
-            <h2 class="subtitle has-text-centered">Erstellungsdatum: {plan.Datum}</h2>
+            <h2 class="subtitle has-text-centered">Erstellungsdatum: {date}</h2>
             <input class="input" on:input={updatePlan} type="text" bind:value={plan.Titel}/>
             {#if show === true}
                 <Finances planID={id}/>
             {/if}
             <a class="delete is-large is-danger" on:click={deletePlan}></a>
-            <p> {id} </p>
             <button class="button is-primary" on:click={() => {show = !show}}>Show</button>
         </div>
     </div>
