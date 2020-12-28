@@ -1,11 +1,11 @@
 <script>
-    import ListStore from '../ListStore';
+    import FinanceStore from '../FinanceStore';
 
     export let list;
 
 // Liste Löschen
 const handleDelete = (id) => {
-    ListStore.update(lists => {
+    FinanceStore.update(lists => {
         return lists.filter(list => list.id != id);
     });
 };
