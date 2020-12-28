@@ -9,6 +9,12 @@
     function login() {
         auth.signInWithPopup(googleProvider);
     }
+
+    let mobile;
+    const toggleNav = () =>{
+        mobile = !mobile
+    }
+
 </script>
 
 <main>
@@ -25,13 +31,13 @@
                         CashInTheTash
                     </h1>
                 </span>
-                <span class="navbar-burger">
-            <span>A</span>
-            <span>B</span>
-            <span>C</span>
+                <span class="navbar-burger burger" class:is-active={mobile} id="burger" on:click={toggleNav}>
+            <span></span>
+            <span></span>
+            <span></span>
           </span>
             </div>
-            <div class="navbar-menu">
+            <div class="navbar-menu" class:is-active={mobile} id="menu">
                 <div class="navbar-end">
                     <a class="navbar-item">
                         Home
