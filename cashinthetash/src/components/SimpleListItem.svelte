@@ -4,10 +4,10 @@
 </script>
 
 
-<td class="table is-fullwidth is-hoverable">
+<td>
     <p>{finance.Kategorie}</p>
 </td>
-<td class="table is-fullwidth is-hoverable">
+<td>
     <p>{finance.Betrag}</p>
 </td>
 

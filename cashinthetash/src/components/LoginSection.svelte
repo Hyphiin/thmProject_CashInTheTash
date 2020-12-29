@@ -16,6 +16,7 @@
     // sides
     let showContend = false;
 
+    console.log("showContend " + showContend);
 
 </script>
 
@@ -26,10 +27,10 @@
         <button class="button is-info" on:click={ () => auth.signOut() }>Logout</button>
         <hr/>
 
-        {#if showContend === false}
-            <Plans {...user}/>
-        {:else if showContend === true}
+        {#if showContend}
             <Finances/>
+        {:else}
+            <Plans {...user}/>
         {/if}
 
     {:else}
