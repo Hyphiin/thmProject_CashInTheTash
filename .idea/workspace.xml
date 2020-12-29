@@ -6,6 +6,12 @@
       <change beforePath="$PROJECT_DIR$/cashinthetash/public/global.css" beforeDir="false" afterPath="$PROJECT_DIR$/cashinthetash/public/global.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cashinthetash/src/App.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/cashinthetash/src/App.svelte" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cashinthetash/src/components/LoginSection.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/cashinthetash/src/components/LoginSection.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cashinthetash/src/components/Finance.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/cashinthetash/src/components/Finance.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cashinthetash/src/components/Finances.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/cashinthetash/src/components/Finances.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cashinthetash/src/components/LoginSection.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/cashinthetash/src/components/LoginSection.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cashinthetash/src/components/Plan.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/cashinthetash/src/components/Plan.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cashinthetash/src/components/SimpleList.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/cashinthetash/src/components/SimpleList.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cashinthetash/src/components/SimpleListItem.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/cashinthetash/src/components/SimpleListItem.svelte" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +38,8 @@
         <option value="Plan" />
         <option value="Plans" />
         <option value="Sides" />
+        <option value="SimpleList" />
+        <option value="SimpleListItem" />
       </list>
     </option>
   </component>
@@ -105,6 +113,8 @@
       <workItem from="1608991272253" duration="1607000" />
       <workItem from="1609156755016" duration="1022000" />
       <workItem from="1609162647079" duration="34000" />
+      <workItem from="1609184277888" duration="2478000" />
+      <workItem from="1609251255039" duration="1438000" />
     </task>
     <servers />
   </component>

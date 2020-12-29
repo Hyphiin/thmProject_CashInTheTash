@@ -14,8 +14,9 @@
     }
 
     // sides
-    let show = false;
+    let showContend = false;
 
+    console.log("showContend " + showContend);
 
 </script>
 
@@ -40,10 +41,10 @@
             </footer>
         </div>
 
-        {#if show === false}
-            <Plans {...user}/>
-        {:else if show === true}
+        {#if showContend}
             <Finances/>
+        {:else}
+            <Plans {...user}/>
         {/if}
 
     {:else}

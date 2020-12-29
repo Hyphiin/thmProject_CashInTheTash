@@ -24,7 +24,6 @@
         Titel = ''
     }
 
-    export let show;
 
 </script>
 

@@ -1,7 +1,6 @@
 <script>
     import {db} from '../firebase';
     import Finances from "./Finances.svelte";
-    import Profile from "./Profile.svelte";
 
     export let id = '';
     export let plan = {};
@@ -25,22 +24,28 @@
         console.log(planID);
     }
 
-    export let show;
+    export let showContend;
+    export let showList;
+    export let showEdit;
 
-    let date= plan.Datum.toDate().toDateString();
+    let date = plan.Datum.toDate().toDateString();
+    console.log("showEdit "+ showEdit);
+
+
 </script>
 
 <section>
     <div class="column" >
         <div class="notification is-info" >
             <input class="input" on:input={updatePlan} type="text" bind:value={plan.Titel}/>
-            {#if show === true}
+            {#if showContend}
                 <Finances planID={id}/>
             {/if}
             <a class="delete is-large is-danger" on:click={deletePlan}></a>
             <hr/>
             <p class="subtitle has-text-centered is-size-7 is-uppercase has-text-weight-bold">Erstellt: {date}</p>
             <button class="button is-info is-inverted" on:click={() => {show = !show}}>Show</button>
+            <button class="button is-primary" on:click={() => {showContend = !showContend}}>Show</button>
         </div>
     </div>
 </section>
