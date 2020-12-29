@@ -13,11 +13,11 @@
 </script>
 
 <div class="container">
-    <ul class="columns is-multiline is-variable is-2">
+    <div class="columns is-multiline is-variable is-2">
+        <table class="table">
         {#each finances as item}
-            <li class="section">
-                <SimpleListItem id={item.id} finance={item.data()}/>
-            </li>
+            <SimpleListItem id={item.id} finance={item.data()}/>
         {/each}
-    </ul>
+        </table>
+    </div>
 </div>
