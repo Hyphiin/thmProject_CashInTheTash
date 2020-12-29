@@ -23,7 +23,7 @@
     {#if user}
         <Profile {...user}/>
         <hr/>
-        <button class="button is-info" on:click={ () => auth.signOut() }>Logout</button>
+        <button class="button is-success" on:click={ () => auth.signOut() }>Logout</button>
         <hr/>
 
         {#if show === false}
@@ -33,7 +33,7 @@
         {/if}
 
     {:else}
-        <button class="button is-info" on:click={login}>
+        <button class="button is-success" on:click={login}>
             Signin with Google
         </button>
     {/if}

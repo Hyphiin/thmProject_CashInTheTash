@@ -52,11 +52,11 @@
 <section class="section">
     <div class="container">
         <div class="columns is-multiline is-variable is-2 is-centered">
-            <div class="notification is-info">
+            <div class="notification is-success">
                 <form on:submit|preventDefault={addPlan}>
-                    <input class="input is-info" type="text" placeholder="Titel" bind:value={Titel}/>
+                    <input class="input is-success" type="text" placeholder="Titel" bind:value={Titel}/>
                     <hr/>
-                    <button class="button is-info is-inverted">ADD</button>
+                    <button class="button is-success is-inverted">ADD</button>
                 </form>
             </div>
         </div>

@@ -41,8 +41,8 @@
         <div class="columns is-multiline is-variable is-2 is-centered">
             <div class="notification is-light">
                 <form on:submit|preventDefault={addFinance}>
-                    <input class="input is-info" type="text" placeholder="Betrag" bind:value={Betrag}/>
-                    <input class="input is-info" type="text" placeholder="Kategorie" bind:value={Kategorie}/>
+                    <input class="input is-success" type="text" placeholder="Betrag" bind:value={Betrag}/>
+                    <input class="input is-success" type="text" placeholder="Kategorie" bind:value={Kategorie}/>
                     <div class="control">
                         <label class="radio">
                             <input type="radio" name="answer" bind:group={Wiederkehrend} value={true}>
@@ -63,7 +63,7 @@
                             Ausgabe
                         </label>
                     </div>
-                    <button class="button is-info">ADD</button>
+                    <button class="button is-success">ADD</button>
                 </form>
             </div>
         </div>

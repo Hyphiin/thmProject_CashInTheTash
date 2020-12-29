@@ -25,8 +25,8 @@
     <div class="column">
         <div class="notification is-light">
             <h2 class="subtitle has-text-centered is-6">Erstellungsdatum: {date}</h2>
-            <input class="input is-info" on:input={updateFinance} type="text" bind:value={finance.Betrag}/>
-            <input class="input is-info" on:input={updateFinance} type="text" bind:value={finance.Kategorie}/>
+            <input class="input is-success" on:input={updateFinance} type="text" bind:value={finance.Betrag}/>
+            <input class="input is-success" on:input={updateFinance} type="text" bind:value={finance.Kategorie}/>
             <a class="delete is-large is-danger" on:click={deleteFinance}></a>
         </div>
     </div>

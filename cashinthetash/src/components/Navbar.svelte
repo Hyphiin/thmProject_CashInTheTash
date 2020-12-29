@@ -22,7 +22,7 @@
         <div class="container">
             <div class="navbar-brand">
                 <a class="navbar-item" href="javascript:window.location.href=window.location.href">
-                    <img class="tag is-info is-light is-rounded"
+                    <img class="tag is-success is-light is-rounded"
                          src='https://images.vexels.com/media/users/3/143188/isolated/preview/5f44f3160a09b51b4fa4634ecdff62dd-money-icon-by-vexels.png'
                          alt="Logo">
                 </a>
@@ -59,11 +59,11 @@
                         </div>
                     </div>
                     <span class="navbar-item">
-              <a class="button is-info">
+              <a class="button is-success">
                 {#if user}
-                <button class="button is-info" on:click={ () => auth.signOut() }>Logout</button>
+                <button class="button is-success is-inverted" on:click={ () => auth.signOut() }>Logout</button>
                 {:else}
-                <button class="button is-info" on:click={login}>
+                <button class="button is-success is-inverted" on:click={login}>
                     Login
                 </button>
                 {/if}
