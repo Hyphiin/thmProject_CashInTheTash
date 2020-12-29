@@ -10,6 +10,7 @@
 </svelte:head>
 
 <main>
+    <Navbar/>
     <Banner/>
     <LoginSection/>
     <Footer/>

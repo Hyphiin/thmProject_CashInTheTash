@@ -28,37 +28,54 @@
 
 </script>
 
-<section class="section">
-    <div class="container">
-        <h1 class="title">Finanzplaner</h1>
-        <h2 class="subtitle">
-            Wähle deinen Plan
-        </h2>
-    </div>
-</section>
 
-
-
-<div class="container">
-    <div class="columns is-multiline is-variable is-2">
-        {#each plans as plan}
-            <div class="section">
-                <Plan id={plan.id} plan={plan.data()}/>
+<div class="tile is-ancestor">
+    <div class="tile is-vertical is-8">
+        <div class="tile">
+            <div class="tile is-parent is-vertical">
+                <article class="tile is-child notification is-success">
+                    <p class="title">Finanzplaner</p>
+                    <p class="subtitle">
+                        Wähle deinen Plan
+                    </p>
+                </article>
+                {#each plans as plan}
+                    <article class="tile is-child notification is-success">
+                        <Plan id={plan.id} plan={plan.data()}/>
+                    </article>
+                {/each}
             </div>
-        {/each}
-    </div>
-</div>
+            <div class="tile is-parent">
+                <article class="tile is-child notification is-success">
+                    <p class="title">Projektidee</p>
+                    <p class="subtitle">Der smarte Weg deine Finanzen zu organisieren!</p>
+                    <figure class="image is-4by3">
+                        <img src="../images/Finance.jpg">
+                    </figure>
+                </article>
+            </div>
+        </div>
+        <div class="tile is-parent">
+            <article class="tile is-child notification is-success">
+                <p class="title">Web-Frameworks</p>
+                <p class="subtitle">Ein Projekt von Felix Wegener und Chiara Knipprath.</p>
+                <div class="content">
+                    <!-- Content -->
+                </div>
+            </article>
+        </div>
 
-<section class="section">
-    <div class="container">
-        <div class="columns is-multiline is-variable is-2 is-centered">
-            <div class="notification is-success">
+    </div>
+
+    <div class="tile is-parent">
+        <article class="tile is-child notification is-success">
+            <div class="content">
                 <form on:submit|preventDefault={addPlan}>
                     <input class="input is-success" type="text" placeholder="Titel" bind:value={Titel}/>
                     <hr/>
                     <button class="button is-success is-inverted">ADD</button>
                 </form>
             </div>
-        </div>
+        </article>
     </div>
-</section>
+</div>

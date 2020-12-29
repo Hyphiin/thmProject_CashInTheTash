@@ -61,9 +61,9 @@
                     <span class="navbar-item">
               <a class="button is-success">
                 {#if user}
-                <button class="button is-success is-inverted" on:click={ () => auth.signOut() }>Logout</button>
+                <button class="button is-success" on:click={ () => auth.signOut() }>Logout</button>
                 {:else}
-                <button class="button is-success is-inverted" on:click={login}>
+                <button class="button is-success" on:click={login}>
                     Login
                 </button>
                 {/if}
