@@ -35,6 +35,8 @@
     const showPlan = () => {
         console.log(planID);
     }
+
+    let showEdit = false;
 </script>
 
 <section class="section">
@@ -73,12 +75,11 @@
 
 <div class="container">
     <div class="columns is-multiline is-variable is-2">
-        {#each finances as finance}
-            <div class="section">
-                <Finance id={finance.id} finance={finance.data()}/>
-            </div>
-        {/each}
-        <SimpleList planID={planID}/>
+            {#each finances as finance}
+                <div class="section">
+                    <Finance id={finance.id} finance={finance.data()}/>
+                </div>
+            {/each}
     </div>
 </div>
 
