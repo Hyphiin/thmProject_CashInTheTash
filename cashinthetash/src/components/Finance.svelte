@@ -12,22 +12,24 @@
     const updateFinance = () => {
         db.collection('finance').doc(id).update({
             Betrag: finance.Betrag,
-            Kategorie: finance.Kategorie
+            Name: finance.Name
         })
         console.log('erfolgreich geupdated!');
     }
 
-    let date= finance.Datum.toDate().toString();
+    let date= finance.Datum.toDate().toDateString();
 
 </script>
 
 <section>
     <div class="column">
-        <div class="notification is-light">
-            <h2 class="subtitle has-text-centered is-6">Erstellungsdatum: {date}</h2>
+        <div class="notification has-background-info-dark">
+            <input class="input is-info" on:input={updateFinance} type="text" bind:value={finance.Name}/>
             <input class="input is-info" on:input={updateFinance} type="text" bind:value={finance.Betrag}/>
-            <input class="input is-info" on:input={updateFinance} type="text" bind:value={finance.Kategorie}/>
+            <hr/>
+            <p class="subtitle has-text-centered is-size-7 is-uppercase has-text-weight-bold">Erstellt: {date}</p>
             <a class="delete is-large is-danger" on:click={deleteFinance}></a>
+            <p class="tag is-info is-light">{finance.Kategorie}</p>
         </div>
     </div>
 </section>

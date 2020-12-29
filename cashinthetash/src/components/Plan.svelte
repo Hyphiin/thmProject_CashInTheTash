@@ -33,13 +33,14 @@
 <section>
     <div class="column" >
         <div class="notification is-info" >
-            <h2 class="subtitle has-text-centered">Erstellungsdatum: {date}</h2>
             <input class="input" on:input={updatePlan} type="text" bind:value={plan.Titel}/>
             {#if show === true}
                 <Finances planID={id}/>
             {/if}
             <a class="delete is-large is-danger" on:click={deletePlan}></a>
-            <button class="button is-primary" on:click={() => {show = !show}}>Show</button>
+            <hr/>
+            <p class="subtitle has-text-centered is-size-7 is-uppercase has-text-weight-bold">Erstellt: {date}</p>
+            <button class="button is-info is-inverted" on:click={() => {show = !show}}>Show</button>
         </div>
     </div>
 </section>
