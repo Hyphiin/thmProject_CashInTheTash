@@ -35,6 +35,7 @@
                 </select>
             </div>
         </div>
+        <hr/>
         <table class="table is-fullwidth is-hoverable">
             <tr>
                 <th>Name</th>

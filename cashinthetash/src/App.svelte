@@ -10,7 +10,7 @@
     <link rel='stylesheet' href='../global.css'>
 </svelte:head>
 
-<main>
+<main class="bg-image2">
     <Navbar/>
     <Banner/>
     <LoginSection/>

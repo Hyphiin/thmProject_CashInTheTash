@@ -27,16 +27,16 @@
 
 </script>
 
+<hr/>
+
 <section class="section">
     <div class="container">
-        <h1 class="title">Finanzplaner</h1>
-        <h2 class="subtitle">
+        <h1 class="title fcolor">Finanzplaner</h1>
+        <h2 class="subtitle fcolor">
             Wähle deinen Plan
         </h2>
     </div>
 </section>
-
-
 
 <div class="container">
     <div class="columns is-multiline is-variable is-2">
