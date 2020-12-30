@@ -8,7 +8,7 @@
 }
 
 .bg-image1 {
-    background-image: url(https://images.pexels.com/photos/164686/pexels-photo-164686.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
+    background-image: url(https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: scroll;
@@ -17,7 +17,7 @@
 }
 
 .bg-image2 {
-    background-image: url(https://barnimages.com/wp-content/uploads/2018/04/20170904-barnimages-003.jpg);
+    background-image: url(https://images.pexels.com/photos/1714205/pexels-photo-1714205.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260);
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: scroll;
@@ -27,7 +27,7 @@
 
 @media only screen and (max-width: 600px) {
     .bg-image {
-        background-image: url(https://images.pexels.com/photos/5282392/pexels-photo-5282392.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
+        background-image: url(https://images.pexels.com/photos/1194713/pexels-photo-1194713.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
         background-position: center center;
         background-repeat: no-repeat;
         background-attachment: scroll;
@@ -46,14 +46,5 @@
 
     .fcolor {
         color: whitesmoke;
-    }
-
-    .bg-image2 {
-        background-image: url(https://images.pexels.com/photos/1525589/pexels-photo-1525589.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
-        background-position: center center;
-        background-repeat: no-repeat;
-        background-attachment: scroll;
-        background-size: cover;
-        background-color: #999;
     }
 }

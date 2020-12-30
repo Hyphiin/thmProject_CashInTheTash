@@ -50,10 +50,10 @@
     {:else}
         <div class="card">
             <div class="card-content bg-image1">
-                <p class="title fcolor">
+                <p class="title fcolor has-text-white">
                     “ Warum bleibt so viel Monat am Ende des Geldes übrig?”
                 </p>
-                <p class="subtitle fcolor">
+                <p class="subtitle fcolor has-text-white">
                     John Barrymore
                 </p>
             </div>

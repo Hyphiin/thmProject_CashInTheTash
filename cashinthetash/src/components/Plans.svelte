@@ -31,8 +31,8 @@
 
 <section class="section">
     <div class="container">
-        <h1 class="title fcolor">Finanzplaner</h1>
-        <h2 class="subtitle fcolor">
+        <h1 class="title has-text-white fcolor">Finanzplaner</h1>
+        <h2 class="subtitle has-text-white fcolor">
             Wähle deinen Plan
         </h2>
     </div>
