@@ -44,8 +44,7 @@
             <a class="delete is-large is-danger" on:click={deletePlan}></a>
             <hr/>
             <p class="subtitle has-text-centered is-size-7 is-uppercase has-text-weight-bold">Erstellt: {date}</p>
-            <button class="button is-info is-inverted" on:click={() => {show = !show}}>Show</button>
-            <button class="button is-primary" on:click={() => {showContend = !showContend}}>Show</button>
+            <button class="button is-info is-inverted" on:click={() => {showContend = !showContend}}>Show</button>
         </div>
     </div>
 </section>
