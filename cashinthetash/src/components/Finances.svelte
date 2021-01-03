@@ -60,11 +60,11 @@
         {#if showList}
             <SimpleList planID={planID}/>
         {:else}
+            <div class="columns is-multiline">
             {#each finances as finance}
-                <div class="columns is-multiline">
-                <Finance id={finance.id} finance={finance.data()}/>
-                </div>
+                    <Finance id={finance.id} finance={finance.data()}/>
             {/each}
+            </div>
         {/if}
 </div>
 <button class="button is-primary" on:click={showEditButton}>{activatedText}</button>
