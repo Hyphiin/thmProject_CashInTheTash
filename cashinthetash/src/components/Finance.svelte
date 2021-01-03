@@ -21,15 +21,13 @@
 
 </script>
 
-<section>
-    <div class="column">
-        <div class="notification has-background-info-dark">
-            <input class="input is-info" on:input={updateFinance} type="text" bind:value={finance.Name}/>
-            <input class="input is-info" on:input={updateFinance} type="text" bind:value={finance.Betrag}/>
-            <hr/>
-            <p class="subtitle has-text-centered is-size-7 is-uppercase has-text-weight-bold">Erstellt: {date}</p>
-            <a class="delete is-large is-danger" on:click={deleteFinance}></a>
-            <p class="tag is-info is-light">{finance.Kategorie}</p>
-        </div>
+<div class="column is-one-quarter">
+    <div class="notification has-background-info-dark">
+        <input class="input is-info" on:input={updateFinance} type="text" bind:value={finance.Name}/>
+        <input class="input is-info" on:input={updateFinance} type="text" bind:value={finance.Betrag}/>
+        <hr/>
+        <p class="subtitle has-text-centered is-size-7 is-uppercase has-text-weight-bold">Erstellt: {date}</p>
+        <a class="delete is-large is-danger" on:click={deleteFinance}></a>
+        <p class="tag is-info is-light">{finance.Kategorie}</p>
     </div>
-</section>
+</div>

@@ -43,9 +43,16 @@
             </tr>
             {#each finances as item}
                 <tr >
+<!--<div class="container">-->
+    <table class="table is-fullwidth is-striped">
+        <tr>
+            <th>Name</th>
+            <th>Betrag</th>
+        </tr>
+        {#each finances as item}
+            <tr >
                 <SimpleListItem id={item.id} finance={item.data()}/>
-                </tr>
-            {/each}
-        </table>
-    </div>
-</div>
+            </tr>
+        {/each}
+    </table>
+<!--</div>-->
