@@ -5,7 +5,7 @@
 
 
 <td>
-    <p>{finance.Kategorie}</p>
+    <p>{finance.Name}</p>
 </td>
 <td>
     <p>{finance.Betrag}</p>

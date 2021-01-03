@@ -44,23 +44,30 @@
 
     console.log("showList " + showList);
 
+    let activatedText = "Edit"
+    const showEditButton = () => {
+        showList = !showList
+        if (showList) {
+            activatedText = "Edit"
+        } else {
+            activatedText = "Return"
+        }
+    }
 </script>
 
-
+<hr/>
 <div class="container">
-    <div class="columns is-multiline is-variable is-2">
         {#if showList}
-            <div class="section">
-                <SimpleList planID={planID}/>
-            </div>
+            <SimpleList planID={planID}/>
         {:else}
             {#each finances as finance}
+                <div class="columns is-multiline">
                 <Finance id={finance.id} finance={finance.data()}/>
+                </div>
             {/each}
         {/if}
-    </div>
 </div>
-<button class="button is-primary" on:click={() => {showList = !showList}}>Edit</button>
+<button class="button is-primary" on:click={showEditButton}>{activatedText}</button>
 {#if showList === false}
     <button class="button is-primary" on:click={() => {showEdit = !showEdit}}>ADD</button>
 {/if}
@@ -74,8 +81,8 @@
                 <button class="delete" aria-label="close"  on:click={() => {showEdit = !showEdit}}></button>
             </header>
             <section class="modal-card-body">
-                <div class="container">
-                    <div class="columns is-multiline is-variable is-2">
+                <!--<div class="container">-->
+                     <!--<div class="columns is-multiline is-variable is-2">-->
                         <div class="notification has-background-info-dark">
                             <form on:submit|preventDefault={addFinance}>
                                 <input class="input is-info" type="text" placeholder="Name" bind:value={Name}/>
@@ -127,17 +134,14 @@
                                     </div>
                                 </div>
                                 <hr/>
-                                <button class="button is-info">ADD</button>
+                                <button class="button is-primary">ADD</button>
                             </form>
                         </div>
-                    </div>
-                </div>
-            </section>
-            <footer class="modal-card-foot">
-                <button class="button is-success"  on:click={() => {showEdit = !showEdit}}>Speichern</button>
-                <button class="button"  on:click={() => {showEdit = !showEdit}}>Abbrechen</button>
-            </footer>
-        </div>
-    </div>
-{/if}
+                    <!--</div>-->
+                <!--</div>-->
+             </section>
+
+         </div>
+     </div>
+ {/if}
 
