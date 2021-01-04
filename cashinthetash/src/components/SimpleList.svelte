@@ -18,7 +18,7 @@
         })
     }
 
-    let activated = false
+
 </script>
 
 
@@ -46,16 +46,10 @@
         <th>Datum</th>
     </tr>
     {#each finances as item}
-        {#if activated }
-            <tr class="is-selected">
-                <SimpleListItem id={item.id} finance={item.data()}/>
-            </tr>
-        {:else}
-            <tr class="is-warning">
-                <SimpleListItem id={item.id} finance={item.data()}/>
-            </tr>
-        {/if}
+        <SimpleListItem id={item.id} finance={item.data()}/>
     {/each}
 </table>
+
+
 
 

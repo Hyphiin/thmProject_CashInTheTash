@@ -53,6 +53,24 @@
             activatedText = "Return"
         }
     }
+
+    export let finance = {};
+    export let activated;
+    let activatedTextTwo = "ADD"
+    const showADDButton = () => {
+        showEdit = !showEdit
+        if (showEdit) {
+            activatedTextTwo = "ADD"
+        } else {
+            activatedTextTwo = "Save"
+        }
+        if(finance.Einnahme){
+            activated = true
+        }else{
+            activated = false
+        }
+    }
+
 </script>
 
 <hr/>
@@ -69,7 +87,7 @@
 </div>
 <button class="button is-primary" on:click={showEditButton}>{activatedText}</button>
 {#if showList === false}
-    <button class="button is-primary" on:click={() => {showEdit = !showEdit}}>ADD</button>
+    <button class="button is-primary" on:click={showADDButton}>{activatedTextTwo}</button>
 {/if}
 
 {#if showEdit}
