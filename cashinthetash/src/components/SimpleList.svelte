@@ -18,6 +18,7 @@
         })
     }
 
+    let activated = false
 </script>
 
 
@@ -36,15 +37,24 @@
     </div>
 </div>
 <hr/>
-<table class="table is-fullwidth is-striped">
+<table class="table is-striped is-fullwidth">
     <tr>
+        <th>Kategorie</th>
         <th>Name</th>
         <th>Betrag</th>
+        <th>Einnahme/Ausgabe</th>
+        <th>Datum</th>
     </tr>
     {#each finances as item}
-        <tr>
-            <SimpleListItem id={item.id} finance={item.data()}/>
-        </tr>
+        {#if activated }
+            <tr class="is-selected">
+                <SimpleListItem id={item.id} finance={item.data()}/>
+            </tr>
+        {:else}
+            <tr class="is-warning">
+                <SimpleListItem id={item.id} finance={item.data()}/>
+            </tr>
+        {/if}
     {/each}
 </table>
 
