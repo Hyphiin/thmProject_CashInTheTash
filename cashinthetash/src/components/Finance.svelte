@@ -21,7 +21,7 @@
 
 </script>
 
-<div class="column is-one-quarter">
+<div class="column">
     <div class="notification has-background-info-dark">
         <input class="input is-info" on:input={updateFinance} type="text" bind:value={finance.Name}/>
         <input class="input is-info" on:input={updateFinance} type="text" bind:value={finance.Betrag}/>

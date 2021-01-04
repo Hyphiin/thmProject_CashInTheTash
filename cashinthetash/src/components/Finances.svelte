@@ -53,6 +53,24 @@
             activatedText = "Return"
         }
     }
+
+    export let finance = {};
+    export let activated;
+    let activatedTextTwo = "ADD"
+    const showADDButton = () => {
+        showEdit = !showEdit
+        if (showEdit) {
+            activatedTextTwo = "ADD"
+        } else {
+            activatedTextTwo = "Save"
+        }
+        if(finance.Einnahme){
+            activated = true
+        }else{
+            activated = false
+        }
+    }
+
 </script>
 
 <hr/>
@@ -60,16 +78,16 @@
         {#if showList}
             <SimpleList planID={planID}/>
         {:else}
+            <div class="columns is-multiline">
             {#each finances as finance}
-                <div class="columns is-multiline">
-                <Finance id={finance.id} finance={finance.data()}/>
-                </div>
+                    <Finance id={finance.id} finance={finance.data()}/>
             {/each}
+            </div>
         {/if}
 </div>
 <button class="button is-primary" on:click={showEditButton}>{activatedText}</button>
 {#if showList === false}
-    <button class="button is-primary" on:click={() => {showEdit = !showEdit}}>ADD</button>
+    <button class="button is-primary" on:click={showADDButton}>{activatedTextTwo}</button>
 {/if}
 
 {#if showEdit}

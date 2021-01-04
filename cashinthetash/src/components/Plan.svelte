@@ -1,6 +1,7 @@
 <script>
     import {db} from '../firebase';
     import Finances from "./Finances.svelte";
+    export let finance = {};
 
     export let id = '';
     export let plan = {};
@@ -27,6 +28,7 @@
     export let showContend;
     export let showList;
     export let showEdit;
+
 
     let date = plan.Datum.toDate().toDateString();
     console.log("showEdit "+ showEdit);
