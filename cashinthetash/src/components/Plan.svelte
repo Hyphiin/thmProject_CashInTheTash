@@ -31,6 +31,15 @@
     let date = plan.Datum.toDate().toDateString();
     console.log("showEdit "+ showEdit);
 
+    let activatedText = "Show"
+    const showContendButton = () => {
+        showContend = !showContend
+        if (showContend) {
+            activatedText = "Close"
+        } else {
+            activatedText = "Show"
+        }
+    }
 
 </script>
 
@@ -44,7 +53,8 @@
             <a class="delete is-large is-danger" on:click={deletePlan}></a>
             <hr/>
             <p class="subtitle has-text-centered is-size-7 is-uppercase has-text-weight-bold">Erstellt: {date}</p>
-            <button class="button is-info is-inverted" on:click={() => {showContend = !showContend}}>Show</button>
+            <button class="button is-info is-inverted" on:click={showContendButton}>{activatedText}</button>
         </div>
     </div>
 </section>
+

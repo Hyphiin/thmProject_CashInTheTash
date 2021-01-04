@@ -21,30 +21,16 @@
 </script>
 
 
-<div class="container">
-    <div class="columns is-multiline is-variable is-2">
-        <div class="control has-text-left">
-            <label>Sortieren nach</label>
-            <div class="select is-small is-rounded">
-                <select bind:value={sort} on:change={onSort}>
-                    <option name="answer" value={"Datum"}>Auswählen</option>
-                    <option name="answer" value={"Betrag"}>Betrag</option>
-                    <option name="answer" value={"Datum"}>Datum</option>
-                    <option name="answer" value={"Name"}>Name</option>
-                    <option name="answer" value={"Kategorie"}>Kategorie</option>
-                </select>
-            </div>
-        </div>
-        <table class="table is-fullwidth is-hoverable">
-            <tr>
-                <th>Name</th>
-                <th>Betrag</th>
-            </tr>
-            {#each finances as item}
-                <tr >
+<!--<div class="container">-->
+    <table class="table is-fullwidth is-striped">
+        <tr>
+            <th>Name</th>
+            <th>Betrag</th>
+        </tr>
+        {#each finances as item}
+            <tr >
                 <SimpleListItem id={item.id} finance={item.data()}/>
-                </tr>
-            {/each}
-        </table>
-    </div>
-</div>
+            </tr>
+        {/each}
+    </table>
+<!--</div>-->
