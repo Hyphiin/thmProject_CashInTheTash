@@ -35,7 +35,11 @@
 
         console.log(planID);
 
-        helper = helper + Betrag
+        if(Einnahme){
+            helper = helper + Betrag
+        }else {
+            helper = helper - Betrag
+        }
 
         db.collection('plans').doc(planID).update({
             Summe: helper
