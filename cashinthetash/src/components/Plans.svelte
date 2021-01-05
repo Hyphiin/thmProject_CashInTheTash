@@ -4,6 +4,7 @@
     import {fade, slide, scale} from 'svelte/transition';
     import {flip} from 'svelte/animate';
     import firebase from "firebase/app";
+    import SimpleList from "./SimpleList.svelte";
 
     export let uid;
 
@@ -24,7 +25,6 @@
         console.log('erfolgreich hinzugefügt!');
         Titel = ''
     }
-
 
 
 </script>

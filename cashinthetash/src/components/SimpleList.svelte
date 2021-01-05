@@ -6,7 +6,7 @@
     let finances = [];
     export let planID;
     export let finance = {};
-
+    export let sum = 0;
 
     let sort = 'Datum';
 
@@ -57,7 +57,7 @@
 
         </td>
         <th>
-
+            {sum}
         </th>
         <td>
 

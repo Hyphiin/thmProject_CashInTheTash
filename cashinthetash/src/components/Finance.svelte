@@ -3,6 +3,10 @@
 
     export let id = '';
     export let finance = {};
+    export let planID;
+
+    let Summe;
+    let helper = 0;
 
     const deleteFinance = () => {
         db.collection('finance').doc(id).delete()
@@ -14,6 +18,25 @@
             Betrag: finance.Betrag,
             Name: finance.Name
         })
+
+        if(finance.Einnahme){
+            helper = helper + finance.Betrag
+            Summe = helper
+            console.log(Summe)
+        }else {
+            helper = helper - finance.Betrag
+            Summe = helper
+            console.log(Summe)
+        }
+
+        let updatePlan = db.collection('plan').where("planID", "==", planID);
+        updatePlan.get().then(function(querySnapshot){
+            querySnapshot.forEach(function(doc){
+                doc.ref.update({
+                    Summe: helper
+                });
+            });
+        });
         console.log('erfolgreich geupdated!');
     }
 

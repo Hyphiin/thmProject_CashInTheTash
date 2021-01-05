@@ -1,6 +1,8 @@
 <script>
     import {db} from '../firebase';
     import Finances from "./Finances.svelte";
+    import Finance from "./Finance.svelte";
+
     export let finance = {};
 
     export let id = '';
@@ -9,8 +11,8 @@
     const deletePlan = () => {
         db.collection('plans').doc(id).delete()
         let deleteFinance = db.collection('finance').where("planID", "==", id);
-        deleteFinance.get().then(function(querySnapshot){
-            querySnapshot.forEach(function(doc){
+        deleteFinance.get().then(function (querySnapshot) {
+            querySnapshot.forEach(function (doc) {
                 doc.ref.delete();
             });
         });
@@ -36,7 +38,7 @@
     export let showEdit;
 
     let date = plan.Datum.toDate().toDateString();
-    console.log("showEdit "+ showEdit);
+    console.log("showEdit " + showEdit);
 
     let string = "column is-two-quarters-mobile is-half-tablet is-half-desktop is-one-third-widescreen is-one-quarter-fullhd";
     let activatedText = "Show";

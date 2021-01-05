@@ -37,8 +37,12 @@
 
         if(Einnahme){
             helper = helper + Betrag
+            Summe = helper
+            console.log(Summe)
         }else {
             helper = helper - Betrag
+            Summe = helper
+            console.log(Summe)
         }
 
         db.collection('plans').doc(planID).update({
@@ -85,7 +89,7 @@
 <hr/>
 <div class="container">
         {#if showList}
-            <SimpleList planID={planID}/>
+            <SimpleList planID={planID} sum={Summe}/>
         {:else}
             <div class="columns columns is-multiline is-variable is-2">
             {#each finances as finance}
