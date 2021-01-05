@@ -29,34 +29,37 @@
     export let showList;
     export let showEdit;
 
-
     let date = plan.Datum.toDate().toDateString();
     console.log("showEdit "+ showEdit);
 
-    let activatedText = "Show"
+    let string = "column is-two-quarters-mobile is-half-tablet is-half-desktop is-one-third-widescreen is-one-quarter-fullhd";
+    let activatedText = "Show";
     const showContendButton = () => {
         showContend = !showContend
         if (showContend) {
             activatedText = "Close"
+            string = "column is-full-mobile is-full-tablet is-full-desktop is-full-widescreen is-full-fullhd"
         } else {
             activatedText = "Show"
+            string = "column is-two-quarters-mobile is-half-tablet is-half-desktop is-one-third-widescreen is-one-quarter-fullhd"
         }
+
     }
 
 </script>
 
-<section>
-    <div class="column" >
+
+    <div class={string}>
         <div class="notification is-info" >
             <input class="input" on:input={updatePlan} type="text" bind:value={plan.Titel}/>
-            {#if showContend}
-                <Finances planID={id}/>
-            {/if}
+                {#if showContend}
+                    <Finances planID={id}/>
+                {/if}
             <a class="delete is-large is-danger" on:click={deletePlan}></a>
             <hr/>
             <p class="subtitle has-text-centered is-size-7 is-uppercase has-text-weight-bold">Erstellt: {date}</p>
             <button class="button is-info is-inverted" on:click={showContendButton}>{activatedText}</button>
         </div>
     </div>
-</section>
+
 

@@ -42,15 +42,13 @@
 <div class="container">
     <div class="columns is-multiline is-variable is-2">
         {#each plans as plan}
-            <div class="section">
                 <Plan id={plan.id} plan={plan.data()}/>
-            </div>
         {/each}
     </div>
 </div>
 
-<section class="section">
-    <div class="container">
+<div class="section">
+<div class="container">
         <div class="columns is-multiline is-variable is-2 is-centered">
             <div class="notification is-info">
                 <form on:submit|preventDefault={addPlan}>
@@ -60,5 +58,5 @@
                 </form>
             </div>
         </div>
-    </div>
-</section>
+</div>
+</div>

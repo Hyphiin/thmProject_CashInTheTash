@@ -19,10 +19,18 @@
 
     let date= finance.Datum.toDate().toDateString();
 
+    let stringSelected = "notification has-background-danger"
+
+    if (finance.Einnahme){
+        stringSelected = "notification has-background-primary"
+    }else{
+        stringSelected = "notification has-background-danger"
+    }
+
 </script>
 
-<div class="column">
-    <div class="notification has-background-info-dark">
+<div class="column is-two-quarters-mobile is-half-tablet is-half-desktop is-one-third-widescreen is-one-quarter-fullhd">
+    <div class={stringSelected}>
         <input class="input is-info" on:input={updateFinance} type="text" bind:value={finance.Name}/>
         <input class="input is-info" on:input={updateFinance} type="text" bind:value={finance.Betrag}/>
         <hr/>

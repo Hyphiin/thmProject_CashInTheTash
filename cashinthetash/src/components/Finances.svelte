@@ -15,23 +15,31 @@
     let Wiederkehrend = '';
     let Einnahme = '';
     let Ausgabe = '';
-
+    let Summe = '';
     export let planID;
+
 
     db.collection('finance').orderBy('Datum').where("planID", "==", planID).onSnapshot(data => {
         finances = data.docs
     })
 
     const addFinance = () => {
+        if(Betrag>0){
+            Summe = Summe + Betrag
+        }else{
+            Summe = Summe - Betrag
+        }
+
         const Datum = firebase.firestore.Timestamp.fromDate(new Date());
         db.collection('finance').add({
-            Betrag, Name, Kategorie, Datum, planID, Wiederkehrend, Einnahme, Ausgabe
+            Betrag, Name, Kategorie, Datum, planID, Wiederkehrend, Einnahme, Ausgabe, Summe
         })
         console.log('erfolgreich hinzugefügt!');
         Betrag = ''
         Name = ''
 
         console.log(planID);
+
     }
 
     const showPlan = () => {
@@ -71,24 +79,29 @@
         }
     }
 
+
+
 </script>
+
 
 <hr/>
 <div class="container">
         {#if showList}
             <SimpleList planID={planID}/>
         {:else}
-            <div class="columns is-multiline">
+            <div class="columns columns is-multiline is-variable is-2">
             {#each finances as finance}
                     <Finance id={finance.id} finance={finance.data()}/>
             {/each}
             </div>
         {/if}
 </div>
+<div class="container" style="margin-top:15px">
 <button class="button is-primary" on:click={showEditButton}>{activatedText}</button>
 {#if showList === false}
     <button class="button is-primary" on:click={showADDButton}>{activatedTextTwo}</button>
 {/if}
+</div>
 
 {#if showEdit}
     <div class="modal is-active">
@@ -99,8 +112,6 @@
                 <button class="delete" aria-label="close"  on:click={() => {showEdit = !showEdit}}></button>
             </header>
             <section class="modal-card-body">
-                <!--<div class="container">-->
-                     <!--<div class="columns is-multiline is-variable is-2">-->
                         <div class="notification has-background-info-dark">
                             <form on:submit|preventDefault={addFinance}>
                                 <input class="input is-info" type="text" placeholder="Name" bind:value={Name}/>
@@ -155,10 +166,7 @@
                                 <button class="button is-primary">ADD</button>
                             </form>
                         </div>
-                    <!--</div>-->
-                <!--</div>-->
              </section>
-
          </div>
      </div>
  {/if}

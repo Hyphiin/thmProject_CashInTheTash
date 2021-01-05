@@ -5,6 +5,7 @@
 
     let finances = [];
     export let planID;
+    export let finance = {};
 
     let sort = 'Datum';
 
@@ -22,8 +23,6 @@
 </script>
 
 
-
-
 <div class="control has-text-left">
     <label>Sortieren nach</label>
     <div class="select is-small is-rounded">
@@ -37,18 +36,37 @@
     </div>
 </div>
 <hr/>
+<div class="table-container">
 <table class="table is-striped is-fullwidth">
     <tr>
         <th>Kategorie</th>
         <th>Name</th>
         <th>Betrag</th>
-        <th>Einnahme/Ausgabe</th>
+        <th>Art</th>
         <th>Datum</th>
     </tr>
     {#each finances as item}
         <SimpleListItem id={item.id} finance={item.data()}/>
     {/each}
+    <tr>
+        <th>
+            Summe
+        </th>
+        <td>
+
+        </td>
+        <th>
+            {finance.Summe}
+        </th>
+        <td>
+
+        </td>
+        <td>
+
+        </td>
+    </tr>
 </table>
+</div>
 
 
 
