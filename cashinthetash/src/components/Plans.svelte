@@ -10,6 +10,7 @@
     let plans = [];
 
     let Titel = '';
+    let Summe = 0;
 
     db.collection('plans').orderBy('Datum').where("UserID", "==", uid).onSnapshot(data => {
         plans = data.docs
@@ -18,7 +19,7 @@
     const addPlan = () => {
         const Datum = firebase.firestore.Timestamp.fromDate(new Date());
         db.collection('plans').add({
-            Titel, Datum, UserID: uid, Summe:0
+            Titel, Datum, UserID: uid, Summe
         })
         console.log('erfolgreich hinzugefügt!');
         Titel = ''
@@ -53,6 +54,7 @@
             <div class="notification is-info">
                 <form on:submit|preventDefault={addPlan}>
                     <input class="input is-info" type="text" placeholder="Titel" bind:value={Titel}/>
+                    <input type="hidden" bind:value={Summe}/>
                     <hr/>
                     <button class="button is-info is-inverted">ADD</button>
                 </form>
