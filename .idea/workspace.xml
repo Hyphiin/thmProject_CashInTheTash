@@ -5,8 +5,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cashinthetash/src/components/Finance.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/cashinthetash/src/components/Finance.svelte" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cashinthetash/src/components/Finances.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/cashinthetash/src/components/Finances.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cashinthetash/src/components/Plan.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/cashinthetash/src/components/Plan.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cashinthetash/src/components/Plans.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/cashinthetash/src/components/Plans.svelte" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cashinthetash/src/components/SimpleList.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/cashinthetash/src/components/SimpleList.svelte" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cashinthetash/src/components/SimpleListItem.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/cashinthetash/src/components/SimpleListItem.svelte" afterDir="false" />
     </list>
@@ -55,7 +53,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="C:/Program Files/nodejs/node_modules/npm/bin/node-gyp-bin" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../Program Files/nodejs/node_modules/npm/bin/node-gyp-bin" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -119,40 +117,11 @@
       <workItem from="1609765030236" duration="3319000" />
       <workItem from="1609834552596" duration="570000" />
       <workItem from="1609835139583" duration="8461000" />
+      <workItem from="1609858770595" duration="2682000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="414" y="86" width="1092" height="954" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1609835181269">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="414" y="86" width="1092" height="954" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1609835181269" />
-    <state x="740" y="297" key="FileChooserDialogImpl" timestamp="1609835101741">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="740" y="297" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1609835101741" />
-    <state width="1877" height="281" key="GridCell.Tab.0.bottom" timestamp="1609841968437">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="281" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1609841968437" />
-    <state width="1877" height="281" key="GridCell.Tab.0.center" timestamp="1609841968436">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="281" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1609841968436" />
-    <state width="1877" height="281" key="GridCell.Tab.0.left" timestamp="1609841968436">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="281" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1609841968436" />
-    <state width="1877" height="281" key="GridCell.Tab.0.right" timestamp="1609841968437">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="281" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1609841968437" />
-    <state x="677" y="364" key="jetbrains.nodejs.interpreters-dialog" timestamp="1609834788453">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="677" y="364" key="jetbrains.nodejs.interpreters-dialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1609834788453" />
   </component>
 </project>

@@ -15,7 +15,6 @@
     let Wiederkehrend = '';
     let Einnahme = '';
     let Ausgabe = '';
-    let Summe = '';
     export let planID;
 
 
@@ -24,15 +23,9 @@
     })
 
     const addFinance = () => {
-        if(Betrag>0){
-            Summe = Summe + Betrag
-        }else{
-            Summe = Summe - Betrag
-        }
-
         const Datum = firebase.firestore.Timestamp.fromDate(new Date());
         db.collection('finance').add({
-            Betrag, Name, Kategorie, Datum, planID, Wiederkehrend, Einnahme, Ausgabe, Summe
+            Betrag, Name, Kategorie, Datum, planID, Wiederkehrend, Einnahme, Ausgabe
         })
         console.log('erfolgreich hinzugefügt!');
         Betrag = ''
@@ -72,14 +65,7 @@
         } else {
             activatedTextTwo = "Save"
         }
-        if(finance.Einnahme){
-            activated = true
-        }else{
-            activated = false
-        }
     }
-
-
 
 </script>
 

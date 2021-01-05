@@ -19,12 +19,12 @@
 
     let date= finance.Datum.toDate().toDateString();
 
-    let stringSelected = "notification has-background-danger"
+    let stringSelected = "notification has-background-info-dark"
 
     if (finance.Einnahme){
         stringSelected = "notification has-background-primary"
     }else{
-        stringSelected = "notification has-background-danger"
+        stringSelected = "notification has-background-info-dark"
     }
 
 </script>

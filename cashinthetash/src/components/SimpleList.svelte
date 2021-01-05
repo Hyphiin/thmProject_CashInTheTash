@@ -56,7 +56,7 @@
 
         </td>
         <th>
-            {finance.Summe}
+            {sum}
         </th>
         <td>
 

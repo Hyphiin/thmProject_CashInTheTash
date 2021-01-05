@@ -3,8 +3,6 @@
     export let finance = {};
 
     let date = finance.Datum.toDate().toDateString();
-    let activated = false
-    console.log(activated)
 
     let stringSelected = ""
 
