@@ -7,6 +7,7 @@
     export let planID;
     export let finance = {};
 
+
     let sort = 'Datum';
 
     db.collection('finance').orderBy('Datum').where("planID", "==", planID).onSnapshot(data => {
@@ -56,7 +57,7 @@
 
         </td>
         <th>
-            {sum}
+
         </th>
         <td>
 

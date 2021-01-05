@@ -18,7 +18,7 @@
     const addPlan = () => {
         const Datum = firebase.firestore.Timestamp.fromDate(new Date());
         db.collection('plans').add({
-            Titel, Datum, UserID: uid
+            Titel, Datum, UserID: uid, Summe:0
         })
         console.log('erfolgreich hinzugefügt!');
         Titel = ''

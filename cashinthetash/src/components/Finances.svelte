@@ -2,12 +2,14 @@
     import {fade, slide, scale} from 'svelte/transition';
     import {flip} from 'svelte/animate';
     import {db} from '../firebase';
-    import Finance from './Finance.svelte';
+    import Finance, {id} from './Finance.svelte';
     import firebase from "firebase";
     import SimpleList from "./SimpleList.svelte";
+    import {uid} from "./Plans.svelte";
 
 
     let finances = [];
+    let plans = [];
 
     let Betrag = '';
     let Name = '';
@@ -16,6 +18,7 @@
     let Einnahme = '';
     let Ausgabe = '';
     export let planID;
+    let Summe = 0;
 
 
     db.collection('finance').orderBy('Datum').where("planID", "==", planID).onSnapshot(data => {
@@ -33,6 +36,9 @@
 
         console.log(planID);
 
+        db.collection('plans').doc(planID).update({
+            Summe: Betrag
+        })
     }
 
     const showPlan = () => {
