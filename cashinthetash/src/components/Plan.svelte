@@ -8,6 +8,12 @@
 
     const deletePlan = () => {
         db.collection('plans').doc(id).delete()
+        let deleteFinance = db.collection('finance').where("planID", "==", id);
+        deleteFinance.get().then(function(querySnapshot){
+            querySnapshot.forEach(function(doc){
+                doc.ref.delete();
+            });
+        });
         console.log('erfolgreich gelöscht!');
     }
 
