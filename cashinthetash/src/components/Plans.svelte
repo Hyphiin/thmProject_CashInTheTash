@@ -4,12 +4,14 @@
     import {fade, slide, scale} from 'svelte/transition';
     import {flip} from 'svelte/animate';
     import firebase from "firebase/app";
+    import SimpleList from "./SimpleList.svelte";
 
     export let uid;
 
     let plans = [];
 
     let Titel = '';
+    let Summe = 0;
 
     db.collection('plans').orderBy('Datum').where("UserID", "==", uid).onSnapshot(data => {
         plans = data.docs
@@ -18,12 +20,11 @@
     const addPlan = () => {
         const Datum = firebase.firestore.Timestamp.fromDate(new Date());
         db.collection('plans').add({
-            Titel, Datum, UserID: uid
+            Titel, Datum, UserID: uid, Summe
         })
         console.log('erfolgreich hinzugefügt!');
         Titel = ''
     }
-
 
 
 </script>
@@ -42,23 +43,22 @@
 <div class="container">
     <div class="columns is-multiline is-variable is-2">
         {#each plans as plan}
-            <div class="section">
                 <Plan id={plan.id} plan={plan.data()}/>
-            </div>
         {/each}
     </div>
 </div>
 
-<section class="section">
-    <div class="container">
+<div class="section">
+<div class="container">
         <div class="columns is-multiline is-variable is-2 is-centered">
             <div class="notification is-info">
                 <form on:submit|preventDefault={addPlan}>
                     <input class="input is-info" type="text" placeholder="Titel" bind:value={Titel}/>
+                    <input type="hidden" bind:value={Summe}/>
                     <hr/>
                     <button class="button is-info is-inverted">ADD</button>
                 </form>
             </div>
         </div>
-    </div>
-</section>
+</div>
+</div>

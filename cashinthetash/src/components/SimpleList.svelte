@@ -5,12 +5,27 @@
 
     let finances = [];
     export let planID;
+    export let finance = {};
+    let sum = 0;
 
     let sort = 'Datum';
 
     db.collection('finance').orderBy('Datum').where("planID", "==", planID).onSnapshot(data => {
         finances = data.docs
     })
+
+    db.collection("plans")
+        .get()
+        .then(function (querySnapshot) {
+            querySnapshot.forEach(function (doc) {
+                // doc.data() is never undefined for query doc snapshots
+
+                console.log(doc.id, " => ", doc.data().Summe);
+                sum = doc.data().Summe;
+                // console.log("Booked",doc.data().get("booked"));
+            });
+        });
+
 
     const onSort = () => {
         db.collection('finance').orderBy(sort).where("planID", "==", planID).onSnapshot(data => {
@@ -20,8 +35,6 @@
 
 
 </script>
-
-
 
 
 <div class="control has-text-left">
@@ -37,18 +50,37 @@
     </div>
 </div>
 <hr/>
-<table class="table is-striped is-fullwidth">
-    <tr>
-        <th>Kategorie</th>
-        <th>Name</th>
-        <th>Betrag</th>
-        <th>Einnahme/Ausgabe</th>
-        <th>Datum</th>
-    </tr>
-    {#each finances as item}
-        <SimpleListItem id={item.id} finance={item.data()}/>
-    {/each}
-</table>
+<div class="table-container">
+    <table class="table is-striped is-fullwidth">
+        <tr>
+            <th>Kategorie</th>
+            <th>Name</th>
+            <th>Betrag</th>
+            <th>Art</th>
+            <th>Datum</th>
+        </tr>
+        {#each finances as item}
+            <SimpleListItem id={item.id} finance={item.data()}/>
+        {/each}
+        <tr>
+            <th>
+                Summe
+            </th>
+            <td>
+
+            </td>
+            <th>
+                {sum}
+            </th>
+            <td>
+
+            </td>
+            <td>
+
+            </td>
+        </tr>
+    </table>
+</div>
 
 
 

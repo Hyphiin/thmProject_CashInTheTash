@@ -23,6 +23,13 @@
 <section class="section has-text-centered">
     {#if user}
         <Profile {...user}/>
+
+        {#if showContend}
+            <Finances/>
+        {:else}
+            <Plans {...user}/>
+        {/if}
+
         <hr/>
         <div class="card">
             <div class="card-content bg-image">
@@ -40,12 +47,6 @@
                     </span>
             </footer>
         </div>
-
-        {#if showContend}
-            <Finances/>
-        {:else}
-            <Plans {...user}/>
-        {/if}
 
     {:else}
         <div class="card">
