@@ -10,13 +10,13 @@ Projektthema: Finanzplaner
 - Kategorisierung der Ausgaben
 
 Must-have Features: 
-- Login mit Registrierungsystem -> Vorraussetzung für User um Listen zu erstellen, Primär Google Login -> Hoch
-- Finanzplan erstellen können -> Sobald User Finanzplan erstellt wird Eintrag in Datenbank hinzugefügt und es besteht ab sofort die Möglichkeit        Einträge diesem Finanzplan hinzuzufügen -> Hoch
-- Mehrere Tabs -> User kann mehrere Finanzpläne erstellen -> Mittel
-- Finanzen als Liste -> Finanzplan als Liste ausgeben, simple Strichliste, wo Ausgaben und Einnahmen untereinander aufgeführt werden sollen -> Hoch
+- Login mit Registrierungsystem -> Vorraussetzung für User um Listen zu erstellen, Primär Google Login -> Hoch **(erledigt)**
+- Finanzplan erstellen können -> Sobald User Finanzplan erstellt wird Eintrag in Datenbank hinzugefügt und es besteht ab sofort die Möglichkeit        Einträge diesem Finanzplan hinzuzufügen -> Hoch **(erledigt)**
+- Mehrere Tabs -> User kann mehrere Finanzpläne erstellen -> Mittel **(erledigt)**
+- Finanzen als Liste -> Finanzplan als Liste ausgeben, simple Strichliste, wo Ausgaben und Einnahmen untereinander aufgeführt werden sollen -> Hoch **(erledigt)**
 - Finanzen als Diagramm darstellen -> Datenbankdaten auslesen und visuell umsetzen, Tortendiagramm, Balkendiagramm etc. -> Mittel
-- Finanzplan bearbeiten -> Einträge hinzufügen, löschen -> Hoch
-- Responsivität -> Mobilefirst!, Desktop auch geplant -> Hoch
+- Finanzplan bearbeiten -> Einträge hinzufügen, löschen -> Hoch **(erledigt)**
+- Responsivität -> Mobilefirst!, Desktop auch geplant -> Hoch **(erledigt)**
 - Filterungen nach Monat/Jahr, Kategorie, etc -> Mittel
 
 Nice-to-have Features: 
