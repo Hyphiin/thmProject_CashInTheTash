@@ -61,25 +61,25 @@
 
     console.log("showList " + showList);
 
-    let activatedText = "Edit"
+    let activatedText = "Bearbeiten"
     const showEditButton = () => {
         showList = !showList
         if (showList) {
-            activatedText = "Edit"
+            activatedText = "Bearbeiten"
         } else {
-            activatedText = "Return"
+            activatedText = "Zurück"
         }
     }
 
     export let finance = {};
     export let activated;
-    let activatedTextTwo = "ADD"
+    let activatedTextTwo = "Hinzufügen"
     const showADDButton = () => {
         showEdit = !showEdit
         if (showEdit) {
-            activatedTextTwo = "ADD"
+            activatedTextTwo = "Hinzufügen"
         } else {
-            activatedTextTwo = "Save"
+            activatedTextTwo = "Speichern"
         }
     }
 
@@ -165,7 +165,7 @@
                                     </div>
                                 </div>
                                 <hr/>
-                                <button class="button is-primary">ADD</button>
+                                <button class="button is-primary">Hinzufügen</button>
                             </form>
                         </div>
              </section>

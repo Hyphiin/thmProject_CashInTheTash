@@ -56,7 +56,7 @@
                     <input class="input is-info" type="text" placeholder="Titel" bind:value={Titel}/>
                     <input type="hidden" bind:value={Summe}/>
                     <hr/>
-                    <button class="button is-info is-inverted">ADD</button>
+                    <button class="button is-info is-inverted">Hinzufügen</button>
                 </form>
             </div>
         </div>
