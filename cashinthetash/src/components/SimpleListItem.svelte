@@ -6,7 +6,7 @@
 
     let stringSelected = ""
 
-    if (finance.Einnahme){
+    if (finance.Art){
         stringSelected = "is-selected"
     }else{
         stringSelected = ""
@@ -27,7 +27,7 @@
         <td>
             {finance.Betrag}
         </td>
-        {#if finance.Einnahme}
+        {#if finance.Art === "Einnahme"}
             <td>
                 Einnahme
             </td>

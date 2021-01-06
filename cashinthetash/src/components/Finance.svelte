@@ -19,7 +19,7 @@
             Name: finance.Name
         })
 
-        if(finance.Einnahme){
+        if(finance.Art == "Einnahme"){
             helper = helper + finance.Betrag
             Summe = helper
             console.log(Summe)
@@ -44,7 +44,7 @@
 
     let stringSelected = "notification has-background-info-dark"
 
-    if (finance.Einnahme){
+    if (finance.Art == "Einnahme"){
         stringSelected = "notification has-background-primary"
     }else{
         stringSelected = "notification has-background-info-dark"

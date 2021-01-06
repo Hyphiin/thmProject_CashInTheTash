@@ -14,8 +14,7 @@
     let Name = '';
     let Kategorie = '';
     let Wiederkehrend = '';
-    let Einnahme = '';
-    let Ausgabe = '';
+    let Art = '';
     export let planID;
     let Summe;
     let helper = 0;
@@ -28,14 +27,14 @@
     const addFinance = () => {
         const Datum = firebase.firestore.Timestamp.fromDate(new Date());
         db.collection('finance').add({
-            Betrag, Name, Kategorie, Datum, planID, Wiederkehrend, Einnahme, Ausgabe
+            Betrag, Name, Kategorie, Datum, planID, Wiederkehrend, Art
         })
         console.log('erfolgreich hinzugefügt!');
         Name = ''
 
         console.log(planID);
 
-        if(Einnahme){
+        if(Art == "Einnahme"){
             helper = helper + Betrag
             Summe = helper
             console.log(Summe)
@@ -145,22 +144,12 @@
                                     </div>
                                 </div>
                                 <div class="control has-text-left">
-                                    <label>Einnahme?</label>
+                                    <label>Art?</label>
                                     <div class="select is-small is-rounded">
-                                        <select bind:value={Einnahme}>
+                                        <select bind:value={Art}>
                                             <option name="answer" value={""}>Auswählen</option>
-                                            <option name="answer" value={true}>Ja</option>
-                                            <option name="answer" value={false}>Nein</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="control has-text-left">
-                                    <label>Ausgabe?</label>
-                                    <div class="select is-small is-rounded">
-                                        <select bind:value={Ausgabe}>
-                                            <option name="answer" value={""}>Auswählen</option>
-                                            <option name="answer" value={true}>Ja</option>
-                                            <option name="answer" value={false}>Nein</option>
+                                            <option name="answer" value={"Einnahme"}>Einnahme</option>
+                                            <option name="answer" value={"Ausgabe"}>Ausgabe</option>
                                         </select>
                                     </div>
                                 </div>
