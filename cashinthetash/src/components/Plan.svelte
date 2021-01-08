@@ -54,6 +54,10 @@
 
     }
 
+    const showADDButton = () => {
+        showEdit = !showEdit
+    }
+
 </script>
 
 
@@ -63,7 +67,7 @@
                 {#if showContent}
                     <Finances planID={id}/>
                 {/if}
-            <a class="delete is-medium is-danger" on:click={deletePlan}></a>
+            <a class="delete is-medium is-danger" on:click={showADDButton}></a>
             <hr/>
             <p class="subtitle has-text-centered is-size-7 is-uppercase has-text-weight-bold">Erstellt: {date}</p>
             <button class="button is-info is-inverted" on:click={showContentButton}>{activatedText}</button>
@@ -71,3 +75,17 @@
     </div>
 
 
+{#if showEdit}
+    <div class="modal is-active">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+            <header class="modal-card-head">
+                <p class="modal-card-title">Plan löschen</p>
+                <button class="delete" aria-label="close"  on:click={() => {showEdit = !showEdit}}></button>
+            </header>
+                <div class="notification has-background-info">
+                    <a on:click={deletePlan}>Löschen</a>
+                </div>
+        </div>
+    </div>
+{/if}
