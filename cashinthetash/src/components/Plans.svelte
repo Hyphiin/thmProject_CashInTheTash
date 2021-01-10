@@ -53,7 +53,7 @@
         <div class="columns is-multiline is-variable is-2 is-centered">
             <div class="notification is-info">
                 <form on:submit|preventDefault={addPlan}>
-                    <input class="input is-info" type="text" placeholder="Titel" bind:value={Titel}/>
+                    <input class="input is-info" type="text" placeholder="Titel" bind:value={Titel} required/>
                     <input type="hidden" bind:value={Summe}/>
                     <hr/>
                     <button class="button is-info is-inverted">Hinzufügen</button>

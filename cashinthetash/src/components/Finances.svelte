@@ -115,8 +115,8 @@
             <section class="modal-card-body">
                         <div class="notification has-background-info-dark">
                             <form on:submit|preventDefault={addFinance}>
-                                <input class="input is-info" type="text" placeholder="Name" bind:value={Name}/>
-                                <input class="input is-info" type="number" placeholder="Betrag" bind:value={Betrag}/>
+                                <input class="input is-info" type="text" placeholder="Name" bind:value={Name} required/>
+                                <input class="input is-info" type="number" placeholder="Betrag" bind:value={Betrag} required/>
                                 <div class="control has-text-left">
                                     <label>Kategorie:</label>
                                     <div class="select is-small is-rounded">
