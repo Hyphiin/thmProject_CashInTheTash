@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="427de112-bf1a-4f05-9f6a-be44a7f01a5c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cashinthetash/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/cashinthetash/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cashinthetash/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/cashinthetash/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cashinthetash/src/components/Plan.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/cashinthetash/src/components/Plan.svelte" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -117,7 +119,8 @@
       <workItem from="1609858770595" duration="2682000" />
       <workItem from="1609922189013" duration="208000" />
       <workItem from="1609927903701" duration="1829000" />
-      <workItem from="1610120709308" duration="2414000" />
+      <workItem from="1610120709308" duration="2663000" />
+      <workItem from="1610293951118" duration="496000" />
     </task>
     <servers />
   </component>
