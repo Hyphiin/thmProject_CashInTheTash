@@ -54,7 +54,13 @@
 
     }
 
-    const showADDButton = () => {
+    let showDelete = false;
+
+    const showDeleteButton = () => {
+        showDelete = !showDelete
+    }
+
+    const showEditButton = () => {
         showEdit = !showEdit
     }
 
@@ -63,11 +69,23 @@
 
 <div class={string}>
     <div class="notification is-info">
-        <input class="input" on:input={updatePlan} type="text" bind:value={plan.Titel}/>
+        <div class="columns">
+            <div class="column is-four-fifths">
+                <p class="title is-4">
+                {plan.Titel}
+                </p>
+            </div>
+            <div class="column" on:click={showEditButton}>
+                <i class="fas fa-pen is-6"></i>
+            </div>
+            <div class="column" on:click={showDeleteButton}>
+                <i class="fas fa-trash is-6"></i>
+            </div>
+        </div>
+        <!--<input class="input" on:input={updatePlan} type="text" bind:value={plan.Titel}/>-->
         {#if showContent}
             <Finances planID={id}/>
         {/if}
-        <a class="delete is-medium is-danger" on:click={showADDButton}></a>
         <hr/>
         <p class="subtitle has-text-centered is-size-7 is-uppercase has-text-weight-bold">Erstellt: {date}</p>
         <button class="button is-info is-inverted" on:click={showContentButton}>{activatedText}</button>
@@ -75,19 +93,31 @@
 </div>
 
 
-{#if showEdit}
+{#if showDelete}
     <div class="modal is-active">
         <div class="modal-background"></div>
         <div class="modal-card">
             <header class="modal-card-head">
                 <p class="modal-card-title">Plan löschen</p>
-                <button class="delete" aria-label="close" on:click={() => {showEdit = !showEdit}}></button>
+                <button class="delete" aria-label="close" on:click={() => {showDelete = !showDelete}}></button>
             </header>
             <div class="notification has-background-info">
                 <a on:click={deletePlan}>
                     <i class="fas fa-trash"></i>
                 </a>
             </div>
+        </div>
+    </div>
+{/if}
+
+{#if showEdit}
+    <div class="modal is-active">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+            <header class="modal-card-head">
+                <input type="text" class="modal-card-title" bind:value={plan.title}>
+                <button class="delete" aria-label="close" on:click={() => {showEdit = !showEdit}}></button>
+            </header>
         </div>
     </div>
 {/if}
