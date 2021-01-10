@@ -115,7 +115,7 @@
         <div class="modal-background"></div>
         <div class="modal-card">
             <header class="modal-card-head">
-                <input type="text" class="modal-card-title" bind:value={plan.title}>
+                <input class="input" on:input={updatePlan} type="text" bind:value={plan.Titel}/>
                 <button class="delete" aria-label="close" on:click={() => {showEdit = !showEdit}}></button>
             </header>
         </div>
