@@ -42,6 +42,13 @@
 
     let date= finance.Datum.toDate().toDateString();
 
+    let datum = finance.Datum.toDate()
+    let mm = datum.getMonth() + 1;
+    let dd = datum.getDate();
+    let yyyy = datum.getFullYear();
+
+    datum = dd + '/' + mm + '/' + yyyy;
+
     let stringSelected = "notification has-background-info-dark"
 
     if (finance.Art == "Einnahme"){
@@ -57,7 +64,7 @@
         <input class="input is-info" on:input={updateFinance} type="text" bind:value={finance.Name}/>
         <input class="input is-info" on:input={updateFinance} type="text" bind:value={finance.Betrag}/>
         <hr/>
-        <p class="subtitle has-text-centered is-size-7 is-uppercase has-text-weight-bold">Erstellt: {date}</p>
+        <p class="subtitle has-text-centered is-size-7 is-uppercase has-text-weight-bold">Erstellt: {datum}</p>
         <a class="delete is-large is-danger" on:click={deleteFinance}></a>
         <p class="tag is-info is-light">{finance.Kategorie}</p>
     </div>

@@ -4,6 +4,13 @@
 
     let date = finance.Datum.toDate().toDateString();
 
+    let datum = finance.Datum.toDate()
+    let mm = datum.getMonth() + 1;
+    let dd = datum.getDate();
+    let yyyy = datum.getFullYear();
+
+    datum = dd + '/' + mm + '/' + yyyy;
+
     let stringSelected = ""
 
     if (finance.Art){
@@ -37,6 +44,6 @@
             </td>
         {/if}
         <td>
-            {date}
+            {datum}
         </td>
 </tr>
