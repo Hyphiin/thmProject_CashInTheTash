@@ -70,6 +70,8 @@
 <div class={string}>
     <div class="notification is-info">
         <div class="columns">
+            <div class="column"></div>
+
             <div class="column is-four-fifths">
                 <p class="title is-4">
                 {plan.Titel}
