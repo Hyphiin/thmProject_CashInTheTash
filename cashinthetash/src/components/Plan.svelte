@@ -37,7 +37,6 @@
     export let showList;
     export let showEdit;
 
-    let date = plan.Datum.toDate().toDateString();
     console.log("showEdit " + showEdit);
 
     let string = "column is-two-quarters-mobile is-half-tablet is-half-desktop is-one-third-widescreen is-one-quarter-fullhd";
@@ -64,6 +63,17 @@
         showEdit = !showEdit
     }
 
+
+
+        let datum = plan.Datum.toDate()
+        let mm = datum.getMonth() + 1;
+        let dd = datum.getDate();
+        let yyyy = datum.getFullYear();
+
+        datum = dd + '/' + mm + '/' + yyyy;
+
+
+
 </script>
 
 
@@ -89,7 +99,7 @@
             <Finances planID={id}/>
         {/if}
         <hr/>
-        <p class="subtitle has-text-centered is-size-7 is-uppercase has-text-weight-bold">Erstellt: {date}</p>
+        <p class="subtitle has-text-centered is-size-7 is-uppercase has-text-weight-bold">Erstellt: {datum}</p>
         <button class="button is-info is-inverted" on:click={showContentButton}>{activatedText}</button>
     </div>
 </div>
