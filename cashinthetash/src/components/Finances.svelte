@@ -34,7 +34,7 @@
 
         console.log(planID);
 
-        if(Art == "Einnahme"){
+        if(Art === "Einnahme"){
             helper = helper + Betrag
             Summe = helper
             console.log(Summe)
@@ -54,63 +54,45 @@
         console.log(planID);
     }
 
-
-    let showEdit = false;
+    let showAdd = false;
     let showList = true;
+    let activatedText = "Hinzufügen"
 
     console.log("showList " + showList);
 
-    let activatedText = "Bearbeiten"
-    const showEditButton = () => {
-        showList = !showList
-        if (showList) {
-            activatedText = "Bearbeiten"
-        } else {
-            activatedText = "Zurück"
-        }
-    }
-
     export let finance = {};
     export let activated;
-    let activatedTextTwo = "Hinzufügen"
+
     const showADDButton = () => {
-        showEdit = !showEdit
-        if (showEdit) {
-            activatedTextTwo = "Hinzufügen"
-        } else {
-            activatedTextTwo = "Speichern"
-        }
+        showAdd = !showAdd
     }
 
 </script>
 
 
-<hr/>
 <div class="container">
         {#if showList}
             <SimpleList planID={planID} sum={Summe}/>
-        {:else}
+        <!--{:else}
             <div class="columns columns is-multiline is-variable is-2">
             {#each finances as finance}
-                    <Finance id={finance.id} finance={finance.data()}/>
+                <Finance id={finance.id} finance={finance.data()}/>
             {/each}
             </div>
+         -->
         {/if}
 </div>
 <div class="container" style="margin-top:15px">
-<button class="button is-primary" on:click={showEditButton}>{activatedText}</button>
-{#if showList === false}
-    <button class="button is-primary" on:click={showADDButton}>{activatedTextTwo}</button>
-{/if}
+<button class="button is-success" on:click={showADDButton}>{activatedText}</button>
 </div>
 
-{#if showEdit}
+{#if showAdd}
     <div class="modal is-active">
         <div class="modal-background"></div>
         <div class="modal-card">
             <header class="modal-card-head">
                 <p class="modal-card-title">Eintrag erstellen</p>
-                <button class="delete" aria-label="close"  on:click={() => {showEdit = !showEdit}}></button>
+                <button class="delete" aria-label="close"  on:click={() => {showAdd = !showAdd}}></button>
             </header>
             <section class="modal-card-body">
                         <div class="notification has-background-info-dark">

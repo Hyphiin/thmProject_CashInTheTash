@@ -19,7 +19,7 @@
             Name: finance.Name
         })
 
-        if(finance.Art == "Einnahme"){
+        if(finance.Art === "Einnahme"){
             helper = helper + finance.Betrag
             Summe = helper
             console.log(Summe)
@@ -51,15 +51,15 @@
 
     let stringSelected = "notification has-background-info-dark"
 
-    if (finance.Art == "Einnahme"){
-        stringSelected = "notification has-background-primary"
+    if (finance.Art === "Einnahme"){
+        stringSelected = "notification is-success"
     }else{
-        stringSelected = "notification has-background-info-dark"
+        stringSelected = "notification is-warning"
     }
 
 </script>
 
-<div class="column is-two-quarters-mobile is-half-tablet is-half-desktop is-one-third-widescreen is-one-quarter-fullhd">
+
     <div class={stringSelected}>
         <input class="input is-info" on:input={updateFinance} type="text" bind:value={finance.Name}/>
         <input class="input is-info" on:input={updateFinance} type="text" bind:value={finance.Betrag}/>
@@ -68,4 +68,4 @@
         <a class="delete is-large is-danger" on:click={deleteFinance}></a>
         <p class="tag is-info is-light">{finance.Kategorie}</p>
     </div>
-</div>
+

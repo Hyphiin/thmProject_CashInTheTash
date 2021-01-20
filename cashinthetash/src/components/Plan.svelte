@@ -65,12 +65,12 @@
 
 
 
-        let datum = plan.Datum.toDate()
-        let mm = datum.getMonth() + 1;
-        let dd = datum.getDate();
-        let yyyy = datum.getFullYear();
+    let datum = plan.Datum.toDate()
+    let mm = datum.getMonth() + 1;
+    let dd = datum.getDate();
+    let yyyy = datum.getFullYear();
 
-        datum = dd + '/' + mm + '/' + yyyy;
+    datum = dd + '/' + mm + '/' + yyyy;
 
 
 
@@ -78,31 +78,34 @@
 
 
 <div class={string}>
-    <div class="notification is-info">
-        <div class="columns">
-            <div class="column"></div>
+    <article class="message is-medium is-info">
+        <div class="message-header">
+            <div class="columns is-mobile list-column">
+                <div class="column">
+                    <p class="title is-4 has-text-white">
+                        {plan.Titel}
+                    </p>
+                </div>
+                <div class="column is-narrow" on:click={showEditButton}>
+                    <i class="fas fa-pen is-6"></i>
+                </div>
+                <div class="column is-narrow" on:click={showDeleteButton}>
+                    <i class="fas fa-trash is-6"></i>
+                </div>
+            </div>
 
-            <div class="column is-four-fifths">
-                <p class="title is-4">
-                {plan.Titel}
-                </p>
-            </div>
-            <div class="column" on:click={showEditButton}>
-                <i class="fas fa-pen is-6"></i>
-            </div>
-            <div class="column" on:click={showDeleteButton}>
-                <i class="fas fa-trash is-6"></i>
-            </div>
         </div>
-        <!--<input class="input" on:input={updatePlan} type="text" bind:value={plan.Titel}/>-->
-        {#if showContent}
-            <Finances planID={id}/>
-        {/if}
-        <hr/>
-        <p class="subtitle has-text-centered is-size-7 is-uppercase has-text-weight-bold">Erstellt: {datum}</p>
-        <button class="button is-info is-inverted" on:click={showContentButton}>{activatedText}</button>
-    </div>
+        <div class="message-body">
+            {#if showContent}
+                <Finances planID={id}/>
+                <hr class="has-background-info"/>
+            {/if}
+            <p class="subtitle has-text-centered is-size-7 is-uppercase has-text-weight-bold">Erstellt: {datum}</p>
+            <button class="button is-info" on:click={showContentButton}>{activatedText}</button>
+        </div>
+    </article>
 </div>
+
 
 
 {#if showDelete}

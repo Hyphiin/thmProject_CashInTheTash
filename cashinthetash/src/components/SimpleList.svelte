@@ -50,37 +50,19 @@
     </div>
 </div>
 <hr/>
-<div class="table-container">
-    <table class="table is-striped is-fullwidth">
-        <tr>
-            <th>Kategorie</th>
-            <th>Name</th>
-            <th>Betrag</th>
-            <th>Art</th>
-            <th>Datum</th>
-        </tr>
+
+<div class="container">
+    <div class="rows">
         {#each finances as item}
-            <SimpleListItem id={item.id} finance={item.data()}/>
+            <div class="row is-fullwidth is-2">
+                <SimpleListItem id={item.id} finance={item.data()}/>
+            </div>
+            <div style="height:8px"></div>
         {/each}
-        <tr>
-            <th>
-                Summe
-            </th>
-            <td>
-
-            </td>
-            <th>
-
-            </th>
-            <td>
-
-            </td>
-            <td>
-
-            </td>
-        </tr>
-    </table>
+    </div>
 </div>
+
+
 
 
 
