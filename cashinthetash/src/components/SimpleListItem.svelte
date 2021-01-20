@@ -5,6 +5,8 @@
     export let finance = {};
     export let planID;
 
+
+
     let date = finance.Datum.toDate().toDateString();
 
     let datum = finance.Datum.toDate()
@@ -15,10 +17,23 @@
     datum = dd + '/' + mm + '/' + yyyy;
 
     let color = ""
+    export let color2
+    let sum = 0;
 
     let helper = 0;
     let Summe;
 
+    db.collection("plans")
+        .get()
+        .then(function (querySnapshot) {
+            querySnapshot.forEach(function (doc) {
+                // doc.data() is never undefined for query doc snapshots
+
+                console.log(doc.id, " => ", doc.data().Summe);
+                sum = doc.data().Summe;
+                // console.log("Booked",doc.data().get("booked"));
+            });
+        });
 
     const colorCheck = () => {
         if (finance.Art === "Einnahme") {
@@ -26,7 +41,14 @@
         } else {
             color = "is-danger"
         }
+        if(sum>0){
+            color2 = "is-success"
+        }else{
+            color2 = "is-danger"
+        }
+        console.log(color+" , "+color2)
     }
+
 
     let showEdit = false
     let showDelete = false
@@ -64,7 +86,7 @@
         updatePlan.get().then(function(querySnapshot){
             querySnapshot.forEach(function(doc){
                 doc.ref.update({
-                    Summe: helper
+                    Summe: Summe
                 });
             });
         });
@@ -115,10 +137,10 @@
         <div class="modal-card">
             <header class="modal-card-head">
                 <p class="modal-card-title">Eintrag löschen</p>
-                <button class="delete" aria-label="close" on:click={() => {showDelete = !showDelete}}></button>
+                <button class="delete" aria-label="close" on:click={() => {showDelete = !showDelete;colorCheck()}}></button>
             </header>
             <div class="notification has-background-info">
-                <a on:click={deleteFinance}>
+                <a on:click={() => {deleteFinance();colorCheck()}}>
                     <i class="fas fa-trash"></i>
                 </a>
             </div>

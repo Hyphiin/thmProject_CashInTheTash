@@ -6,7 +6,7 @@
     let finances = [];
     export let planID;
     export let finance = {};
-    let sum = 0;
+    export let sum
 
     let sort = 'Datum';
 
@@ -31,6 +31,13 @@
         db.collection('finance').orderBy(sort).where("planID", "==", planID).onSnapshot(data => {
             finances = data.docs
         })
+    }
+
+    let color2 = "is-danger"
+    if(sum > 0){
+        color2 = "is-success"
+    }else{
+        color2 = "is-danger"
     }
 
 
@@ -59,6 +66,12 @@
             </div>
             <div style="height:8px"></div>
         {/each}
+    </div>
+    <div class="control">
+        <div class="tags has-addons">
+            <span class="tag is-info">{sum}</span>
+            <span class="tag {color2}"></span>
+        </div>
     </div>
 </div>
 
