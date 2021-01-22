@@ -4,7 +4,6 @@
     import {fade, slide, scale} from 'svelte/transition';
     import {flip} from 'svelte/animate';
     import firebase from "firebase/app";
-    import SimpleList from "./SimpleList.svelte";
 
     export let uid;
 
@@ -12,6 +11,8 @@
 
     let Titel = '';
     let Summe = 0;
+
+    let sort = 'Datum';
 
     db.collection('plans').orderBy('Datum').where("UserID", "==", uid).onSnapshot(data => {
         plans = data.docs
@@ -26,6 +27,11 @@
         Titel = ''
     }
 
+    const onSort = () => {
+        db.collection('plans').orderBy(sort).where("UserID", "==", uid).onSnapshot(data => {
+            plans = data.docs
+        })
+    }
 
 </script>
 
@@ -39,6 +45,20 @@
         </h2>
     </div>
 </section>
+
+<div class="control has-text-left">
+    <label class="has-text-white">Sortieren nach</label>
+    <div class="select is-small is-rounded">
+        <select bind:value={sort} on:change={onSort}>
+            <option name="answer" value={"Datum"}>Auswählen</option>
+            <option name="answer" value={"Summe"}>Summe</option>
+            <option name="answer" value={"Datum"}>Datum</option>
+            <option name="answer" value={"Titel"}>Titel</option>
+        </select>
+    </div>
+</div>
+
+<hr/>
 
 <div class="container">
     <div class="columns is-multiline is-variable is-2">
