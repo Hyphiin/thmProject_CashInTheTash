@@ -13,6 +13,7 @@
     let Summe = 0;
 
     let sort = 'Datum';
+    let filter = "==";
 
     db.collection('plans').orderBy('Datum').where("UserID", "==", uid).onSnapshot(data => {
         plans = data.docs
@@ -33,6 +34,18 @@
         })
     }
 
+    const onFilter = () => {
+        if(filter === "all"){
+            db.collection('plans').orderBy('Summe').where("UserID", "==", uid).onSnapshot(data => {
+                plans = data.docs
+            })
+        }else {
+            db.collection('plans').orderBy('Summe').where("UserID", "==", uid).where("Summe", filter, 0).onSnapshot(data => {
+                plans = data.docs
+            })
+        }
+    }
+
 </script>
 
 <hr/>
@@ -46,14 +59,25 @@
     </div>
 </section>
 
-<div class="control has-text-left">
-    <label class="has-text-white">Sortieren nach</label>
+<div class="control has-text-centered">
+    <label class="has-text-white">Sortieren: <i class="fas fa-sort"></i></label>
     <div class="select is-small is-rounded">
-        <select bind:value={sort} on:change={onSort}>
+        <select class="has-icons-left" bind:value={sort} on:change={onSort}>
             <option name="answer" value={"Datum"}>Auswählen</option>
             <option name="answer" value={"Summe"}>Summe</option>
             <option name="answer" value={"Datum"}>Datum</option>
             <option name="answer" value={"Titel"}>Titel</option>
+        </select>
+    </div>
+</div>
+
+<div class="control has-text-centered">
+    <label class="has-text-white">Filtern: <i class="fas fa-filter"></i></label>
+    <div class="select is-small is-rounded">
+        <select class="has-icons-left" bind:value={filter} on:change={onFilter}>
+            <option name="answer" value={"all"}>Alle</option>
+            <option name="answer" value={">="}>Positiv</option>
+            <option name="answer" value={"<"}>Negativ</option>
         </select>
     </div>
 </div>
