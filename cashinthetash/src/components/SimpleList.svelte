@@ -2,6 +2,7 @@
 
     import {db} from "../firebase";
     import SimpleListItem from "./SimpleListItem.svelte";
+    import Chart from "./Chart.svelte";
 
     let finances = [];
     export let planID;
@@ -34,9 +35,9 @@
     }
 
     let color2 = "is-danger"
-    if(sum > 0){
+    if (sum > 0) {
         color2 = "is-success"
-    }else{
+    } else {
         color2 = "is-danger"
     }
 
@@ -73,6 +74,7 @@
             <span class="tag {color2}"></span>
         </div>
     </div>
+    <Chart/>
 </div>
 
 
