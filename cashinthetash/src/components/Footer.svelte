@@ -1,5 +1,5 @@
 <script>
-    import Chart from "./Chart.svelte";
+    import Chart from "./ChartDatum.svelte";
 </script>
 <footer class="footer">
     <div class="content has-text-centered">

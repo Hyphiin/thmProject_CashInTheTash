@@ -8,7 +8,7 @@
     export let finance = {};
     export let planID;
 
-    export let sum = 0
+    export let sum
 
     db.collection("plans")
         .get()
@@ -22,23 +22,23 @@
             });
         });
 
-    function countEintraege() {
-
-    }
 
 
 
     import {onMount} from 'svelte'
 
     function createChart() {
-        var ctx = document.getElementById('myChart').getContext('2d');
-        var myChart = new Chart(ctx, {
-            type: 'bar',
+        //let a = finance.count().where("Kategorie","==","Essen")
+        //let b = finance.count().where("Kategorie","==","Trinken")
+
+        let ctx = document.getElementById('myChart').getContext('2d');
+        let myChart = new Chart(ctx, {
+            type: 'pie',
             data: {
                 labels: ['Essen', 'Trinken', 'Kleidung', 'Freizeit', 'Miete', 'Technik','Versicherungen','Sonstiges'],
                 datasets: [{
                     label: '# of Votes',
-                    data: [12, 19, 3, 5, 2, 3,0,0],
+                    data: [4, 17, 3, 5, 2, 3,0,0],
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
                         'rgba(54, 162, 235, 0.2)',
@@ -59,13 +59,6 @@
                 }]
             },
             options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-                }
             }
         });
     }

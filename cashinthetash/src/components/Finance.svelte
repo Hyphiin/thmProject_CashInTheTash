@@ -4,6 +4,7 @@
     export let id = '';
     export let finance = {};
     export let planID;
+    export let sum;
 
     let Summe;
     let helper = 0;
@@ -22,18 +23,18 @@
         if(finance.Art === "Einnahme"){
             helper = helper + finance.Betrag
             Summe = helper
-            console.log(Summe)
+            console.log("Sum: "+sum+", Summe: "+Summe)
         }else {
             helper = helper - finance.Betrag
             Summe = helper
-            console.log(Summe)
+            console.log("Sum: "+sum+", Summe: "+Summe)
         }
 
         let updatePlan = db.collection('plan').where("planID", "==", planID);
         updatePlan.get().then(function(querySnapshot){
             querySnapshot.forEach(function(doc){
                 doc.ref.update({
-                    Summe: helper
+                    Summe: Summe
                 });
             });
         });

@@ -9,6 +9,7 @@
 
     let finances = [];
     let plans = [];
+    let sum;
 
     let Betrag = 0;
     let Name = '';
@@ -24,6 +25,19 @@
         finances = data.docs
     })
 
+    db.collection("plans")
+        .get()
+        .then(function (querySnapshot) {
+            querySnapshot.forEach(function (doc) {
+                // doc.data() is never undefined for query doc snapshots
+
+                console.log(doc.id, " => ", doc.data().Summe);
+                sum = doc.data().Summe;
+                // console.log("Booked",doc.data().get("booked"));
+            });
+        });
+
+
     const addFinance = () => {
         const Datum = firebase.firestore.Timestamp.fromDate(new Date());
         db.collection('finance').add({
@@ -37,15 +51,15 @@
         if(Art === "Einnahme"){
             helper = helper + Betrag
             Summe = helper
-            console.log(Summe)
+            console.log("Sum: "+sum+", Summe: "+Summe)
         }else {
             helper = helper - Betrag
             Summe = helper
-            console.log(Summe)
+            console.log("Sum: "+sum+", Summe: "+Summe)
         }
 
         db.collection('plans').doc(planID).update({
-            Summe: helper
+            Summe: Summe
         })
         Betrag = ''
     }

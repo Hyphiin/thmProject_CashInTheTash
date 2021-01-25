@@ -4,8 +4,8 @@
     export let id = '';
     export let finance = {};
     export let planID;
-
-
+    export let sum;
+    let Summe;
 
     let date = finance.Datum.toDate().toDateString();
 
@@ -18,10 +18,8 @@
 
     let color = ""
     export let color2
-    let sum = 0;
 
     let helper = 0;
-    let Summe;
 
     db.collection("plans")
         .get()
@@ -41,7 +39,7 @@
         } else {
             color = "is-danger"
         }
-        if(sum>0){
+        if(Summe>0){
             color2 = "is-success"
         }else{
             color2 = "is-danger"
@@ -64,6 +62,7 @@
         db.collection('finance').doc(id).delete()
         console.log('erfolgreich gelöscht!');
         showDelete = !showDelete
+        colorCheck()
     }
 
     const updateFinance = () => {
@@ -75,11 +74,11 @@
         if(finance.Art === "Einnahme"){
             helper = helper + finance.Betrag
             Summe = helper
-            console.log(Summe)
+            console.log("Sum: "+sum+", Summe: "+Summe)
         }else {
             helper = helper - finance.Betrag
             Summe = helper
-            console.log(Summe)
+            console.log("Sum: "+sum+", Summe: "+Summe)
         }
 
         let updatePlan = db.collection('plan').where("planID", "==", planID);
@@ -121,7 +120,7 @@
                 </span>
             </div>
             <div class="column">
-                <span>{finance.Betrag}</span>
+                <span>{finance.Betrag}€</span>
             </div>
             <div class="column is-narrow">
                 <span>{datum}</span>
@@ -154,7 +153,7 @@
         <div class="modal-card">
             <header class="modal-card-head">
                 <p class="modal-card-title">Eintrag updaten</p>
-                <button class="delete" aria-label="close"  on:click={() => {showEdit = !showEdit}}></button>
+                <button class="delete" aria-label="close"  on:click={() => {showEdit = !showEdit; colorCheck()}}></button>
             </header>
             <section class="modal-card-body">
                 <div class="notification has-background-info-dark">
