@@ -46,41 +46,57 @@
         color2 = "is-danger"
     }
 
+    let showChart = false
 
 </script>
 
-
-<div class="control has-text-left">
-    <label>Sortieren nach</label>
-    <div class="select is-small is-rounded">
-        <select bind:value={sort} on:change={onSort}>
-            <option name="answer" value={"Name"}>Auswählen</option>
-            <option name="answer" value={"Betrag"}>Betrag</option>
-            <option name="answer" value={"Datum"}>Datum</option>
-            <option name="answer" value={"Name"}>Name</option>
-            <option name="answer" value={"Kategorie"}>Kategorie</option>
-        </select>
+<div class="columns is-mobile list-column">
+    <div class="column">
+        <div class="control has-text-left">
+            <label>Sortieren nach</label>
+            <div class="select is-small is-rounded">
+                <select bind:value={sort} on:change={onSort}>
+                    <option name="answer" value={"Name"}>Auswählen</option>
+                    <option name="answer" value={"Betrag"}>Betrag</option>
+                    <option name="answer" value={"Datum"}>Datum</option>
+                    <option name="answer" value={"Name"}>Name</option>
+                    <option name="answer" value={"Kategorie"}>Kategorie</option>
+                </select>
+            </div>
+        </div>
     </div>
-    <i class="fas fa-chart-pie"></i>
+    <div class="column is-narrow" on:click={() => {showChart = !showChart}}>
+        <i class="fas fa-chart-pie is-6"></i>
+    </div>
 </div>
+
+
 <hr/>
 
 <div class="container">
-    {#if (sort === "Datum")}
-        <ChartDatum/>
-    {:else if (sort === "Betrag")}
-        <ChartBetrag/>
-    {:else if (sort === "Kategorie")}
-        <ChartKategorie/>
-    {:else if (sort === "Name")}
-        <div class="rows">
-            {#each finances as item}
-                <div class="row is-fullwidth is-2">
-                    <SimpleListItem id={item.id} finance={item.data()}/>
+    {#if showChart}
+        {#if (sort === "Datum")}
+            <ChartDatum planID={planID}/>
+        {:else if (sort === "Betrag")}
+            <ChartBetrag planID={planID}/>
+        {:else if (sort === "Kategorie")}
+            <ChartKategorie planID={planID}/>
+        {:else if (sort === "Name")}
+            <div class="rows">
+                {#each finances as item}
+                    <div class="row is-fullwidth is-2">
+                        <SimpleListItem id={item.id} finance={item.data()}/>
+                    </div>
+                    <div style="height:8px"></div>
+                {/each}
+            </div>
+            <div class="control">
+                <div class="tags has-addons">
+                    <span class="tag is-info">{sum}</span>
+                    <span class="tag {color2}"></span>
                 </div>
-                <div style="height:8px"></div>
-            {/each}
-        </div>
+            </div>
+        {/if}
     {:else}
         <div class="rows">
             {#each finances as item}
@@ -90,13 +106,14 @@
                 <div style="height:8px"></div>
             {/each}
         </div>
-    {/if}
-    <div class="control">
-        <div class="tags has-addons">
-            <span class="tag is-info">{sum}</span>
-            <span class="tag {color2}"></span>
+        <div class="control">
+            <div class="tags has-addons">
+                <span class="tag is-info">{sum}</span>
+                <span class="tag {color2}"></span>
+            </div>
         </div>
-    </div>
+    {/if}
+
 </div>
 
 
