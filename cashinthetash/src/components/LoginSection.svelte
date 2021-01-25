@@ -32,7 +32,7 @@
 
         <hr/>
         <div class="card">
-            <div class="card-content bg-image">
+            <div class="card-content has-background-black">
                 <p class="title has-text-light">
                     “Eine kreative Ökonomie ist der Treibstoff der Wohlfahrt.”
                 </p>
@@ -50,7 +50,7 @@
 
     {:else}
         <div class="card">
-            <div class="card-content bg-image1">
+            <div class="card-content has-background-black ">
                 <p class="title fcolor has-text-white">
                     “ Warum bleibt so viel Monat am Ende des Geldes übrig?”
                 </p>

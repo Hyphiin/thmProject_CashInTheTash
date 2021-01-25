@@ -25,6 +25,21 @@
     background-color: #999;
 }
 
+.profile-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.profile{
+    width:30%;
+}
+
+.list-column{
+    width:100%
+}
+
+
+
 @media only screen and (max-width: 600px) {
     .bg-image {
         background-image: url(https://images.pexels.com/photos/1194713/pexels-photo-1194713.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
@@ -47,4 +62,16 @@
     .fcolor {
         color: whitesmoke;
     }
+
+    .profile-container{
+
+    }
+    .profile{
+        width:100%;
+    }
+
+    .sub{
+        font-size: 11px;
+    }
+
 }

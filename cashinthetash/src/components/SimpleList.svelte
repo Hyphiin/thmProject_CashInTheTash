@@ -6,7 +6,7 @@
     let finances = [];
     export let planID;
     export let finance = {};
-    let sum = 0;
+    export let sum
 
     let sort = 'Datum';
 
@@ -33,6 +33,13 @@
         })
     }
 
+    let color2 = "is-danger"
+    if(sum > 0){
+        color2 = "is-success"
+    }else{
+        color2 = "is-danger"
+    }
+
 
 </script>
 
@@ -50,37 +57,25 @@
     </div>
 </div>
 <hr/>
-<div class="table-container">
-    <table class="table is-striped is-fullwidth">
-        <tr>
-            <th>Kategorie</th>
-            <th>Name</th>
-            <th>Betrag</th>
-            <th>Art</th>
-            <th>Datum</th>
-        </tr>
+
+<div class="container">
+    <div class="rows">
         {#each finances as item}
-            <SimpleListItem id={item.id} finance={item.data()}/>
+            <div class="row is-fullwidth is-2">
+                <SimpleListItem id={item.id} finance={item.data()}/>
+            </div>
+            <div style="height:8px"></div>
         {/each}
-        <tr>
-            <th>
-                Summe
-            </th>
-            <td>
-
-            </td>
-            <th>
-                {sum}
-            </th>
-            <td>
-
-            </td>
-            <td>
-
-            </td>
-        </tr>
-    </table>
+    </div>
+    <div class="control">
+        <div class="tags has-addons">
+            <span class="tag is-info">{sum}</span>
+            <span class="tag {color2}"></span>
+        </div>
+    </div>
 </div>
+
+
 
 
 

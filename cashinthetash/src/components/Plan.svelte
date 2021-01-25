@@ -1,7 +1,7 @@
 <script>
     import {db} from '../firebase';
     import Finances from "./Finances.svelte";
-    import Finance from "./Finance.svelte";
+    import '@fortawesome/fontawesome-free/js/all.js';
 
     export let finance = {};
 
@@ -33,41 +33,106 @@
         console.log(planID);
     }
 
-    export let showContend;
+    export let showContent;
     export let showList;
     export let showEdit;
 
-    let date = plan.Datum.toDate().toDateString();
     console.log("showEdit " + showEdit);
 
     let string = "column is-two-quarters-mobile is-half-tablet is-half-desktop is-one-third-widescreen is-one-quarter-fullhd";
-    let activatedText = "Show";
-    const showContendButton = () => {
-        showContend = !showContend
-        if (showContend) {
-            activatedText = "Close"
+    let activatedText = "Öffnen";
+    const showContentButton = () => {
+        showContent = !showContent
+        if (showContent) {
+            activatedText = "Schließen"
             string = "column is-full-mobile is-full-tablet is-full-desktop is-full-widescreen is-full-fullhd"
         } else {
-            activatedText = "Show"
+            activatedText = "Öffnen"
             string = "column is-two-quarters-mobile is-half-tablet is-half-desktop is-one-third-widescreen is-one-quarter-fullhd"
         }
 
     }
 
+    let showDelete = false;
+
+    const showDeleteButton = () => {
+        showDelete = !showDelete
+    }
+
+    const showEditButton = () => {
+        showEdit = !showEdit
+    }
+
+
+
+    let datum = plan.Datum.toDate()
+    let mm = datum.getMonth() + 1;
+    let dd = datum.getDate();
+    let yyyy = datum.getFullYear();
+
+    datum = dd + '/' + mm + '/' + yyyy;
+
+
+
 </script>
 
 
-    <div class={string}>
-        <div class="notification is-info" >
-            <input class="input" on:input={updatePlan} type="text" bind:value={plan.Titel}/>
-                {#if showContend}
-                    <Finances planID={id}/>
-                {/if}
-            <a class="delete is-large is-danger" on:click={deletePlan}></a>
-            <hr/>
-            <p class="subtitle has-text-centered is-size-7 is-uppercase has-text-weight-bold">Erstellt: {date}</p>
-            <button class="button is-info is-inverted" on:click={showContendButton}>{activatedText}</button>
+<div class={string}>
+    <article class="message is-medium is-info">
+        <div class="message-header">
+            <div class="columns is-mobile list-column">
+                <div class="column">
+                    <p class="title is-4 has-text-white">
+                        {plan.Titel}
+                    </p>
+                </div>
+                <div class="column is-narrow" on:click={showEditButton}>
+                    <i class="fas fa-pen is-6"></i>
+                </div>
+                <div class="column is-narrow" on:click={showDeleteButton}>
+                    <i class="fas fa-trash is-6"></i>
+                </div>
+            </div>
+
+        </div>
+        <div class="message-body">
+            {#if showContent}
+                <Finances planID={id}/>
+                <hr class="has-background-info"/>
+            {/if}
+            <p class="subtitle has-text-centered is-size-7 is-uppercase has-text-weight-bold">Erstellt: {datum}</p>
+            <button class="button is-info" on:click={showContentButton}>{activatedText}</button>
+        </div>
+    </article>
+</div>
+
+
+
+{#if showDelete}
+    <div class="modal is-active">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+            <header class="modal-card-head">
+                <p class="modal-card-title">Plan löschen</p>
+                <button class="delete" aria-label="close" on:click={() => {showDelete = !showDelete}}></button>
+            </header>
+            <div class="notification has-background-info">
+                <a on:click={deletePlan}>
+                    <i class="fas fa-trash"></i>
+                </a>
+            </div>
         </div>
     </div>
+{/if}
 
-
+{#if showEdit}
+    <div class="modal is-active">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+            <header class="modal-card-head">
+                <input class="input" on:input={updatePlan} type="text" bind:value={plan.Titel}/>
+                <button class="delete" aria-label="close" on:click={() => {showEdit = !showEdit}}></button>
+            </header>
+        </div>
+    </div>
+{/if}

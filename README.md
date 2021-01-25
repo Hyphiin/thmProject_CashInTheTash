@@ -3,6 +3,10 @@
 Projekt für MIB33 Web-Frameworks
 CashInTheTash
 
+Installation:
+- bei Terminal in den cashinthetash Ordner wechseln und "npm install" eingeben
+- um Projekt zu starten "npm run dev" eingeben
+
 Projektthema: Finanzplaner
 - Einnahmen und Ausgaben planen
 - Jahres- und Monatsüberblick

@@ -17,6 +17,7 @@
     "svelte": "^3.0.0"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.1",
     "bulma": "^0.9.1",
     "firebase": "^8.1.2",
     "rxfire": "^4.0.0",

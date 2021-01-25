@@ -4,7 +4,6 @@
     import {fade, slide, scale} from 'svelte/transition';
     import {flip} from 'svelte/animate';
     import firebase from "firebase/app";
-    import SimpleList from "./SimpleList.svelte";
 
     export let uid;
 
@@ -12,6 +11,9 @@
 
     let Titel = '';
     let Summe = 0;
+
+    let sort = 'Datum';
+    let filter = "==";
 
     db.collection('plans').orderBy('Datum').where("UserID", "==", uid).onSnapshot(data => {
         plans = data.docs
@@ -26,6 +28,23 @@
         Titel = ''
     }
 
+    const onSort = () => {
+        db.collection('plans').orderBy(sort).where("UserID", "==", uid).onSnapshot(data => {
+            plans = data.docs
+        })
+    }
+
+    const onFilter = () => {
+        if(filter === "all"){
+            db.collection('plans').orderBy('Summe').where("UserID", "==", uid).onSnapshot(data => {
+                plans = data.docs
+            })
+        }else {
+            db.collection('plans').orderBy('Summe').where("UserID", "==", uid).where("Summe", filter, 0).onSnapshot(data => {
+                plans = data.docs
+            })
+        }
+    }
 
 </script>
 
@@ -40,6 +59,31 @@
     </div>
 </section>
 
+<div class="control has-text-centered">
+    <label class="has-text-white">Sortieren: <i class="fas fa-sort"></i></label>
+    <div class="select is-small is-rounded">
+        <select class="has-icons-left" bind:value={sort} on:change={onSort}>
+            <option name="answer" value={"Datum"}>Auswählen</option>
+            <option name="answer" value={"Summe"}>Summe</option>
+            <option name="answer" value={"Datum"}>Datum</option>
+            <option name="answer" value={"Titel"}>Titel</option>
+        </select>
+    </div>
+</div>
+
+<div class="control has-text-centered">
+    <label class="has-text-white">Filtern: <i class="fas fa-filter"></i></label>
+    <div class="select is-small is-rounded">
+        <select class="has-icons-left" bind:value={filter} on:change={onFilter}>
+            <option name="answer" value={"all"}>Alle</option>
+            <option name="answer" value={">="}>Positiv</option>
+            <option name="answer" value={"<"}>Negativ</option>
+        </select>
+    </div>
+</div>
+
+<hr/>
+
 <div class="container">
     <div class="columns is-multiline is-variable is-2">
         {#each plans as plan}
@@ -53,10 +97,10 @@
         <div class="columns is-multiline is-variable is-2 is-centered">
             <div class="notification is-info">
                 <form on:submit|preventDefault={addPlan}>
-                    <input class="input is-info" type="text" placeholder="Titel" bind:value={Titel}/>
+                    <input class="input is-info" type="text" placeholder="Titel" bind:value={Titel} required/>
                     <input type="hidden" bind:value={Summe}/>
                     <hr/>
-                    <button class="button is-info is-inverted">ADD</button>
+                    <button class="button is-info is-inverted">Hinzufügen</button>
                 </form>
             </div>
         </div>

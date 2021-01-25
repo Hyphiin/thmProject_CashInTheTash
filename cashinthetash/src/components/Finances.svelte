@@ -14,8 +14,7 @@
     let Name = '';
     let Kategorie = '';
     let Wiederkehrend = '';
-    let Einnahme = '';
-    let Ausgabe = '';
+    let Art = '';
     export let planID;
     let Summe;
     let helper = 0;
@@ -28,14 +27,14 @@
     const addFinance = () => {
         const Datum = firebase.firestore.Timestamp.fromDate(new Date());
         db.collection('finance').add({
-            Betrag, Name, Kategorie, Datum, planID, Wiederkehrend, Einnahme, Ausgabe
+            Betrag, Name, Kategorie, Datum, planID, Wiederkehrend, Art
         })
         console.log('erfolgreich hinzugefügt!');
         Name = ''
 
         console.log(planID);
 
-        if(Einnahme){
+        if(Art === "Einnahme"){
             helper = helper + Betrag
             Summe = helper
             console.log(Summe)
@@ -55,69 +54,51 @@
         console.log(planID);
     }
 
-
-    let showEdit = false;
+    let showAdd = false;
     let showList = true;
+    let activatedText = "Hinzufügen"
 
     console.log("showList " + showList);
 
-    let activatedText = "Edit"
-    const showEditButton = () => {
-        showList = !showList
-        if (showList) {
-            activatedText = "Edit"
-        } else {
-            activatedText = "Return"
-        }
-    }
-
     export let finance = {};
     export let activated;
-    let activatedTextTwo = "ADD"
+
     const showADDButton = () => {
-        showEdit = !showEdit
-        if (showEdit) {
-            activatedTextTwo = "ADD"
-        } else {
-            activatedTextTwo = "Save"
-        }
+        showAdd = !showAdd
     }
 
 </script>
 
 
-<hr/>
 <div class="container">
         {#if showList}
             <SimpleList planID={planID} sum={Summe}/>
-        {:else}
+        <!--{:else}
             <div class="columns columns is-multiline is-variable is-2">
             {#each finances as finance}
-                    <Finance id={finance.id} finance={finance.data()}/>
+                <Finance id={finance.id} finance={finance.data()}/>
             {/each}
             </div>
+         -->
         {/if}
 </div>
 <div class="container" style="margin-top:15px">
-<button class="button is-primary" on:click={showEditButton}>{activatedText}</button>
-{#if showList === false}
-    <button class="button is-primary" on:click={showADDButton}>{activatedTextTwo}</button>
-{/if}
+<button class="button is-success" on:click={showADDButton}>{activatedText}</button>
 </div>
 
-{#if showEdit}
+{#if showAdd}
     <div class="modal is-active">
         <div class="modal-background"></div>
         <div class="modal-card">
             <header class="modal-card-head">
                 <p class="modal-card-title">Eintrag erstellen</p>
-                <button class="delete" aria-label="close"  on:click={() => {showEdit = !showEdit}}></button>
+                <button class="delete" aria-label="close"  on:click={() => {showAdd = !showAdd}}></button>
             </header>
             <section class="modal-card-body">
                         <div class="notification has-background-info-dark">
                             <form on:submit|preventDefault={addFinance}>
-                                <input class="input is-info" type="text" placeholder="Name" bind:value={Name}/>
-                                <input class="input is-info" type="number" placeholder="Betrag" bind:value={Betrag}/>
+                                <input class="input is-info" type="text" placeholder="Name" bind:value={Name} required/>
+                                <input class="input is-info" type="number" placeholder="Betrag" bind:value={Betrag} required/>
                                 <div class="control has-text-left">
                                     <label>Kategorie:</label>
                                     <div class="select is-small is-rounded">
@@ -145,27 +126,17 @@
                                     </div>
                                 </div>
                                 <div class="control has-text-left">
-                                    <label>Einnahme?</label>
+                                    <label>Art?</label>
                                     <div class="select is-small is-rounded">
-                                        <select bind:value={Einnahme}>
+                                        <select bind:value={Art}>
                                             <option name="answer" value={""}>Auswählen</option>
-                                            <option name="answer" value={true}>Ja</option>
-                                            <option name="answer" value={false}>Nein</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="control has-text-left">
-                                    <label>Ausgabe?</label>
-                                    <div class="select is-small is-rounded">
-                                        <select bind:value={Ausgabe}>
-                                            <option name="answer" value={""}>Auswählen</option>
-                                            <option name="answer" value={true}>Ja</option>
-                                            <option name="answer" value={false}>Nein</option>
+                                            <option name="answer" value={"Einnahme"}>Einnahme</option>
+                                            <option name="answer" value={"Ausgabe"}>Ausgabe</option>
                                         </select>
                                     </div>
                                 </div>
                                 <hr/>
-                                <button class="button is-primary">ADD</button>
+                                <button class="button is-primary">Hinzufügen</button>
                             </form>
                         </div>
              </section>
