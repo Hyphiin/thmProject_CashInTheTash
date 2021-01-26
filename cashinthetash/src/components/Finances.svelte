@@ -48,6 +48,7 @@
             Summe: sum
         })
         Betrag = ''
+
     }
 
     const showPlan = () => {

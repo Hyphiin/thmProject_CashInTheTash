@@ -16,24 +16,21 @@
     datum = dd + '/' + mm + '/' + yyyy;
 
     let color = ""
-    export let color2
 
     let helper = 0;
+    let positive = true
 
     const colorCheck = () => {
         if (finance.Art === "Einnahme") {
             color = "is-success"
+            positive = true
         } else {
             color = "is-danger"
+            positive = false
         }
-        if(sum>0){
-            color2 = "is-success"
-        }else{
-            color2 = "is-danger"
-        }
-        console.log(color+" , "+color2)
+        console.log(color)
+        console.log(positive)
     }
-
 
     let showEdit = false
     let showDelete = false
@@ -101,7 +98,6 @@
         db.collection('plans').doc(planID).update({
             Summe: sum
         })
-
         colorCheck()
         console.log('erfolgreich geupdated!');
     }
@@ -133,7 +129,11 @@
                 </span>
             </div>
             <div class="column">
-                <span>{finance.Betrag}€</span>
+                {#if positive}
+                    <span>{finance.Betrag}€</span>
+                {:else}
+                    <span>-{finance.Betrag}€</span>
+                {/if}
             </div>
             <div class="column is-narrow">
                 <span>{datum}</span>

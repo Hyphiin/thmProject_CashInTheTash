@@ -21,14 +21,13 @@
                 test = data.docs
                 console.log("TEST: ",test)
                 let e = 0
-                /*forEach(key in test)
-                {
-                    let bla = key.Betrag
-                    console.log(bla)
-                }*/
-                for (let j = 0; j < test.length - 1; j++) {
-                    e = e + test[j].Betrag
-                    console.log("test[j]: ", test[j])
+                for (let j = 0; j < test.length; j++) {
+                    if(test[j].data().Art === "Einnahme"){
+                        e = e + test[j].data().Betrag
+                    }else{
+                        e = e - test[j].data().Betrag
+                    }
+                    console.log("test[j]: ", test[j].data().Betrag)
                     console.log("Betrag: ", e)
                 }
                 nums [i] = e

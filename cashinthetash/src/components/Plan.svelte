@@ -32,7 +32,6 @@
     }
 
     let showContent;
-    let showList;
     let showEdit;
 
     console.log("showEdit " + showEdit);

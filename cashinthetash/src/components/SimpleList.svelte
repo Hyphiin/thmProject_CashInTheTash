@@ -29,7 +29,7 @@
 
     let color2 = "is-success"
     const colorCheck2 = () => {
-        if (sum > 0) {
+        if (sum >= 0) {
             color2 = "is-success"
         } else {
             color2 = "is-danger"
@@ -41,7 +41,11 @@
 <div class="columns is-mobile list-column">
     <div class="column">
         <div class="control has-text-left">
-            <label>Sortieren nach</label>
+            {#if showChart}
+                <lable>Diagramm</lable>
+            {:else}
+                <label>Sortieren nach</label>
+            {/if}
             <div class="select is-small is-rounded">
                 <select bind:value={sort} on:change={onSort}>
                     <option name="answer" value={"Name"}>Auswählen</option>
@@ -53,9 +57,16 @@
             </div>
         </div>
     </div>
-    <div class="column is-narrow" on:click={() => {showChart = !showChart}}>
-        <i class="fas fa-chart-pie is-6"></i>
-    </div>
+    {#if showChart}
+        <div class="column is-narrow" on:click={() => {showChart = !showChart}}>
+            <i class="fas fa-list has-text-info"></i>
+        </div>
+    {:else}
+        <div class="column is-narrow" on:click={() => {showChart = !showChart}}>
+            <i class="fas fa-chart-pie has-text-info"></i>
+        </div>
+    {/if}
+
 </div>
 
 
