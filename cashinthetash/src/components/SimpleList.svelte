@@ -7,11 +7,11 @@
     import ChartBetrag from "./ChartBetrag.svelte";
 
     let finances = [];
+
     export let planID;
-    export let finance = {};
     export let sum;
-    export let plan = {};
-    export let Summe;
+
+    let showChart = false
 
     let sort = 'Name';
 
@@ -20,34 +20,22 @@
     })
 
 
-    db.collection("plans")
-        .get()
-        .then(function (querySnapshot) {
-            querySnapshot.forEach(function (doc) {
-                // doc.data() is never undefined for query doc snapshots
-
-                console.log(doc.id, " => ", doc.data().Summe);
-                sum = doc.data().Summe;
-                // console.log("Booked",doc.data().get("booked"));
-            });
-        });
-
-
     const onSort = () => {
         db.collection('finance').orderBy(sort).where("planID", "==", planID).onSnapshot(data => {
             finances = data.docs
         })
+        colorCheck2()
     }
 
-    let color2 = "is-danger"
-    if (Summe > 0) {
-        color2 = "is-success"
-    } else {
-        color2 = "is-danger"
+    let color2 = "is-success"
+    const colorCheck2 = () => {
+        if (sum > 0) {
+            color2 = "is-success"
+        } else {
+            color2 = "is-danger"
+        }
     }
-
-    let showChart = false
-
+    colorCheck2()
 </script>
 
 <div class="columns is-mobile list-column">
@@ -85,7 +73,7 @@
             <div class="rows">
                 {#each finances as item}
                     <div class="row is-fullwidth is-2">
-                        <SimpleListItem id={item.id} finance={item.data()}/>
+                        <SimpleListItem id={item.id} finance={item.data()} sum={sum} planID={planID}/>
                     </div>
                     <div style="height:8px"></div>
                 {/each}
@@ -101,7 +89,7 @@
         <div class="rows">
             {#each finances as item}
                 <div class="row is-fullwidth is-2">
-                    <SimpleListItem id={item.id} finance={item.data()}/>
+                    <SimpleListItem id={item.id} finance={item.data()} sum={sum} planID={planID}/>
                 </div>
                 <div style="height:8px"></div>
             {/each}

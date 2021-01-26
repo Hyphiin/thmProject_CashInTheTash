@@ -8,22 +8,7 @@
     export let finance = {};
     export let planID;
 
-    export let sum
-
     let test = {};
-
-
-    db.collection("plans")
-        .get()
-        .then(function (querySnapshot) {
-            querySnapshot.forEach(function (doc) {
-                // doc.data() is never undefined for query doc snapshots
-
-                console.log(doc.id, " => ", doc.data().Summe);
-                sum = doc.data().Summe;
-                // console.log("Booked",doc.data().get("booked"));
-            });
-        });
 
 
     import {onMount} from 'svelte'
@@ -32,9 +17,9 @@
         let array = ["Essen","Trinken",'Kleidung', 'Freizeit', 'Miete', 'Technik', 'Versicherungen', 'Sonstiges']
         let nums = []
         for(let i = 0; i < 8; i++) {
-            db.collection('finance').orderBy('Datum').where("planID", "==", planID).where("Kategorie", "==", array[i]).onSnapshot(data => {
+            db.collection('finance').where("planID", "==", planID).where("Kategorie", "==", array[i]).onSnapshot(data => {
                 test = data.docs
-                console.log(test)
+                console.log("TEST: ",test)
                 let e = 0
                 /*forEach(key in test)
                 {
@@ -43,7 +28,7 @@
                 }*/
                 for (let j = 0; j < test.length - 1; j++) {
                     e = e + test[j].Betrag
-                    console.log("test[j]: ", test[j].Betrag)
+                    console.log("test[j]: ", test[j])
                     console.log("Betrag: ", e)
                 }
                 nums [i] = e

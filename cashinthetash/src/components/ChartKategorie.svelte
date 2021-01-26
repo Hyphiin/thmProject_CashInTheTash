@@ -9,21 +9,7 @@
     export let finance = {};
     export let planID;
 
-    export let sum
-
     let test = {};
-
-    /*db.collection("plans")
-        .get()
-        .then(function (querySnapshot) {
-            querySnapshot.forEach(function (doc) {
-                // doc.data() is never undefined for query doc snapshots
-
-                console.log(doc.id, " => ", doc.data().Summe);
-                sum = doc.data().Summe;
-                // console.log("Booked",doc.data().get("booked"));
-            });
-        });*/
 
     let filter = "Essen"
     let e = 500

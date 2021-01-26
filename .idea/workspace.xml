@@ -4,8 +4,13 @@
     <list default="true" id="427de112-bf1a-4f05-9f6a-be44a7f01a5c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cashinthetash/src/components/ChartBetrag.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/cashinthetash/src/components/ChartBetrag.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cashinthetash/src/components/ChartDatum.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/cashinthetash/src/components/ChartDatum.svelte" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cashinthetash/src/components/ChartKategorie.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/cashinthetash/src/components/ChartKategorie.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cashinthetash/src/components/Finance.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/cashinthetash/src/components/Finance.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cashinthetash/src/components/Finances.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/cashinthetash/src/components/Finances.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cashinthetash/src/components/Plan.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/cashinthetash/src/components/Plan.svelte" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cashinthetash/src/components/SimpleList.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/cashinthetash/src/components/SimpleList.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cashinthetash/src/components/SimpleListItem.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/cashinthetash/src/components/SimpleListItem.svelte" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,7 +123,9 @@
       <workItem from="1611165808545" duration="2994000" />
       <workItem from="1611494360170" duration="1893000" />
       <workItem from="1611566925244" duration="12160000" />
-      <workItem from="1611582028322" duration="7873000" />
+      <workItem from="1611582028322" duration="7908000" />
+      <workItem from="1611669373475" duration="6471000" />
+      <workItem from="1611678787362" duration="1638000" />
     </task>
     <servers />
   </component>

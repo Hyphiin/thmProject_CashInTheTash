@@ -9,7 +9,7 @@
 
     let finances = [];
     let plans = [];
-    let sum;
+    export let sum;
 
     let Betrag = 0;
     let Name = '';
@@ -25,18 +25,6 @@
         finances = data.docs
     })
 
-    db.collection("plans")
-        .get()
-        .then(function (querySnapshot) {
-            querySnapshot.forEach(function (doc) {
-                // doc.data() is never undefined for query doc snapshots
-
-                console.log(doc.id, " => ", doc.data().Summe);
-                sum = doc.data().Summe;
-                // console.log("Booked",doc.data().get("booked"));
-            });
-        });
-
 
     const addFinance = () => {
         const Datum = firebase.firestore.Timestamp.fromDate(new Date());
@@ -49,17 +37,15 @@
         console.log(planID);
 
         if(Art === "Einnahme"){
-            helper = helper + Betrag
-            Summe = helper
-            console.log("Sum: "+sum+", Summe: "+Summe)
+            sum = sum + Betrag
+            console.log("Sum: ",sum)
         }else {
-            helper = helper - Betrag
-            Summe = helper
-            console.log("Sum: "+sum+", Summe: "+Summe)
+            sum = sum - Betrag
+            console.log("Sum: ",sum)
         }
 
         db.collection('plans').doc(planID).update({
-            Summe: Summe
+            Summe: sum
         })
         Betrag = ''
     }
@@ -75,7 +61,7 @@
     console.log("showList " + showList);
 
     export let finance = {};
-    export let activated;
+    let activated;
 
     const showADDButton = () => {
         showAdd = !showAdd
@@ -86,14 +72,7 @@
 
 <div class="container">
         {#if showList}
-            <SimpleList planID={planID} sum={Summe}/>
-        <!--{:else}
-            <div class="columns columns is-multiline is-variable is-2">
-            {#each finances as finance}
-                <Finance id={finance.id} finance={finance.data()}/>
-            {/each}
-            </div>
-         -->
+            <SimpleList planID={planID} sum={sum}/>
         {/if}
 </div>
 <div class="container" style="margin-top:15px">
@@ -113,8 +92,8 @@
                             <form on:submit|preventDefault={addFinance}>
                                 <input class="input is-info" type="text" placeholder="Name" bind:value={Name} required/>
                                 <input class="input is-info" type="number" placeholder="Betrag" bind:value={Betrag} required/>
-                                <div class="control has-text-left">
-                                    <label>Kategorie:</label>
+                                <div class="control has-text-left has-text-white">
+                                    <label>Kategorie:  </label>
                                     <div class="select is-small is-rounded">
                                         <select bind:value={Kategorie}>
                                             <option name="answer" value={""}>Auswählen</option>
@@ -129,8 +108,8 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="control has-text-left">
-                                    <label>Wiederkehrend?</label>
+                                <div class="control has-text-left has-text-white">
+                                    <label>Wiederkehrend?  </label>
                                     <div class="select is-small is-rounded">
                                         <select bind:value={Wiederkehrend}>
                                             <option name="answer" value={""}>Auswählen</option>
@@ -139,8 +118,8 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="control has-text-left">
-                                    <label>Art?</label>
+                                <div class="control has-text-left has-text-white">
+                                    <label>Art?  </label>
                                     <div class="select is-small is-rounded">
                                         <select bind:value={Art}>
                                             <option name="answer" value={""}>Auswählen</option>
