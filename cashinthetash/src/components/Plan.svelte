@@ -3,8 +3,6 @@
     import Finances from "./Finances.svelte";
     import '@fortawesome/fontawesome-free/js/all.js';
 
-    export let finance = {};
-
     export let id = '';
     export let plan = {};
 
@@ -33,9 +31,8 @@
         console.log(planID);
     }
 
-    export let showContent;
-    export let showList;
-    export let showEdit;
+    let showContent;
+    let showEdit;
 
     console.log("showEdit " + showEdit);
 
@@ -97,7 +94,7 @@
         </div>
         <div class="message-body">
             {#if showContent}
-                <Finances planID={id}/>
+                <Finances planID={id} sum={plan.Summe}/>
                 <hr class="has-background-info"/>
             {/if}
             <p class="subtitle has-text-centered is-size-7 is-uppercase has-text-weight-bold">Erstellt: {datum}</p>

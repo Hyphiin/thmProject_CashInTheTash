@@ -2,7 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="427de112-bf1a-4f05-9f6a-be44a7f01a5c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/cashinthetash/src/components/Plans.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/cashinthetash/src/components/Plans.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cashinthetash/src/components/ChartBetrag.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/cashinthetash/src/components/ChartBetrag.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cashinthetash/src/components/Finances.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/cashinthetash/src/components/Finances.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cashinthetash/src/components/Plan.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/cashinthetash/src/components/Plan.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cashinthetash/src/components/SimpleList.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/cashinthetash/src/components/SimpleList.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cashinthetash/src/components/SimpleListItem.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/cashinthetash/src/components/SimpleListItem.svelte" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,6 +36,9 @@
         <option value="Sides" />
         <option value="SimpleList" />
         <option value="SimpleListItem" />
+        <option value="chart" />
+        <option value="ChartPie" />
+        <option value="ChartBetrag" />
       </list>
     </option>
   </component>
@@ -110,6 +118,11 @@
       <workItem from="1609701396510" duration="1645000" />
       <workItem from="1609703098006" duration="5622000" />
       <workItem from="1611165808545" duration="2994000" />
+      <workItem from="1611494360170" duration="1893000" />
+      <workItem from="1611566925244" duration="12160000" />
+      <workItem from="1611582028322" duration="7908000" />
+      <workItem from="1611669373475" duration="6471000" />
+      <workItem from="1611678787362" duration="6047000" />
     </task>
     <servers />
   </component>

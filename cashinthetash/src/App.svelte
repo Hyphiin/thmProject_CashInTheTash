@@ -3,6 +3,7 @@
     import Footer from "./components/Footer.svelte";
     import Banner from "./components/Banner.svelte";
     import LoginSection from "./components/LoginSection.svelte";
+    import Chart from "./components/ChartDatum.svelte";
 </script>
 
 <svelte:head>

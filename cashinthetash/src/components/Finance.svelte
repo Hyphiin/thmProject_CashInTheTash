@@ -4,11 +4,21 @@
     export let id = '';
     export let finance = {};
     export let planID;
-
-    let Summe;
-    let helper = 0;
+    export let sum;
 
     const deleteFinance = () => {
+        if(finance.Art === "Einnahme"){
+            sum = sum + finance.Betrag
+            console.log("Sum: ",sum)
+        }else {
+            sum = sum - finance.Betrag
+            console.log("Sum: ",sum)
+        }
+
+        db.collection('plans').doc(planID).update({
+            Summe: sum
+        })
+
         db.collection('finance').doc(id).delete()
         console.log('erfolgreich gelöscht!');
     }
@@ -20,23 +30,16 @@
         })
 
         if(finance.Art === "Einnahme"){
-            helper = helper + finance.Betrag
-            Summe = helper
-            console.log(Summe)
+            sum = sum + finance.Betrag
+            console.log("Sum: ",sum)
         }else {
-            helper = helper - finance.Betrag
-            Summe = helper
-            console.log(Summe)
+            sum = sum - finance.Betrag
+            console.log("Sum: ",sum)
         }
 
-        let updatePlan = db.collection('plan').where("planID", "==", planID);
-        updatePlan.get().then(function(querySnapshot){
-            querySnapshot.forEach(function(doc){
-                doc.ref.update({
-                    Summe: helper
-                });
-            });
-        });
+        db.collection('plans').doc(planID).update({
+            Summe: sum
+        })
         console.log('erfolgreich geupdated!');
     }
 
@@ -60,12 +63,12 @@
 </script>
 
 
-    <div class={stringSelected}>
-        <input class="input is-info" on:input={updateFinance} type="text" bind:value={finance.Name}/>
-        <input class="input is-info" on:input={updateFinance} type="text" bind:value={finance.Betrag}/>
-        <hr/>
-        <p class="subtitle has-text-centered is-size-7 is-uppercase has-text-weight-bold">Erstellt: {datum}</p>
-        <a class="delete is-large is-danger" on:click={deleteFinance}></a>
-        <p class="tag is-info is-light">{finance.Kategorie}</p>
-    </div>
+<div class={stringSelected}>
+    <input class="input is-info" on:input={updateFinance} type="text" bind:value={finance.Name}/>
+    <input class="input is-info" on:input={updateFinance} type="text" bind:value={finance.Betrag}/>
+    <hr/>
+    <p class="subtitle has-text-centered is-size-7 is-uppercase has-text-weight-bold">Erstellt: {datum}</p>
+    <a class="delete is-large is-danger" on:click={deleteFinance}></a>
+    <p class="tag is-info is-light">{finance.Kategorie}</p>
+</div>
 

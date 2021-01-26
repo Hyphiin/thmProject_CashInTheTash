@@ -4,8 +4,7 @@
     export let id = '';
     export let finance = {};
     export let planID;
-
-
+    export let sum;
 
     let date = finance.Datum.toDate().toDateString();
 
@@ -17,38 +16,21 @@
     datum = dd + '/' + mm + '/' + yyyy;
 
     let color = ""
-    export let color2
-    let sum = 0;
 
     let helper = 0;
-    let Summe;
-
-    db.collection("plans")
-        .get()
-        .then(function (querySnapshot) {
-            querySnapshot.forEach(function (doc) {
-                // doc.data() is never undefined for query doc snapshots
-
-                console.log(doc.id, " => ", doc.data().Summe);
-                sum = doc.data().Summe;
-                // console.log("Booked",doc.data().get("booked"));
-            });
-        });
+    let positive = true
 
     const colorCheck = () => {
         if (finance.Art === "Einnahme") {
             color = "is-success"
+            positive = true
         } else {
             color = "is-danger"
+            positive = false
         }
-        if(sum>0){
-            color2 = "is-success"
-        }else{
-            color2 = "is-danger"
-        }
-        console.log(color+" , "+color2)
+        console.log(color)
+        console.log(positive)
     }
-
 
     let showEdit = false
     let showDelete = false
@@ -61,35 +43,61 @@
     }
 
     const deleteFinance = () => {
-        db.collection('finance').doc(id).delete()
-        console.log('erfolgreich gelöscht!');
         showDelete = !showDelete
-    }
-
-    const updateFinance = () => {
-        db.collection('finance').doc(id).update({
-            Betrag: finance.Betrag,
-            Name: finance.Name
+        if(finance.Art === "Einnahme"){
+            sum = sum - finance.Betrag
+            console.log("Sum: ",sum)
+        }else {
+            sum = sum + finance.Betrag
+            console.log("Sum: ",sum)
+        }
+        db.collection('plans').doc(planID).update({
+            Summe: sum
         })
 
-        if(finance.Art === "Einnahme"){
-            helper = helper + finance.Betrag
-            Summe = helper
-            console.log(Summe)
+        db.collection('finance').doc(id).delete()
+        colorCheck()
+        console.log('erfolgreich gelöscht!');
+    }
+
+    let aktBetrag = finance.Betrag
+    let aktArt = finance.Art
+
+    const updateFinance = () => {
+        console.log("Betrag davor: ",aktBetrag)
+
+        if(aktArt === "Einnahme"){
+            sum = sum - aktBetrag
+            console.log("Sum davor: ",sum)
         }else {
-            helper = helper - finance.Betrag
-            Summe = helper
-            console.log(Summe)
+            sum = sum + aktBetrag
+            console.log("Sum davor: ",sum)
         }
 
-        let updatePlan = db.collection('plan').where("planID", "==", planID);
-        updatePlan.get().then(function(querySnapshot){
-            querySnapshot.forEach(function(doc){
-                doc.ref.update({
-                    Summe: Summe
-                });
-            });
-        });
+        db.collection('finance').doc(id).update({
+            Betrag: finance.Betrag,
+            Name: finance.Name,
+            Kategorie: finance.Kategorie,
+            Wiederkehrend: finance.Wiederkehrend,
+            Art: finance.Art
+        })
+
+        aktBetrag = finance.Betrag
+        aktArt = finance.Art
+
+        console.log("Betrag danach: ",finance.Betrag)
+
+        if(finance.Art === "Einnahme"){
+            sum = sum + finance.Betrag
+            console.log("Sum danach: ",sum)
+        }else {
+            sum = sum - finance.Betrag
+            console.log("Sum danach: ",sum)
+        }
+
+        db.collection('plans').doc(planID).update({
+            Summe: sum
+        })
         colorCheck()
         console.log('erfolgreich geupdated!');
     }
@@ -121,7 +129,11 @@
                 </span>
             </div>
             <div class="column">
-                <span>{finance.Betrag}</span>
+                {#if positive}
+                    <span>{finance.Betrag}€</span>
+                {:else}
+                    <span>-{finance.Betrag}€</span>
+                {/if}
             </div>
             <div class="column is-narrow">
                 <span>{datum}</span>
@@ -154,7 +166,7 @@
         <div class="modal-card">
             <header class="modal-card-head">
                 <p class="modal-card-title">Eintrag updaten</p>
-                <button class="delete" aria-label="close"  on:click={() => {showEdit = !showEdit}}></button>
+                <button class="delete" aria-label="close"  on:click={() => {showEdit = !showEdit; colorCheck()}}></button>
             </header>
             <section class="modal-card-body">
                 <div class="notification has-background-info-dark">
@@ -198,7 +210,7 @@
                             </div>
                         </div>
                         <hr/>
-                        <button class="button is-primary" on:click={() => {showEdit = !showEdit; colorCheck()}}>Speichern</button>
+                        <button type="button" class="button is-primary" on:click={() => {showEdit = !showEdit; colorCheck();updateFinance()}}>Speichern</button>
                     </form>
                 </div>
             </section>
