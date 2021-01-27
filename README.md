@@ -28,6 +28,7 @@ Nice-to-have Features:
 - Finanzplan bearbeiten -> Einträge bearbeiten **(erledigt)**
 - Finanzplan als PDF ->  Finanzplan als PDF runterladen können
 - andere Login Methoden -> ergänzend zum Google Login, z.B. normale Registrierung per Mail
+- Deployment auf Hosting Server der Thm
 
 Beispiel einzelner Eintrag:
 - Titel
