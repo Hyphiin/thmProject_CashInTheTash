@@ -30,42 +30,32 @@
             <Plans {...user}/>
         {/if}
 
-        <hr/>
-        <div class="card">
-            <div class="card-content has-background-black">
-                <p class="title has-text-light">
-                    “Eine kreative Ökonomie ist der Treibstoff der Wohlfahrt.”
-                </p>
-                <p class="subtitle has-text-light">
-                    Ralph Waldo Emerson
-                </p>
-            </div>
-            <footer class="card-footer">
-                <p class="card-footer-item">
-                    <span>
-                        <button class="button is-info" on:click={ () => auth.signOut() }>Logout</button>
-                    </span>
-            </footer>
-        </div>
-
     {:else}
-        <div class="card">
-            <div class="card-content has-background-black ">
-                <p class="title fcolor has-text-white">
-                    “ Warum bleibt so viel Monat am Ende des Geldes übrig?”
-                </p>
-                <p class="subtitle fcolor has-text-white">
-                    John Barrymore
-                </p>
+        <div class="box">
+            <form>
+                <div class="field">
+                    <label class="label">Email</label>
+                    <div class="control">
+                        <input class="input" type="email" placeholder="z.b. alex@beispiel.com">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label">Passwort</label>
+                    <div class="control">
+                        <input class="input" type="password" placeholder="********">
+                    </div>
+                </div>
+                <button class="button is-info">Einloggen</button>
+            </form>
+            <div class="is-invisible">
+                invisible
             </div>
-            <footer class="card-footer">
-                <p class="card-footer-item">
-      <span>
-        <button class="button is-info" on:click={login}>
-            Signin with Google
-        </button>
-      </span>
-            </footer>
+            <button class="button is-info">Registrieren</button>
+            <hr/>
+            <button class="button is-info" on:click={login}>
+                <i class="fab fa-google"></i>
+            </button>
         </div>
     {/if}
 </section>
