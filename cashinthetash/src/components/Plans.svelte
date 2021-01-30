@@ -75,7 +75,7 @@
         </div>
     </div>
 
-    <div class="column is-narrow">
+    <div class="column is-narrow is-mobile">
         <div class="control has-text-centered">
             <label class="has-text-white">Filtern:</label>
             <div class="select is-small is-rounded">
@@ -91,19 +91,21 @@
 
 <hr/>
 
-<article class="message is-medium">
+<article class="message is-medium is-mobile">
     <form on:submit|preventDefault={addPlan}>
         <div class="message-header has-background-info">
+            <p class="subtitle has-text-white is-6 has-text-centered">
             Füge einen neuen Plan hinzu!
+            </p>
         </div>
         <div class="message-body">
             <div class="columns is-mobile list-column">
                 <div class="column is-narrow">
-                    <input class="input is-info" type="text" placeholder="Titel" bind:value={Titel} required/>
+                    <input class="input is-info is-small" type="text" placeholder="Titel" bind:value={Titel} required/>
                 </div>
                 <input type="hidden" bind:value={Summe}/>
                 <div class="column is-narrow">
-                    <button class="button has-background-info">
+                    <button class="button has-background-info is-small">
                         <i class="fas fa-plus"></i>
                     </button>
                 </div>
