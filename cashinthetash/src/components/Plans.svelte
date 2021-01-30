@@ -35,11 +35,11 @@
     }
 
     const onFilter = () => {
-        if(filter === "all"){
+        if (filter === "all") {
             db.collection('plans').orderBy('Summe').where("UserID", "==", uid).onSnapshot(data => {
                 plans = data.docs
             })
-        }else {
+        } else {
             db.collection('plans').orderBy('Summe').where("UserID", "==", uid).where("Summe", filter, 0).onSnapshot(data => {
                 plans = data.docs
             })
@@ -59,50 +59,63 @@
     </div>
 </section>
 
-<div class="control has-text-centered">
-    <label class="has-text-white">Sortieren: <i class="fas fa-sort"></i></label>
-    <div class="select is-small is-rounded">
-        <select class="has-icons-left" bind:value={sort} on:change={onSort}>
-            <option name="answer" value={"Datum"}>Auswählen</option>
-            <option name="answer" value={"Summe"}>Summe</option>
-            <option name="answer" value={"Datum"}>Datum</option>
-            <option name="answer" value={"Titel"}>Titel</option>
-        </select>
-    </div>
-</div>
 
-<div class="control has-text-centered">
-    <label class="has-text-white">Filtern: <i class="fas fa-filter"></i></label>
-    <div class="select is-small is-rounded">
-        <select class="has-icons-left" bind:value={filter} on:change={onFilter}>
-            <option name="answer" value={"all"}>Alle</option>
-            <option name="answer" value={">="}>Positiv</option>
-            <option name="answer" value={"<"}>Negativ</option>
-        </select>
+<div class="columns is-mobile list-column">
+    <div class="column is-narrow">
+        <div class="control">
+            <label class="has-text-white">Sortieren:</label>
+            <div class="select is-small is-rounded">
+                <select class="has-icons-left" bind:value={sort} on:change={onSort}>
+                    <option name="answer" value={"Datum"}>Standard</option>
+                    <option name="answer" value={"Summe"}>Summe</option>
+                    <option name="answer" value={"Datum"}>Datum</option>
+                    <option name="answer" value={"Titel"}>Titel</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="column is-narrow">
+        <div class="control has-text-centered">
+            <label class="has-text-white">Filtern:</label>
+            <div class="select is-small is-rounded">
+                <select class="has-icons-left" bind:value={filter} on:change={onFilter}>
+                    <option name="answer" value={"all"}>Alle</option>
+                    <option name="answer" value={">="}>Positiv</option>
+                    <option name="answer" value={"<"}>Negativ</option>
+                </select>
+            </div>
+        </div>
     </div>
 </div>
 
 <hr/>
 
+<article class="message is-medium">
+    <form on:submit|preventDefault={addPlan}>
+        <div class="message-header has-background-info">
+            Füge einen neuen Plan hinzu!
+        </div>
+        <div class="message-body">
+            <div class="columns is-mobile list-column">
+                <div class="column is-narrow">
+                    <input class="input is-info" type="text" placeholder="Titel" bind:value={Titel} required/>
+                </div>
+                <input type="hidden" bind:value={Summe}/>
+                <div class="column is-narrow">
+                    <button class="button has-background-info">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+</article>
+
 <div class="container">
     <div class="columns is-multiline is-variable is-2">
         {#each plans as plan}
-                <Plan id={plan.id} plan={plan.data()}/>
+            <Plan id={plan.id} plan={plan.data()}/>
         {/each}
     </div>
-</div>
-
-<div class="section">
-<div class="container">
-        <div class="columns is-multiline is-variable is-2 is-centered">
-            <div class="notification is-info">
-                <form on:submit|preventDefault={addPlan}>
-                    <input class="input is-info" type="text" placeholder="Titel" bind:value={Titel} required/>
-                    <input type="hidden" bind:value={Summe}/>
-                    <hr/>
-                    <button class="button is-info is-inverted">Hinzufügen</button>
-                </form>
-            </div>
-        </div>
-</div>
 </div>
