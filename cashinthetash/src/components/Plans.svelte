@@ -61,8 +61,8 @@
 
 
 <div class="columns is-mobile list-column">
-    <div class="column is-narrow">
-        <div class="control">
+    <div class="column is-half is-mobile">
+        <div class="control has-text-left is-small">
             <label class="has-text-white">Sortieren:</label>
             <div class="select is-small is-rounded">
                 <select class="has-icons-left" bind:value={sort} on:change={onSort}>
@@ -75,8 +75,8 @@
         </div>
     </div>
 
-    <div class="column is-narrow is-mobile">
-        <div class="control has-text-centered">
+    <div class="column is-half is-mobile">
+        <div class="control has-text-left is-small">
             <label class="has-text-white">Filtern:</label>
             <div class="select is-small is-rounded">
                 <select class="has-icons-left" bind:value={filter} on:change={onFilter}>

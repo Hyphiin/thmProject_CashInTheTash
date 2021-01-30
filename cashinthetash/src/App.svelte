@@ -4,6 +4,7 @@
     import Banner from "./components/Banner.svelte";
     import LoginSection from "./components/LoginSection.svelte";
     import Chart from "./components/ChartDatum.svelte";
+    import Tiles from "./components/InfoMessages.svelte";
 </script>
 
 <svelte:head>
@@ -15,5 +16,6 @@
     <Navbar/>
     <Banner/>
     <LoginSection/>
+    <Tiles/>
     <Footer/>
 </main>
