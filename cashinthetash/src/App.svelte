@@ -4,7 +4,7 @@
     import Banner from "./components/Banner.svelte";
     import LoginSection from "./components/LoginSection.svelte";
     import Chart from "./components/ChartDatum.svelte";
-    import Tiles from "./components/InfoMessages.svelte";
+    import InfoMessages from "./components/InfoMessages.svelte";
 </script>
 
 <svelte:head>
@@ -15,7 +15,7 @@
 <main class="bg-image2">
     <Navbar/>
     <Banner/>
+    <InfoMessages/>
     <LoginSection/>
-    <Tiles/>
     <Footer/>
 </main>

@@ -1,17 +1,38 @@
-<article class="message is-info">
+<article class="message is-info is-small article-tiles2">
     <div class="message-body">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>, in mollis lectus. Donec sodales, arcu et sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna, vehicula et sem eget, facilisis sodales sem.
+        <div class="columns is-mobile list-column">
+            <div class="column is-narrow is-one-fifth icon-tiles">
+                <i class="fas fa-mobile-alt fa-2x"></i>
+            </div>
+            <div class="column auto">
+                Der neue, smarte Weg deine Finanzen auf deinem Handy zu organisieren!
+            </div>
+        </div>
     </div>
 </article>
-<hr/>
-<article class="message is-info has-text-right">
+
+<article class="message is-info is-small article-tiles">
     <div class="message-body">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>, in mollis lectus. Donec sodales, arcu et sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna, vehicula et sem eget, facilisis sodales sem.
+        <div class="columns is-mobile list-column">
+            <div class="column auto">
+                Erstelle eigene Finanzpläne, füge Ein- und Ausgaben hinzu und habe alles im Blick!
+            </div>
+            <div class="column is-narrow is-one-fifth icon-tiles">
+                <i class="fas fa-money-check fa-2x"></i>
+            </div>
+        </div>
     </div>
 </article>
-<hr/>
-<article class="message is-info">
+
+<article class="message is-info is-small article-tiles">
     <div class="message-body">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>, in mollis lectus. Donec sodales, arcu et sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna, vehicula et sem eget, facilisis sodales sem.
+        <div class="columns is-mobile list-column">
+            <div class="column is-narrow is-one-fifth icon-tiles">
+                <i class="fas fa-chart-pie fa-2x"></i>
+            </div>
+            <div class="column auto">
+                Überblicke deine Finanzen jetzt auch in Diagrammen!
+            </div>
+        </div>
     </div>
 </article>
