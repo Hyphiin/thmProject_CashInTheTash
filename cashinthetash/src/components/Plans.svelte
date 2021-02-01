@@ -15,9 +15,32 @@
     let sort = 'Datum';
     let filter = "==";
 
-    db.collection('plans').orderBy('Datum').where("UserID", "==", uid).onSnapshot(data => {
+    let limit = 3
+
+    db.collection('plans').orderBy('Datum').where("UserID", "==", uid).limit(limit).onSnapshot(data => {
         plans = data.docs
     })
+
+    const IncreaseNumber = () => {
+        if (limit <= plans.length) {
+            limit += 3
+            console.log(limit)
+        }
+        db.collection('plans').orderBy('Datum').where("UserID", "==", uid).limit(limit).onSnapshot(data => {
+            plans = data.docs
+        })
+    }
+
+    const LimitNumber = () => {
+        if (limit >= 6) {
+            limit = limit - 3
+        } else {
+            alert('Mindestanzahl darf nicht unterschritten werden.')
+        }
+        db.collection('plans').orderBy('Datum').where("UserID", "==", uid).limit(limit).onSnapshot(data => {
+            plans = data.docs
+        })
+    }
 
     const addPlan = () => {
         const Datum = firebase.firestore.Timestamp.fromDate(new Date());
@@ -60,7 +83,7 @@
 </section>
 
 
-<div class="columns is-mobile list-column">
+<div class="columns list-column is-mobile">
     <div class="column is-half is-mobile">
         <div class="control has-text-left is-small">
             <label class="has-text-white">Sortieren:</label>
@@ -91,11 +114,20 @@
 
 <hr/>
 
+{#if plans.length >= 3 && limit <= plans.length}
+    <button class="button is-info" on:click={IncreaseNumber}>Mehr</button>
+{/if}
+
+{#if limit >= plans.length && limit > 3}
+    <button class="button is-info" on:click={LimitNumber}>Weniger</button>
+{/if}
+<hr/>
+
 <article class="message is-medium is-mobile">
     <form on:submit|preventDefault={addPlan}>
         <div class="message-header has-background-info">
             <p class="subtitle has-text-white is-6 has-text-centered">
-            Füge einen neuen Plan hinzu!
+                Füge einen neuen Plan hinzu!
             </p>
         </div>
         <div class="message-body">

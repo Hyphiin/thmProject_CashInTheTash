@@ -15,7 +15,6 @@
 <main class="bg-image2">
     <Navbar/>
     <Banner/>
-    <InfoMessages/>
     <LoginSection/>
     <Footer/>
 </main>
