@@ -52,18 +52,30 @@
     }
 
     const onSort = () => {
-        db.collection('plans').orderBy(sort).where("UserID", "==", uid).onSnapshot(data => {
-            plans = data.docs
-        })
+        if (filter === "all") {
+            db.collection('plans').orderBy(sort).where("UserID", "==", uid).limit(limit).onSnapshot(data => {
+                plans = data.docs
+            })
+        } else {
+            if (filter === "all") {
+                db.collection('plans').orderBy('Summe').where("UserID", "==", uid).limit(limit).onSnapshot(data => {
+                    plans = data.docs
+                })
+            } else {
+                db.collection('plans').orderBy('Summe').where("UserID", "==", uid).where("Summe", filter, 0).limit(limit).onSnapshot(data => {
+                    plans = data.docs
+                })
+            }
+        }
     }
 
     const onFilter = () => {
         if (filter === "all") {
-            db.collection('plans').orderBy('Summe').where("UserID", "==", uid).onSnapshot(data => {
+            db.collection('plans').orderBy('Summe').where("UserID", "==", uid).limit(limit).onSnapshot(data => {
                 plans = data.docs
             })
         } else {
-            db.collection('plans').orderBy('Summe').where("UserID", "==", uid).where("Summe", filter, 0).onSnapshot(data => {
+            db.collection('plans').orderBy('Summe').where("UserID", "==", uid).where("Summe", filter, 0).limit(limit).onSnapshot(data => {
                 plans = data.docs
             })
         }
@@ -99,7 +111,7 @@
     </div>
 
     <div class="column is-half is-mobile">
-        <div class="control has-text-left is-small">
+        <div class="control has-text-right is-small">
             <label class="has-text-white">Filtern:</label>
             <div class="select is-small is-rounded">
                 <select class="has-icons-left" bind:value={filter} on:change={onFilter}>
@@ -113,7 +125,7 @@
 </div>
 
 <hr/>
-
+//if filter != Alle, dann prüfe das nur bei den angezeigten
 {#if plans.length >= 3 && limit <= plans.length}
     <button class="button is-info" on:click={IncreaseNumber}>Mehr</button>
 {/if}
