@@ -14,9 +14,9 @@
     }
 
     // sides
-    let showContend = false;
+    let showContent = false;
 
-    console.log("showContend " + showContend);
+    console.log("showContend " + showContent);
 
 </script>
 
@@ -24,7 +24,7 @@
     {#if user}
         <Profile {...user}/>
 
-        {#if showContend}
+        {#if showContent}
             <Finances/>
         {:else}
             <Plans {...user}/>

@@ -106,8 +106,8 @@
 </script>
 
 
-<article class="message is-small {color}">
-    <div class="message-header">
+<article class="message is-small is-info">
+    <div class="message-header" style="padding-right: 0">
         <div class="columns is-mobile list-column">
             <div class="column">
                 <p class="has-text-left">{finance.Name}</p>
@@ -115,7 +115,8 @@
             <div class="column is-narrow" on:click={showEditButton}>
                 <i class="fas fa-pen is-6"></i>
             </div>
-            <div class="column is-narrow" on:click={showDeleteButton}>
+            <div class="column is-narrow"></div>
+            <div class="column is-narrow" style="padding-right:0" on:click={showDeleteButton}>
                 <i class="fas fa-trash is-6"></i>
             </div>
         </div>
@@ -123,16 +124,16 @@
     </div>
     <div class="message-body">
         <div class="columns is-mobile">
-            <div class="column">
-                <span class="tag is-info is-light">
+            <div class="column has-text-left">
+                <span>
                     {finance.Kategorie}
                 </span>
             </div>
-            <div class="column">
+            <div class="column has-text-left">
                 {#if positive}
-                    <span>{finance.Betrag}€</span>
+                    <span class="tag is-success is-light">{finance.Betrag}€</span>
                 {:else}
-                    <span>-{finance.Betrag}€</span>
+                    <span class="tag is-danger is-light">-{finance.Betrag}€</span>
                 {/if}
             </div>
             <div class="column is-narrow">
@@ -173,7 +174,7 @@
                     <form on:submit|preventDefault={updateFinance}>
                         <input class="input is-info" type="text" placeholder="Name" bind:value={finance.Name} required/>
                         <input class="input is-info" type="number" placeholder="Betrag" bind:value={finance.Betrag} required/>
-                        <div class="control has-text-left">
+                        <div class="control has-text-left has-text-white">
                             <label>Kategorie:</label>
                             <div class="select is-small is-rounded">
                                 <select bind:value={finance.Kategorie}>
@@ -189,7 +190,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="control has-text-left">
+                        <div class="control has-text-left has-text-white">
                             <label>Wiederkehrend?</label>
                             <div class="select is-small is-rounded">
                                 <select bind:value={finance.Wiederkehrend}>
@@ -199,7 +200,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="control has-text-left">
+                        <div class="control has-text-left has-text-white">
                             <label>Art?</label>
                             <div class="select is-small is-rounded">
                                 <select bind:value={finance.Art}>

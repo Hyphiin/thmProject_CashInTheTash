@@ -38,35 +38,37 @@
     colorCheck2()
 </script>
 
-<div class="columns is-mobile list-column">
-    <div class="column">
-        <div class="control has-text-left">
-            {#if showChart}
-                <lable>Diagramm</lable>
-            {:else}
-                <label>Sortieren nach</label>
-            {/if}
-            <div class="select is-small is-rounded">
-                <select bind:value={sort} on:change={onSort}>
-                    <option name="answer" value={"Name"}>Auswählen</option>
-                    <option name="answer" value={"Betrag"}>Betrag</option>
-                    <option name="answer" value={"Datum"}>Datum</option>
-                    <option name="answer" value={"Name"}>Name</option>
-                    <option name="answer" value={"Kategorie"}>Kategorie</option>
-                </select>
+<div class="container">
+    <div class="columns is-mobile">
+
+        <div class="column is-narrow">
+            <div class="control">
+                {#if showChart}
+                    <lable style="padding-left: 4px">Diagramm</lable>
+                {:else}
+                    <label style="padding-left: 4px">Sortieren</label>
+                {/if}
+                <div class="select is-small is-rounded">
+                    <select bind:value={sort} on:change={onSort}>
+                        <option name="answer" value={"Name"}>Auswählen</option>
+                        <option name="answer" value={"Betrag"}>Betrag</option>
+                        <option name="answer" value={"Datum"}>Datum</option>
+                        <option name="answer" value={"Name"}>Name</option>
+                        <option name="answer" value={"Kategorie"}>Kategorie</option>
+                    </select>
+                </div>
             </div>
         </div>
+        {#if showChart}
+            <div class="column is-narrow" style="padding-left: 53px;" on:click={() => {showChart = !showChart}}>
+                <i class="fas fa-list has-text-info"></i>
+            </div>
+        {:else}
+            <div class="column is-narrow" style="padding-left: 62px;" on:click={() => {showChart = !showChart}}>
+                <i class="fas fa-chart-pie has-text-info"></i>
+            </div>
+        {/if}
     </div>
-    {#if showChart}
-        <div class="column is-narrow" on:click={() => {showChart = !showChart}}>
-            <i class="fas fa-list has-text-info"></i>
-        </div>
-    {:else}
-        <div class="column is-narrow" on:click={() => {showChart = !showChart}}>
-            <i class="fas fa-chart-pie has-text-info"></i>
-        </div>
-    {/if}
-
 </div>
 
 
@@ -90,10 +92,7 @@
                 {/each}
             </div>
             <div class="control">
-                <div class="tags has-addons">
-                    <span class="tag is-info">{sum}</span>
-                    <span class="tag {color2}"></span>
-                </div>
+                <span class="tag {color2}">{sum}€</span>
             </div>
         {/if}
     {:else}
@@ -106,10 +105,7 @@
             {/each}
         </div>
         <div class="control">
-            <div class="tags has-addons">
-                <span class="tag is-info">{sum}</span>
-                <span class="tag {color2}"></span>
-            </div>
+            <span class="tag {color2}">{sum}€</span>
         </div>
     {/if}
 

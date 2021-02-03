@@ -61,7 +61,6 @@
     }
 
 
-
     let datum = plan.Datum.toDate()
     let mm = datum.getMonth() + 1;
     let dd = datum.getDate();
@@ -70,23 +69,29 @@
     datum = dd + '/' + mm + '/' + yyyy;
 
 
-
 </script>
-
 
 <div class={string}>
     <article class="message is-medium is-info">
         <div class="message-header">
             <div class="columns is-mobile list-column">
-                <div class="column">
-                    <p class="title is-4 has-text-white">
+                <div class="column is-narrow">
+                </div>
+                <div class="column" style="padding-left:5px">
+                    <p class="title is-4 has-text-white has-text-left">
                         {plan.Titel}
                     </p>
                 </div>
-                <div class="column is-narrow" on:click={showEditButton}>
+                <div class="column is-narrow">
+                </div>
+                <div class="column is-narrow">
+                </div>
+                <div class="column is-narrow" style="padding-right:2px;" on:click={showEditButton}>
                     <i class="fas fa-pen is-6"></i>
                 </div>
-                <div class="column is-narrow" on:click={showDeleteButton}>
+                <div class="column is-narrow">
+                </div>
+                <div class="column is-narrow" style="padding-right:6px;" on:click={showDeleteButton}>
                     <i class="fas fa-trash is-6"></i>
                 </div>
             </div>
@@ -102,7 +107,6 @@
         </div>
     </article>
 </div>
-
 
 
 {#if showDelete}
