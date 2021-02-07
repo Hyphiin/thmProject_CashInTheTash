@@ -62,7 +62,10 @@
                 <p class="card-footer-item">
       <span>
         <button class="button is-info" on:click={login}>
-            Signin with Google
+            <i class="fab fa-google"></i>
+            <i class="placeholder"> | </i>
+            Login
+
         </button>
       </span>
             </footer>

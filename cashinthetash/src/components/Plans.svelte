@@ -125,7 +125,6 @@
 </div>
 
 <hr/>
-//if filter != Alle, dann prüfe das nur bei den angezeigten
 {#if plans.length >= 3 && limit <= plans.length}
     <button class="button is-info" on:click={IncreaseNumber}>Mehr</button>
 {/if}

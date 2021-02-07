@@ -39,12 +39,6 @@
             </div>
             <div class="navbar-menu" class:is-active={mobile} id="menu">
                 <div class="navbar-end">
-                    <a class="navbar-item">
-                        Home
-                    </a>
-                    <a class="navbar-item">
-                        FAQ
-                    </a>
                     <div class="navbar-item has-dropdown is-hoverable">
                         <span class="navbar-link">
                             Team
