@@ -44,19 +44,26 @@
         <div class="column is-narrow">
             <div class="control">
                 {#if showChart}
-                    <lable style="padding-left: 4px">Diagramm</lable>
+                    <label style="padding-left: 4px">Diagramm</label>
+                    <div class="select is-small is-rounded">
+                        <select bind:value={sort} on:change={onSort}>
+                            <option name="answer" value={"Betrag"}>Auswählen</option>
+                            <option name="answer" value={"Betrag"}>Betrag</option>
+                            <option name="answer" value={"Datum"}>Datum</option>
+                        </select>
+                    </div>
                 {:else}
                     <label style="padding-left: 4px">Sortieren</label>
+                    <div class="select is-small is-rounded">
+                        <select bind:value={sort} on:change={onSort}>
+                            <option name="answer" value={"Name"}>Auswählen</option>
+                            <option name="answer" value={"Betrag"}>Betrag</option>
+                            <option name="answer" value={"Datum"}>Datum</option>
+                            <option name="answer" value={"Name"}>Name</option>
+                            <option name="answer" value={"Kategorie"}>Kategorie</option>
+                        </select>
+                    </div>
                 {/if}
-                <div class="select is-small is-rounded">
-                    <select bind:value={sort} on:change={onSort}>
-                        <option name="answer" value={"Name"}>Auswählen</option>
-                        <option name="answer" value={"Betrag"}>Betrag</option>
-                        <option name="answer" value={"Datum"}>Datum</option>
-                        <option name="answer" value={"Name"}>Name</option>
-                        <option name="answer" value={"Kategorie"}>Kategorie</option>
-                    </select>
-                </div>
             </div>
         </div>
         {#if showChart}
