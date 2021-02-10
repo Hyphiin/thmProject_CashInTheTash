@@ -95,10 +95,10 @@
 </section>
 
 
-<div class="columns list-column is-mobile">
+<div class="columns filterwerkzeug">
     <div class="column is-half is-mobile">
-        <div class="control has-text-left is-small">
-            <label class="has-text-white">Sortieren:</label>
+        <div class="control is-small">
+            <label class="has-text-white labeltext">Sortieren</label>
             <div class="select is-small is-rounded">
                 <select class="has-icons-left" bind:value={sort} on:change={onSort}>
                     <option name="answer" value={"Datum"}>Standard</option>
@@ -111,15 +111,15 @@
     </div>
 
     <div class="column is-half is-mobile">
-        <div class="control has-text-right is-small">
-            <label class="has-text-white">Filtern:</label>
+        <div class="control is-small">
             <div class="select is-small is-rounded">
                 <select class="has-icons-left" bind:value={filter} on:change={onFilter}>
-                    <option name="answer" value={"all"}>Alle</option>
+                    <option name="answer" value={"all"}>Standard</option>
                     <option name="answer" value={">="}>Positiv</option>
                     <option name="answer" value={"<"}>Negativ</option>
                 </select>
             </div>
+            <label class="has-text-white labeltext">Filtern</label>
         </div>
     </div>
 </div>

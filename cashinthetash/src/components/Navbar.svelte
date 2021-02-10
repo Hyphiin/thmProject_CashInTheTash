@@ -11,7 +11,7 @@
     }
 
     let mobile;
-    const toggleNav = () =>{
+    const toggleNav = () => {
         mobile = !mobile
     }
 
@@ -58,7 +58,10 @@
                 <button class="button is-info" on:click={ () => auth.signOut() }>Logout</button>
                 {:else}
                 <button class="button is-info" on:click={login}>
-                    Login
+                    <i class="fab fa-google"></i>
+                    <i class="placeholder"> | </i>
+                        Login
+
                 </button>
                 {/if}
               </a>
