@@ -62,8 +62,7 @@
 }
 
 .name{
-    display:inline-block;
-    width:150px;
+    width:100px;
     white-space:nowrap;
     overflow:hidden;
     text-overflow:ellipsis;
