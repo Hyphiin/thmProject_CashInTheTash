@@ -42,7 +42,10 @@
             showChart = false
         }else{
             showChart = true
-
+            db.collection('finance').orderBy(sort).where("planID", "==", planID).onSnapshot(data => {
+                finances = data.docs
+            })
+            colorCheck2()
         }
     }
 </script>
