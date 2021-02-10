@@ -112,6 +112,7 @@
 
     <div class="column is-half is-mobile">
         <div class="control is-small">
+            <label class="has-text-white labeltext">Filtern</label>
             <div class="select is-small is-rounded">
                 <select class="has-icons-left" bind:value={filter} on:change={onFilter}>
                     <option name="answer" value={"all"}>Standard</option>
@@ -119,7 +120,6 @@
                     <option name="answer" value={"<"}>Negativ</option>
                 </select>
             </div>
-            <label class="has-text-white labeltext">Filtern</label>
         </div>
     </div>
 </div>
