@@ -165,7 +165,7 @@
 </article>
 
 <div class="container">
-    <div class="columns is-multiline is-variable is-2">
+    <div class="columns is-multiline is-variable is-2 is-mobile">
         {#if plans.length <= 0}
             <div class="notification is-info sorry">
                 Leider keine passenden Ergebnisse gefunden!
