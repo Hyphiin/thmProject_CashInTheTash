@@ -110,7 +110,7 @@
     <div class="message-header" style="padding-right: 0">
         <div class="columns is-mobile list-column">
             <div class="column">
-                <p class="has-text-left">{finance.Name}</p>
+                <p class="has-text-left name">{finance.Name}</p>
             </div>
             <div class="column is-narrow" on:click={showEditButton}>
                 <i class="fas fa-pen is-6"></i>

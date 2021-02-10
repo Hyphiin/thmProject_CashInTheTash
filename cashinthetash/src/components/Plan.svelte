@@ -78,7 +78,7 @@
                 <div class="column is-narrow">
                 </div>
                 <div class="column" style="padding-left:5px">
-                    <p class="title is-4 has-text-white has-text-left">
+                    <p class="title is-4 has-text-white has-text-left name">
                         {plan.Titel}
                     </p>
                 </div>
