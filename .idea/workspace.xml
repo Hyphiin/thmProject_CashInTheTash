@@ -4,7 +4,6 @@
     <list default="true" id="427de112-bf1a-4f05-9f6a-be44a7f01a5c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cashinthetash/public/global.css" beforeDir="false" afterPath="$PROJECT_DIR$/cashinthetash/public/global.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cashinthetash/src/components/Navbar.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/cashinthetash/src/components/Navbar.svelte" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cashinthetash/src/components/Plans.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/cashinthetash/src/components/Plans.svelte" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

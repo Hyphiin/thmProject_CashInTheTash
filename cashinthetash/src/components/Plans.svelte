@@ -124,7 +124,9 @@
     </div>
 </div>
 
+
 <hr/>
+
 {#if plans.length >= 3 && limit <= plans.length}
     <button class="button is-info" on:click={IncreaseNumber}>Mehr</button>
 {/if}
@@ -132,17 +134,20 @@
 {#if limit >= plans.length && limit > 3}
     <button class="button is-info" on:click={LimitNumber}>Weniger</button>
 {/if}
-<hr/>
+
+{#if plans.length > 0}
+    <hr/>
+{/if}
 
 <article class="message is-medium is-mobile">
     <form on:submit|preventDefault={addPlan}>
-        <div class="message-header has-background-info">
-            <p class="subtitle has-text-white is-6 has-text-centered">
+        <div class="message-header has-background-info addPlan">
+            <p class="subtitle has-text-white is-6">
                 Füge einen neuen Plan hinzu!
             </p>
         </div>
         <div class="message-body">
-            <div class="columns is-mobile list-column">
+            <div class="columns is-mobile list-column addPlan">
                 <div class="column is-narrow">
                     <input class="input is-info is-small" type="text" placeholder="Titel" bind:value={Titel} required/>
                 </div>
@@ -161,6 +166,12 @@
 
 <div class="container">
     <div class="columns is-multiline is-variable is-2">
+        {#if plans.length <= 0}
+            <div class="notification is-info sorry">
+                Leider keine passenden Ergebnisse gefunden!
+            </div>
+        {/if}
+
         {#each plans as plan}
             <Plan id={plan.id} plan={plan.data()}/>
         {/each}

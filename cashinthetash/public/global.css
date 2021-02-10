@@ -25,15 +25,6 @@
     background-color: #999;
 }
 
-.profile-container{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.profile{
-    width:30%;
-}
-
 .list-column{
     width:100%
 }
@@ -61,6 +52,15 @@
     justify-content: space-between;
 }
 
+.sorry{
+    width:976px;
+}
+
+.addPlan{
+    display:flex;
+    justify-content: center;
+}
+
 
 
 @media only screen and (max-width: 600px) {
@@ -82,12 +82,13 @@
         background-color: #999;
     }
 
+    .profile-container{
+        display: flex;
+        align-items: center;
+        justify-content: center;}
+
     .fcolor {
         color: whitesmoke;
-    }
-
-    .profile-container{
-
     }
     .profile{
         width:100%;
@@ -99,6 +100,11 @@
 
     .labeltext{
         font-size: 12px;
+    }
+
+    .sorry{
+        width: 327.2px;
+        margin-left: 8px;
     }
 
 }
