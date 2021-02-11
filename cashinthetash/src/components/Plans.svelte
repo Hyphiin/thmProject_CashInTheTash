@@ -96,9 +96,9 @@
 
 
 <div class="columns filterwerkzeug">
-    <div class="column is-half is-mobile">
-        <div class="control is-small">
-            <label class="has-text-white labeltext">Sortieren</label>
+    <div class="column is-half-desktop has-text-right-desktop" style="padding-left: 0px; padding-right: 5px;">
+        <div class="control">
+            <label class="has-text-white">Sortieren:</label>
             <div class="select is-small is-rounded">
                 <select class="has-icons-left" bind:value={sort} on:change={onSort}>
                     <option name="answer" value={"Datum"}>Standard</option>
@@ -110,9 +110,9 @@
         </div>
     </div>
 
-    <div class="column is-half is-mobile">
-        <div class="control is-small">
-            <label class="has-text-white labeltext">Filtern</label>
+    <div class="column is-half-desktop has-text-left-desktop" style="padding-left: 5px; padding-right: 0px;">
+        <div class="control">
+            <label class="has-text-white">Filtern:</label>
             <div class="select is-small is-rounded">
                 <select class="has-icons-left" bind:value={filter} on:change={onFilter}>
                     <option name="answer" value={"all"}>Standard</option>
@@ -149,7 +149,8 @@
         <div class="message-body">
             <div class="columns is-mobile list-column addPlan">
                 <div class="column is-narrow">
-                    <input class="input is-info is-small" type="text" placeholder="Titel" bind:value={Titel} required/>
+                    <input class="input is-info is-small" type="text" placeholder="Titel" bind:value={Titel}
+                           required/>
                 </div>
                 <input type="hidden" bind:value={Summe}/>
                 <div class="column is-narrow">
@@ -163,6 +164,8 @@
         </div>
     </form>
 </article>
+
+
 
 <div class="container">
     <div class="columns is-multiline is-variable is-2 is-mobile">
