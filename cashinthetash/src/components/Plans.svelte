@@ -95,9 +95,9 @@
 </section>
 
 
-<div class="columns list-column is-mobile">
-    <div class="column is-half is-mobile">
-        <div class="control has-text-left is-small">
+<div class="columns is-mobile">
+    <div class="column is-half-desktop has-text-right-desktop" style="padding-left: 0px; padding-right: 5px;">
+        <div class="control">
             <label class="has-text-white">Sortieren:</label>
             <div class="select is-small is-rounded">
                 <select class="has-icons-left" bind:value={sort} on:change={onSort}>
@@ -110,8 +110,8 @@
         </div>
     </div>
 
-    <div class="column is-half is-mobile">
-        <div class="control has-text-right is-small">
+    <div class="column is-half-desktop has-text-left-desktop" style="padding-left: 5px; padding-right: 0px;">
+        <div class="control">
             <label class="has-text-white">Filtern:</label>
             <div class="select is-small is-rounded">
                 <select class="has-icons-left" bind:value={filter} on:change={onFilter}>
@@ -134,7 +134,8 @@
 {/if}
 <hr/>
 
-<article class="message is-medium is-mobile">
+
+<article class="message is-medium">
     <form on:submit|preventDefault={addPlan}>
         <div class="message-header has-background-info">
             <p class="subtitle has-text-white is-6 has-text-centered">
@@ -144,7 +145,8 @@
         <div class="message-body">
             <div class="columns is-mobile list-column">
                 <div class="column is-narrow">
-                    <input class="input is-info is-small" type="text" placeholder="Titel" bind:value={Titel} required/>
+                    <input class="input is-info is-small" type="text" placeholder="Titel" bind:value={Titel}
+                           required/>
                 </div>
                 <input type="hidden" bind:value={Summe}/>
                 <div class="column is-narrow">
@@ -158,6 +160,8 @@
         </div>
     </form>
 </article>
+
+
 
 <div class="container">
     <div class="columns is-multiline is-variable is-2">

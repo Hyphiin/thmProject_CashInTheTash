@@ -40,7 +40,6 @@
 
 <div class="container">
     <div class="columns is-mobile">
-
         <div class="column is-narrow">
             <div class="control">
                 {#if showChart}
@@ -50,6 +49,7 @@
                             <option name="answer" value={"Betrag"}>Auswählen</option>
                             <option name="answer" value={"Betrag"}>Betrag</option>
                             <option name="answer" value={"Datum"}>Datum</option>
+                            <option name="answer" value={"Kategorie"}>Kategorie</option>
                         </select>
                     </div>
                 {:else}
