@@ -139,6 +139,7 @@
     <hr/>
 {/if}
 
+<div class="newPlan container">
 <article class="message is-medium is-mobile">
     <form on:submit|preventDefault={addPlan}>
         <div class="message-header has-background-info addPlan">
@@ -164,6 +165,7 @@
         </div>
     </form>
 </article>
+</div>
 
 
 

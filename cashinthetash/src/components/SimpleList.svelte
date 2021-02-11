@@ -38,9 +38,9 @@
     colorCheck2()
 
     const showMyChart = () => {
-        if(showChart === true){
+        if (showChart === true) {
             showChart = false
-        }else{
+        } else {
             showChart = true
             db.collection('finance').orderBy(sort).where("planID", "==", planID).onSnapshot(data => {
                 finances = data.docs
@@ -58,7 +58,6 @@
                     <label style="padding-left: 4px">Diagramm</label>
                     <div class="select is-small is-rounded">
                         <select bind:value={sort} on:change={onSort}>
-                            <option name="answer">Auswählen</option>
                             <option name="answer" value={"Betrag"}>Betrag</option>
                             <option name="answer" value={"Datum"}>Datum</option>
                             <option name="answer" value={"Kategorie"}>Kategorie</option>
@@ -98,6 +97,10 @@
         {#if (sort === "Datum")}
             <ChartDatum planID={planID}/>
         {:else if (sort === "Betrag")}
+            <ChartBetrag planID={planID}/>
+        {:else if (sort === "Kategorie")}
+            <ChartKategorie planID={planID}/>
+        {:else}
             <ChartBetrag planID={planID}/>
         {/if}
     {:else}

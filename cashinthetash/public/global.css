@@ -67,11 +67,10 @@
     overflow:hidden;
     text-overflow:ellipsis;
 }
-
-label{
-    font-size: 10px;
+.newPlan{
+    width: 324px;
+    padding: 12px 0px 24px 0px;
 }
-
 
 
 @media only screen and (max-width: 600px) {
@@ -111,6 +110,11 @@ label{
 
     .labeltext{
         font-size: 12px;
+    }
+
+    .newPlan{
+        width: 324px;
+        padding: 12px 0px 24px 0px;
     }
 
 }
