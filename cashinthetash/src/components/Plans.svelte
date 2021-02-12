@@ -182,3 +182,14 @@
         {/each}
     </div>
 </div>
+
+<hr/>
+
+{#if plans.length >= 3 && limit <= plans.length}
+    <button class="button is-info" on:click={IncreaseNumber}>Mehr</button>
+{/if}
+
+{#if limit >= plans.length && limit > 3}
+    <button class="button is-info" on:click={LimitNumber}>Weniger</button>
+{/if}
+
