@@ -55,7 +55,7 @@
         <div class="column is-narrow">
             <div class="control">
                 {#if showChart === true}
-                    <label style="padding-left: 4px">Diagramm</label>
+                    <label class="has-text-white" style="padding-left: 4px">Diagramm</label>
                     <div class="select is-small is-rounded">
                         <select bind:value={sort} on:change={onSort}>
                             <option name="answer" value={"Betrag"}>Betrag</option>
@@ -64,7 +64,7 @@
                         </select>
                     </div>
                 {:else}
-                    <label style="padding-left: 4px">Sortieren</label>
+                    <label class="has-text-white" style="padding-left: 4px">Sortieren</label>
                     <div class="select is-small is-rounded">
                         <select bind:value={sort} on:change={onSort}>
                             <option name="answer" value={"Name"}>Auswählen</option>
@@ -79,11 +79,11 @@
         </div>
         {#if showChart === true}
             <div class="column is-narrow" style="padding-left: 53px;" on:click={showMyChart}>
-                <i class="fas fa-list has-text-info"></i>
+                <i class="fas fa-list has-text-white"></i>
             </div>
         {:else}
             <div class="column is-narrow" style="padding-left: 62px;" on:click={showMyChart}>
-                <i class="fas fa-chart-pie has-text-info"></i>
+                <i class="fas fa-chart-pie has-text-white"></i>
             </div>
         {/if}
     </div>

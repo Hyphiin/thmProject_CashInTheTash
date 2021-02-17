@@ -22,16 +22,16 @@
         <div class="container">
             <div class="navbar-brand">
                 <a class="navbar-item" href="javascript:window.location.href=window.location.href">
-                    <img class="tag is-info is-light is-rounded"
+                    <img class="tag is-rounded"
                          src='https://images.vexels.com/media/users/3/143188/isolated/preview/5f44f3160a09b51b4fa4634ecdff62dd-money-icon-by-vexels.png'
                          alt="Logo">
                 </a>
                 <span class="navbar-item">
-                    <h1 class="title is-6">
+                    <h1 class="title is-6 has-text-white">
                         CashInTheTash
                     </h1>
                 </span>
-                <span class="navbar-burger burger" class:is-active={mobile} id="burger" on:click={toggleNav}>
+                <span class="navbar-burger burger has-text-white" class:is-active={mobile} id="burger" on:click={toggleNav}>
             <span></span>
             <span></span>
             <span></span>
@@ -53,18 +53,16 @@
                         </div>
                     </div>
                     <span class="navbar-item">
-              <a class="button is-info">
                 {#if user}
-                <button class="button is-info" on:click={ () => auth.signOut() }>Logout</button>
+                <button class="button" on:click={ () => auth.signOut() }>Logout</button>
                 {:else}
-                <button class="button is-info" on:click={login}>
+                <button class="button" on:click={login}>
                     <i class="fab fa-google"></i>
                     <i class="placeholder"> | </i>
                         Login
 
                 </button>
                 {/if}
-              </a>
             </span>
                 </div>
             </div>

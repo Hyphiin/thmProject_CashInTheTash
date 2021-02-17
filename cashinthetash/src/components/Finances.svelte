@@ -77,7 +77,7 @@
         {/if}
 </div>
 <div class="container" style="margin-top:15px">
-<button class="button is-info" on:click={showADDButton}>{activatedText}</button>
+<button class="button" on:click={showADDButton}>{activatedText}</button>
 </div>
 
 {#if showAdd}
@@ -89,10 +89,10 @@
                 <button class="delete" aria-label="close"  on:click={() => {showAdd = !showAdd}}></button>
             </header>
             <section class="modal-card-body">
-                        <div class="notification has-background-info-dark">
+                        <div class="notification primary-color">
                             <form on:submit|preventDefault={addFinance}>
-                                <input class="input is-info" type="text" placeholder="Name" bind:value={Name} required/>
-                                <input class="input is-info" type="number" placeholder="Betrag" bind:value={Betrag} required/>
+                                <input class="input" type="text" placeholder="Name" bind:value={Name} required/>
+                                <input class="input" type="number" placeholder="Betrag" bind:value={Betrag} required/>
                                 <div class="control has-text-left has-text-white">
                                     <label>Kategorie:  </label>
                                     <div class="select is-small is-rounded">
@@ -130,7 +130,7 @@
                                     </div>
                                 </div>
                                 <hr/>
-                                <button class="button is-primary">Hinzufügen</button>
+                                <button class="button">Hinzufügen</button>
                             </form>
                         </div>
              </section>

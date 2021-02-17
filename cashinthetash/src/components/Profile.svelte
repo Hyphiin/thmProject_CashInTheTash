@@ -30,10 +30,10 @@
                     <p class="subtitle sub">{ email }</p>
                     {#if user}
                         <span>
-                            <button class="button is-info" on:click={ () => auth.signOut() }>Logout</button>
+                            <button class="button" on:click={ () => auth.signOut() }>Logout</button>
                         </span>
                     {:else}
-                        <button class="button is-info" on:click={login}>
+                        <button class="button" on:click={login}>
                             Login
                         </button>
                     {/if}

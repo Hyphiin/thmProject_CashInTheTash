@@ -106,7 +106,7 @@
 </script>
 
 
-<article class="message is-small is-info">
+<article class="message is-small">
     <div class="message-header" style="padding-right: 0">
         <div class="columns is-mobile list-column">
             <div class="column">
@@ -117,12 +117,12 @@
             </div>
             <div class="column is-narrow"></div>
             <div class="column is-narrow" style="padding-right:0" on:click={showDeleteButton}>
-                <i class="fas fa-trash is-6"></i>
+                <i class="fas fa-trash is-6 has-text-white"></i>
             </div>
         </div>
 
     </div>
-    <div class="message-body">
+    <div class="message-body has-background-white">
         <div class="columns is-mobile">
             <div class="column has-text-left">
                 <span>
@@ -152,9 +152,9 @@
                 <p class="modal-card-title">Eintrag löschen</p>
                 <button class="delete" aria-label="close" on:click={() => {showDelete = !showDelete;colorCheck()}}></button>
             </header>
-            <div class="notification has-background-info">
+            <div class="notification primary-color">
                 <a on:click={() => {deleteFinance();colorCheck()}}>
-                    <i class="fas fa-trash"></i>
+                    <i class="fas fa-trash has-text-white"></i>
                 </a>
             </div>
         </div>
@@ -166,14 +166,14 @@
         <div class="modal-background"></div>
         <div class="modal-card">
             <header class="modal-card-head">
-                <p class="modal-card-title">Eintrag updaten</p>
+                <p class="modal-card-title">Eintrag bearbeiten</p>
                 <button class="delete" aria-label="close"  on:click={() => {showEdit = !showEdit; colorCheck()}}></button>
             </header>
             <section class="modal-card-body">
-                <div class="notification has-background-info-dark">
+                <div class="notification primary-color">
                     <form on:submit|preventDefault={updateFinance}>
-                        <input class="input is-info" type="text" placeholder="Name" bind:value={finance.Name} required/>
-                        <input class="input is-info" type="number" placeholder="Betrag" bind:value={finance.Betrag} required/>
+                        <input class="input" type="text" placeholder="Name" bind:value={finance.Name} required/>
+                        <input class="input" type="number" placeholder="Betrag" bind:value={finance.Betrag} required/>
                         <div class="control has-text-left has-text-white">
                             <label>Kategorie:</label>
                             <div class="select is-small is-rounded">
@@ -211,7 +211,7 @@
                             </div>
                         </div>
                         <hr/>
-                        <button type="button" class="button is-primary" on:click={() => {showEdit = !showEdit; colorCheck();updateFinance()}}>Speichern</button>
+                        <button type="button" class="button" on:click={() => {showEdit = !showEdit; colorCheck();updateFinance()}}>Speichern</button>
                     </form>
                 </div>
             </section>
