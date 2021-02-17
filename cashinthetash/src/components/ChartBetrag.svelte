@@ -70,6 +70,9 @@
                                 stacked: true,
                                 ticks: {
                                     fontColor: '#FFF'
+                                },
+                                gridLines: {
+                                    color: "#14212d"
                                 }
                             }],
                             yAxes: [{
@@ -77,6 +80,9 @@
                                 ticks: {
                                     beginAtZero: true,
                                     fontColor: '#FFF'
+                                },
+                                gridLines: {
+                                    color: "#14212d"
                                 }
                             }]
                         }

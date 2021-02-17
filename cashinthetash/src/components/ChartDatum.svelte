@@ -42,7 +42,7 @@
                         'rgba(153, 102, 255, 1)',
                         'rgba(255, 159, 64, 1)'
                     ],
-                    borderWidth: 1
+                    borderWidth: 1,
                 }]
             },
             options: {
@@ -50,19 +50,25 @@
                     xAxes: [{
                         ticks: {
                             fontColor: '#FFF'
+                        },
+                        gridLines: {
+                            color: "#14212d"
                         }
                     }],
                     yAxes: [{
                         ticks: {
                             beginAtZero: true,
                             fontColor: '#FFF'
+                        },
+                        gridLines: {
+                            color: "#14212d"
                         }
                     }],
-                    legend: {
-                        labels: {
-                            fontColor: '#FFF'
-                        }
-                    },
+                },
+                legend: {
+                    labels: {
+                        fontColor: '#FFF'
+                    }
                 }
             }
         });
