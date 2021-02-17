@@ -55,7 +55,13 @@
                             borderWidth: 1
                         }]
                     },
-                    options: {}
+                    options: {
+                        legend: {
+                            labels: {
+                                fontColor: '#FFF',
+                            }
+                        }
+                    }
                 });
             })
             console.log("in Funktion: ", e)

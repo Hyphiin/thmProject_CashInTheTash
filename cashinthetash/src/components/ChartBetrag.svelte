@@ -56,18 +56,27 @@
                                 'rgba(153, 102, 255, 1)',
                                 'rgba(255, 159, 64, 1)'
                             ],
-                            borderWidth: 1
+                            borderWidth: 1,
                         }]
                     },
                     options: {
+                        legend: {
+                            labels: {
+                                fontColor: '#FFF',
+                            }
+                        },
                         scales: {
                             xAxes: [{
-                                stacked: true
+                                stacked: true,
+                                ticks: {
+                                    fontColor: '#FFF'
+                                }
                             }],
                             yAxes: [{
                                 stacked: true,
                                 ticks: {
-                                    beginAtZero: true
+                                    beginAtZero: true,
+                                    fontColor: '#FFF'
                                 }
                             }]
                         }

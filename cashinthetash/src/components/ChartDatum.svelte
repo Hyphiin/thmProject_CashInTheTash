@@ -47,11 +47,22 @@
             },
             options: {
                 scales: {
+                    xAxes: [{
+                        ticks: {
+                            fontColor: '#FFF'
+                        }
+                    }],
                     yAxes: [{
                         ticks: {
-                            beginAtZero: true
+                            beginAtZero: true,
+                            fontColor: '#FFF'
                         }
-                    }]
+                    }],
+                    legend: {
+                        labels: {
+                            fontColor: '#FFF'
+                        }
+                    },
                 }
             }
         });
