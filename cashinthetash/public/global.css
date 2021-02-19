@@ -53,7 +53,7 @@
 }
 
 .sorry{
-    width:976px;
+    width:100%;
 }
 
 .addPlan{
@@ -181,6 +181,10 @@ article.message{
     .newPlan{
         width: 324px;
         padding: 12px 0px 24px 0px;
+    }
+
+    .sorry{
+        width:976px;
     }
 
 }

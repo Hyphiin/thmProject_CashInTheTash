@@ -71,7 +71,7 @@
 
     const onFilter = () => {
         if (filter === "all") {
-            db.collection('plans').orderBy('Summe').where("UserID", "==", uid).limit(limit).onSnapshot(data => {
+            db.collection('plans').orderBy(sort).where("UserID", "==", uid).limit(limit).onSnapshot(data => {
                 plans = data.docs
             })
         } else {
