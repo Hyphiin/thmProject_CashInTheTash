@@ -11,36 +11,85 @@
     let test = {};
 
 
-
     import {onMount} from 'svelte'
 
     function createChart() {
-        let array = ['January','February','March', 'April', 'May', 'June', 'July']
         let nums = []
-        for(let i = 0; i < 7; i++) {
-            db.collection('finance').where("planID", "==", planID).where("Datum", "array-contains", "January").onSnapshot(data => {
+        let dates = []
+            db.collection('finance').where("planID", "==", planID).orderBy("Datum").onSnapshot(data => {
                 test = data.docs
                 console.log("TEST: ", test)
-                let e = 0
+                let oldDate = test[0].data().Datum.toDate()
+                let mm = oldDate.getMonth() + 1;
+                let dd = oldDate.getDate();
+                let yyyy = oldDate.getFullYear();
+                oldDate = dd + '/' + mm + '/' + yyyy;
+
+                let betrag = 0
+
                 for (let j = 0; j < test.length; j++) {
-                    if (test[j].data().Art === "Einnahme") {
-                        e = e + test[j].data().Betrag
-                    } else {
-                        e = e - test[j].data().Betrag
+                    let currentDate = test[j].data().Datum.toDate()
+                    let mm2 = currentDate.getMonth() + 1;
+                    let dd2 = currentDate.getDate();
+                    let yyyy2 = currentDate.getFullYear();
+                    currentDate = dd2 + '/' + mm2 + '/' + yyyy2;
+
+                    if (currentDate === oldDate) {
+                        if (test[j].data().Art === "Einnahme") {
+                            betrag = betrag + test[j].data().Betrag
+                            console.log("oldDate: ", oldDate)
+                            console.log("currentDate: ", currentDate)
+                            console.log("Betrag: ", betrag)
+                            oldDate = currentDate
+                            if (j === test.length-1){
+                                nums.push(betrag)
+                                dates.push(oldDate)
+                                console.log("push1: ",betrag," + ", oldDate)
+                            }
+                        } else {
+                            betrag = betrag - test[j].data().Betrag
+                            console.log("oldDate: ", oldDate)
+                            console.log("currentDate: ", currentDate)
+                            console.log("Betrag: ", betrag)
+                            oldDate = currentDate
+                            if (j === test.length-1){
+                                nums.push(betrag)
+                                dates.push(oldDate)
+                                console.log("push2: ",betrag," + ", oldDate)
+
+                            }
+                        }
+
+                    }else {
+                        nums.push(betrag)
+                        dates.push(oldDate)
+                        console.log("push: ",betrag," + ", oldDate)
+                        if (test[j].data().Art === "Einnahme") {
+                            console.log("oldDate: ", oldDate)
+                            console.log("currentDate: ", currentDate)
+                            console.log("Betrag: ", test[j].data().Betrag)
+                            oldDate = currentDate
+                            betrag = test[j].data().Betrag
+                        } else {
+                            console.log("oldDate: ", oldDate)
+                            console.log("currentDate: ", currentDate)
+                            console.log("Betrag: ", test[j].data().Betrag)
+                            oldDate = currentDate
+                            betrag = -test[j].data().Betrag
+                        }
                     }
-                    console.log("test[j]: ", test[j].data().Betrag)
-                    console.log("Betrag: ", e)
                 }
-                nums [i] = e
+
+                dates.sort()
 
                 let ctx = document.getElementById('myChart').getContext('2d');
                 let myChart = new Chart(ctx, {
                     type: 'line',
                     data: {
-                        labels: ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli'],
+                        labels: dates,
                         datasets: [{
-                            label: 'Ausgaben in €',
-                            data: [nums[0], nums[1], nums[2], nums[3], nums[4], nums[5], nums[6], nums[7]],
+                            label: 'Umsatz in €',
+                            data: nums,
                             backgroundColor: [
                                 'rgba(255, 99, 132, 0.2)',
                                 'rgba(54, 162, 235, 0.2)',
@@ -71,7 +120,7 @@
                     }
                 });
             })
-        }
+
     }
 
     onMount(createChart)
