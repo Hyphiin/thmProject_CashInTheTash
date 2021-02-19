@@ -13,7 +13,7 @@
     let Summe = 0;
 
     let sort = 'Datum';
-    let filter = "==";
+    let filter = "all";
 
     let limit = 3
 
@@ -56,16 +56,10 @@
             db.collection('plans').orderBy(sort).where("UserID", "==", uid).limit(limit).onSnapshot(data => {
                 plans = data.docs
             })
-        } else {
-            if (filter === "all") {
-                db.collection('plans').orderBy('Summe').where("UserID", "==", uid).limit(limit).onSnapshot(data => {
-                    plans = data.docs
-                })
-            } else {
-                db.collection('plans').orderBy('Summe').where("UserID", "==", uid).where("Summe", filter, 0).limit(limit).onSnapshot(data => {
-                    plans = data.docs
-                })
-            }
+        }else{
+            db.collection('plans').orderBy('Summe').where("UserID", "==", uid).where("Summe", filter, 0).limit(limit).onSnapshot(data => {
+                plans = data.docs
+            })
         }
     }
 
@@ -140,33 +134,32 @@
 {/if}
 
 <div class="newPlan container">
-<article class="message is-medium is-mobile">
-    <form on:submit|preventDefault={addPlan}>
-        <div class="message-header addPlan">
-            <p class="subtitle has-text-white is-6">
-                Füge einen neuen Plan hinzu!
-            </p>
-        </div>
-        <div class="message-body">
-            <div class="columns is-mobile list-column addPlan">
-                <div class="column is-narrow">
-                    <input class="input is-small" type="text" placeholder="Titel" bind:value={Titel}
-                           required/>
-                </div>
-                <input type="hidden" bind:value={Summe}/>
-                <div class="column is-narrow">
-                    <button class="button is-small">
+    <article class="message is-medium is-mobile">
+        <form on:submit|preventDefault={addPlan}>
+            <div class="message-header addPlan">
+                <p class="subtitle has-text-white is-6">
+                    Füge einen neuen Plan hinzu!
+                </p>
+            </div>
+            <div class="message-body">
+                <div class="columns is-mobile list-column addPlan">
+                    <div class="column is-narrow">
+                        <input class="input is-small" type="text" placeholder="Titel" bind:value={Titel}
+                               required/>
+                    </div>
+                    <input type="hidden" bind:value={Summe}/>
+                    <div class="column is-narrow">
+                        <button class="button is-small">
                         <span style="color: White;">
                         <i class="fas fa-plus"></i>
                         </span>
-                    </button>
+                        </button>
+                    </div>
                 </div>
             </div>
-        </div>
-    </form>
-</article>
+        </form>
+    </article>
 </div>
-
 
 
 <div class="container">
