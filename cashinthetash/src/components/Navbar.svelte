@@ -40,14 +40,14 @@
             <div class="navbar-menu" class:is-active={mobile} id="menu">
                 <div class="navbar-end">
                     <div class="navbar-item has-dropdown is-hoverable">
-                        <span class="navbar-link">
+                        <span class="navbar-link fontlight-color">
                             Team
                         </span>
-                        <div class="navbar-dropdown is-boxed">
-                            <p class="navbar-item" href="">
+                        <div class="navbar-dropdown is-boxed primary-color">
+                            <p class="navbar-item has-text-white" href="">
                                 Felix
                             </p>
-                            <p class="navbar-item" href="">
+                            <p class="navbar-item has-text-white" href="">
                                 Chiara
                             </p>
                         </div>

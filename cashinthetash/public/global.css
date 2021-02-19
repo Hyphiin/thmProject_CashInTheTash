@@ -130,6 +130,14 @@ article.message{
     background-color: #115571;
 }
 
+.fontlight-color{
+    color:#31afb4;
+}
+
+.searchbar{
+    margin-bottom: 5px;
+}
+
 
 @media only screen and (max-width: 600px) {
     .bg-image {
