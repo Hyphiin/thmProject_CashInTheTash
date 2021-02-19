@@ -15,6 +15,10 @@
     let sort = 'Datum';
     let filter = "==";
 
+    let txt = "";
+    let currentPoolList = [];
+    let isSearching = false;
+
     let limit = 3
 
     db.collection('plans').orderBy('Datum').where("UserID", "==", uid).limit(limit).onSnapshot(data => {
@@ -81,6 +85,34 @@
         }
     }
 
+
+    const onSearch = (txt) => {
+        isSearching = true
+        db.collection('plans').orderBy(sort).where("UserID", "==", uid).where("Summe", filter, 0).onSnapshot(data => {
+            plans = data.docs
+        })
+
+        if (txt && txt.length > 0) {
+            for (let i = 0; i < plans.length; i++) {
+                if (plans[i].Titel === txt) {
+                    currentPoolList.push(plans[i])
+                }
+            }
+            console.log(plans)
+            plans = currentPoolList
+        } else {
+            db.collection('plans').orderBy(sort).where("UserID", "==", uid).where("Summe", filter, 0).onSnapshot(data => {
+                plans = data.docs
+            })
+            isSearching = false;
+            console.log(plans)
+        }
+    }
+
+    const SearchTextChanged = () => {
+        onSearch(txt)
+    }
+
 </script>
 
 <hr/>
@@ -94,14 +126,24 @@
     </div>
 </section>
 
+<div class="control has-icons-left has-icons-right">
+    <input class="input is-small is-rounded searchbar" type="text" placeholder="Suche" bind:value="{txt}"
+           on:input={SearchTextChanged}/>
+    <span class="icon is-small is-left">
+    <i class="fas fa-search"></i>
+  </span>
+    <span class="icon is-small is-right">
+    <i class="fas fa-check"></i>
+  </span>
+</div>
+
 
 <div class="columns filterwerkzeug">
     <div class="column is-half-desktop has-text-right-desktop" style="padding-left: 0px; padding-right: 5px;">
         <div class="control">
-            <label class="has-text-white">Sortieren:</label>
             <div class="select is-small is-rounded">
                 <select class="has-icons-left" bind:value={sort} on:change={onSort}>
-                    <option name="answer" value={"Datum"}>Standard</option>
+                    <option name="answer" value={"Datum"}>Sortieren</option>
                     <option name="answer" value={"Summe"}>Summe</option>
                     <option name="answer" value={"Datum"}>Datum</option>
                     <option name="answer" value={"Titel"}>Titel</option>
@@ -112,10 +154,9 @@
 
     <div class="column is-half-desktop has-text-left-desktop" style="padding-left: 5px; padding-right: 0px;">
         <div class="control">
-            <label class="has-text-white">Filtern:</label>
             <div class="select is-small is-rounded">
                 <select class="has-icons-left" bind:value={filter} on:change={onFilter}>
-                    <option name="answer" value={"all"}>Standard</option>
+                    <option name="answer" value={"all"}>Filtern</option>
                     <option name="answer" value={">="}>Positiv</option>
                     <option name="answer" value={"<"}>Negativ</option>
                 </select>
@@ -126,47 +167,48 @@
 
 
 <hr/>
+{#if isSearching === false}
+    {#if plans.length >= 3 && limit <= plans.length}
+        <button class="button" on:click={IncreaseNumber}>Mehr</button>
+    {/if}
 
-{#if plans.length >= 3 && limit <= plans.length}
-    <button class="button" on:click={IncreaseNumber}>Mehr</button>
+    {#if limit >= plans.length && limit > 3}
+        <button class="button" on:click={LimitNumber}>Weniger</button>
+    {/if}
+
+    {#if plans.length > 0}
+        <hr/>
+    {/if}
 {/if}
 
-{#if limit >= plans.length && limit > 3}
-    <button class="button" on:click={LimitNumber}>Weniger</button>
-{/if}
-
-{#if plans.length > 0}
-    <hr/>
-{/if}
 
 <div class="newPlan container">
-<article class="message is-medium is-mobile">
-    <form on:submit|preventDefault={addPlan}>
-        <div class="message-header addPlan">
-            <p class="subtitle has-text-white is-6">
-                Füge einen neuen Plan hinzu!
-            </p>
-        </div>
-        <div class="message-body">
-            <div class="columns is-mobile list-column addPlan">
-                <div class="column is-narrow">
-                    <input class="input is-small" type="text" placeholder="Titel" bind:value={Titel}
-                           required/>
-                </div>
-                <input type="hidden" bind:value={Summe}/>
-                <div class="column is-narrow">
-                    <button class="button is-small">
+    <article class="message is-medium is-mobile">
+        <form on:submit|preventDefault={addPlan}>
+            <div class="message-header addPlan">
+                <p class="subtitle has-text-white is-6">
+                    Füge einen neuen Plan hinzu!
+                </p>
+            </div>
+            <div class="message-body">
+                <div class="columns is-mobile list-column addPlan">
+                    <div class="column is-narrow">
+                        <input class="input is-small" type="text" placeholder="Titel" bind:value={Titel}
+                               required/>
+                    </div>
+                    <input type="hidden" bind:value={Summe}/>
+                    <div class="column is-narrow">
+                        <button class="button is-small">
                         <span style="color: White;">
                         <i class="fas fa-plus"></i>
                         </span>
-                    </button>
+                        </button>
+                    </div>
                 </div>
             </div>
-        </div>
-    </form>
-</article>
+        </form>
+    </article>
 </div>
-
 
 
 <div class="container">
