@@ -8,6 +8,7 @@
     export let uid;
 
     let plans = [];
+    let allplans = []
 
     let Titel = '';
     let Summe = 0;
@@ -17,12 +18,16 @@
 
     let limit = 3
 
+    db.collection('plans').orderBy('Datum').where("UserID", "==", uid).onSnapshot(data => {
+        allplans = data.docs
+    })
+
     db.collection('plans').orderBy('Datum').where("UserID", "==", uid).limit(limit).onSnapshot(data => {
         plans = data.docs
     })
 
     const IncreaseNumber = () => {
-        if (limit <= plans.length) {
+        if (limit <= allplans.length) {
             limit += 3
             console.log(limit)
         }
@@ -175,3 +180,12 @@
         {/each}
     </div>
 </div>
+
+<hr/>
+{#if plans.length >= 3 && limit <= plans.length}
+    <button class="button" on:click={IncreaseNumber}>Mehr</button>
+{/if}
+
+{#if limit >= plans.length && limit > 3}
+    <button class="button" on:click={LimitNumber}>Weniger</button>
+{/if}

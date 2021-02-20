@@ -3,11 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="427de112-bf1a-4f05-9f6a-be44a7f01a5c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cashinthetash/public/global.css" beforeDir="false" afterPath="$PROJECT_DIR$/cashinthetash/public/global.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cashinthetash/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/cashinthetash/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cashinthetash/src/components/Banner.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/cashinthetash/src/components/Banner.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cashinthetash/src/components/Finances.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/cashinthetash/src/components/Finances.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cashinthetash/src/components/Navbar.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/cashinthetash/src/components/Navbar.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cashinthetash/src/components/Plans.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/cashinthetash/src/components/Plans.svelte" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,7 +131,7 @@
       <workItem from="1612349953068" duration="9697000" />
       <workItem from="1612950604190" duration="2352000" />
       <workItem from="1613055541786" duration="3643000" />
-      <workItem from="1613828547353" duration="2128000" />
+      <workItem from="1613828547353" duration="3372000" />
     </task>
     <servers />
   </component>
