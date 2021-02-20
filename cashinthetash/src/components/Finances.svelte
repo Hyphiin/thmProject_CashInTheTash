@@ -14,7 +14,6 @@
     let Betrag = 0;
     let Name = '';
     let Kategorie = '';
-    let Wiederkehrend = '';
     let Art = '';
     export let planID;
     let Summe;
@@ -29,7 +28,7 @@
     const addFinance = () => {
         const Datum = firebase.firestore.Timestamp.fromDate(new Date());
         db.collection('finance').add({
-            Betrag, Name, Kategorie, Datum, planID, Wiederkehrend, Art
+            Betrag, Name, Kategorie, Datum, planID, Art
         })
         console.log('erfolgreich hinzugefügt!');
         Name = ''
@@ -106,16 +105,6 @@
                                             <option name="answer" value={"Technik"}>Technik</option>
                                             <option name="answer" value={"Versicherung"}>Versicherung</option>
                                             <option name="answer" value={"Sonstige"}>Sonstige</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="control has-text-left has-text-white">
-                                    <label>Wiederkehrend?  </label>
-                                    <div class="select is-small is-rounded">
-                                        <select bind:value={Wiederkehrend}>
-                                            <option name="answer" value={""}>Auswählen</option>
-                                            <option name="answer" value={true}>Wiederkehrend</option>
-                                            <option name="answer" value={false}>Einmalig</option>
                                         </select>
                                     </div>
                                 </div>

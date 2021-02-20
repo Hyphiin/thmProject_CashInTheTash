@@ -24,9 +24,8 @@
         <div class="container">
             <div class="navbar-brand">
                 <a class="navbar-item" href="javascript:window.location.href=window.location.href">
-                    <img class="tag is-rounded"
-                         src='https://images.vexels.com/media/users/3/143188/isolated/preview/5f44f3160a09b51b4fa4634ecdff62dd-money-icon-by-vexels.png'
-                         alt="Logo">
+                    <img class="tag is-rounded light-color"
+                         src='./images/CashInTheTashLogo2.png' alt="Logo"/>
                 </a>
                 <span class="navbar-item">
                     <h1 class="title is-6 has-text-white">

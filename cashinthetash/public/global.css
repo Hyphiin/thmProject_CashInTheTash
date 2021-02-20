@@ -138,6 +138,32 @@ article.message{
     margin-bottom: 5px;
 }
 
+.logo{
+    width: 25%;
+    height: 15%;
+}
+
+.tag:not(body).light-color {
+    align-items: center;
+    background-color: whitesmoke;
+    border-radius: 4px;
+    color: whitesmoke;
+    display: inline-flex;
+    font-size: .75rem;
+    height: 2em;
+    justify-content: center;
+    line-height: 1.5;
+    padding-left: .75em;
+    padding-right: .75em;
+    white-space: nowrap;
+}
+
+.heroalign{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 
 @media only screen and (max-width: 600px) {
     .bg-image {
