@@ -77,6 +77,7 @@
                 {/if}
             </div>
         </div>
+        {#if finances.length > 0}
         {#if showChart === true}
             <div class="column is-narrow" style="padding-left: 53px;" on:click={showMyChart}>
                 <i class="fas fa-list has-text-white"></i>
@@ -86,6 +87,7 @@
                 <i class="fas fa-chart-pie has-text-white"></i>
             </div>
         {/if}
+            {/if}
     </div>
 </div>
 
@@ -112,9 +114,11 @@
                 <div style="height:8px"></div>
             {/each}
         </div>
+        {#if finances.length > 0}
         <div class="control">
             <span class="tag {color2}">{sum}€</span>
         </div>
+        {/if}
     {/if}
 
 </div>

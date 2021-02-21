@@ -74,6 +74,11 @@
         {#if showList}
             <SimpleList planID={planID} sum={sum}/>
         {/if}
+    {#if finances.length <= 0}
+        <span class="tag is-link is-light">
+            Leider noch keine Einträge vorhanden!
+        </span>
+    {/if}
 </div>
 <div class="container" style="margin-top:15px">
 <button class="button" on:click={showADDButton}>{activatedText}</button>
