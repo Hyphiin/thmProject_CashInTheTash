@@ -70,12 +70,22 @@
                             console.log("Betrag: ", test[j].data().Betrag)
                             oldDate = currentDate
                             betrag = test[j].data().Betrag
+                            if (j === test.length-1){
+                                nums.push(betrag)
+                                dates.push(oldDate)
+                                console.log("push1: ",betrag," + ", oldDate)
+                            }
                         } else {
                             console.log("oldDate: ", oldDate)
                             console.log("currentDate: ", currentDate)
                             console.log("Betrag: ", test[j].data().Betrag)
                             oldDate = currentDate
                             betrag = -test[j].data().Betrag
+                            if (j === test.length-1){
+                                nums.push(betrag)
+                                dates.push(oldDate)
+                                console.log("push1: ",betrag," + ", oldDate)
+                            }
                         }
                     }
                 }
