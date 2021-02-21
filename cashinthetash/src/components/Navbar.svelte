@@ -25,7 +25,7 @@
             <div class="navbar-brand">
                 <a class="navbar-item" href="javascript:window.location.href=window.location.href">
                     <img class="tag is-rounded light-color"
-                         src='./images/CashInTheTashLogo2.png' alt="Logo"/>
+                         src='./images/CashInTheTashLogo2C.png' alt="Logo"/>
                 </a>
                 <span class="navbar-item">
                     <h1 class="title is-6 has-text-white">
@@ -94,7 +94,7 @@
                     <img src="images/Info/Plan_Edit_and_Open.png"/>
                     <p class="has-text-white">Der Pfeil zeigt, wo ein Plan mit einem Klicken geöffnet werden kann.</p>
                     <hr/>
-                    <p class="has-text-white">Die Einträge eines Plans können in 2 Varianten angezeigt werden. Standardäßig werden sie in einer klassischen Liste angezeigt, worauf der Nutzer durch Anlicken des Icons die Ansicht auf eine Diagrammansicht und aucb wieder zurück wechseln kann.</p>
+                    <p class="has-text-white">Die Einträge eines Plans können in 2 Varianten angezeigt werden. Standardäßig werden sie in einer klassischen Liste angezeigt, worauf der Nutzer durch Anlicken des Icons die Ansicht auf eine Diagrammansicht und auch wieder zurück wechseln kann.</p>
                     <img src="images/Info/Plan_Ansicht_Wechsel.png"/>
                     <hr/>
                     <p class="has-text-white">Ein erstmal erstellter Eintrag, kann ähnlich wie der Plan, auch editiert und gelöscht werden.</p>
