@@ -5,6 +5,15 @@
 
     export let id = '';
     export let plan = {};
+    export let showContent;
+    let showEdit;
+    export let showDelete;
+
+    export let planID = '';
+    export let currentPlanID;
+    export let currentPlanData;
+
+
 
     const deletePlan = () => {
         db.collection('plans').doc(id).delete()
@@ -15,6 +24,7 @@
             });
         });
         console.log('erfolgreich gelöscht!');
+        showContent = false;
     }
 
     const updatePlan = () => {
@@ -24,17 +34,13 @@
         console.log('erfolgreich geupdated!');
     }
 
-    export let planID = '';
-    export let currentPlanID;
-    export let currentPlanData;
 
     const getID = () => {
         planID = {id};
         console.log(planID);
     }
 
-    export let showContent;
-    let showEdit;
+
 
     console.log("showEdit " + showEdit);
 
@@ -59,7 +65,6 @@
         currentPlanData = plan;
     }
 
-    let showDelete = false;
 
     const showDeleteButton = () => {
         showDelete = !showDelete
@@ -76,6 +81,7 @@
 
     datum = dd + '/' + mm + '/' + yyyy;
 
+    $: sum = plan.Summe;
 
 </script>
 
@@ -107,7 +113,7 @@
         </div>
         <div class="message-body">
             {#if showContent}
-                <Finances planID={id} sum={plan.Summe}/>
+                <Finances planID={id} sum={sum}/>
                 <hr class="has-background-white"/>
             {/if}
             <p class="subtitle2 has-text-centered is-size-7 is-uppercase has-text-weight-bold has-text-white">Erstellt: {datum}</p>
@@ -126,7 +132,7 @@
                 <button class="delete" aria-label="close" on:click={() => {showDelete = !showDelete}}></button>
             </header>
             <div class="notification primary-color">
-                <a on:click={deletePlan}>
+                <a on:click={() => {showDelete = !showDelete; deletePlan()}}>
                     <i class="fas fa-trash has-text-white"></i>
                 </a>
             </div>

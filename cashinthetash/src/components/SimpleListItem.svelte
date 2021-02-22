@@ -22,7 +22,6 @@
     export let colorSum;
 
     let helper = 0;
-    let positive = true;
 
     currentItemData = finance;
 
@@ -49,10 +48,10 @@
         showDelete = !showDelete
         if(finance.Art === "Einnahme"){
             sum = sum - finance.Betrag
-            console.log("Sum: ",sum)
+            console.log("after delete Sum: ",sum)
         }else {
             sum = sum + finance.Betrag
-            console.log("Sum: ",sum)
+            console.log("after delete Sum: ",sum)
         }
         db.collection('plans').doc(planID).update({
             Summe: sum
@@ -71,10 +70,10 @@
 
         if(aktArt === "Einnahme"){
             sum = sum - aktBetrag
-            console.log("Sum davor: ",sum)
+            console.log("Sum vor Update: ",sum)
         }else {
             sum = sum + aktBetrag
-            console.log("Sum davor: ",sum)
+            console.log("Sum  vor Update: ",sum)
         }
 
         db.collection('finance').doc(id).update({
@@ -87,14 +86,14 @@
         aktBetrag = finance.Betrag
         aktArt = finance.Art
 
-        console.log("Betrag danach: ",finance.Betrag)
+        console.log("Betrag danach: ", aktBetrag)
 
         if(finance.Art === "Einnahme"){
-            sum = sum + finance.Betrag
+            sum = sum + aktBetrag
             pos = true
             console.log("Sum danach: ",sum)
         }else {
-            sum = sum - finance.Betrag
+            sum = sum - aktBetrag
             pos = false
             console.log("Sum danach: ",sum)
         }
@@ -102,8 +101,11 @@
 
         db.collection('plans').doc(planID).update({
             Summe: sum,
+        })
+        db.collection('finance').doc(id).update({
             Positiv: pos
         })
+
         colorCheck()
         console.log('erfolgreich geupdated!');
     }

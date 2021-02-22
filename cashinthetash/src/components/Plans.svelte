@@ -17,6 +17,7 @@
     let limit = 3
 
     let showContent = false;
+    let showDelete = false;
     let planID;
     let currentPlanID;
     let currentPlanData;
@@ -177,11 +178,11 @@
                 Leider keine passenden Ergebnisse gefunden!
             </div>
         {/if}
-        {#if showContent}
+        {#if showContent === true}
             <Plan id={currentPlanID} plan={currentPlanData} bind:showContent={showContent}/>
         {:else}
             {#each plans as plan}
-                <Plan id={plan.id} plan={plan.data()} bind:showContent={showContent} bind:currentPlanID={currentPlanID} bind:currentPlanData={currentPlanData}/>
+                <Plan id={plan.id} plan={plan.data()} bind:showContent={showContent} bind:showDelete={showDelete} bind:currentPlanID={currentPlanID} bind:currentPlanData={currentPlanData}/>
             {/each}
         {/if}
 
