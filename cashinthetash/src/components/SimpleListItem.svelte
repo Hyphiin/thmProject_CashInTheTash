@@ -6,6 +6,9 @@
     export let planID;
     export let sum;
 
+    export let currentItemID;
+    export let currentItemData;
+
     let date = finance.Datum.toDate().toDateString();
 
     let datum = finance.Datum.toDate()
@@ -15,21 +18,21 @@
 
     datum = dd + '/' + mm + '/' + yyyy;
 
-    let color = ""
+    export let colorSum;
+
 
     let helper = 0;
-    let positive = true
+    let positive = true;
 
-    const colorCheck = () => {
-        if (finance.Art === "Einnahme") {
-            color = "is-success"
-            positive = true
-        } else {
-            color = "is-danger"
-            positive = false
-        }
-        console.log(color)
-        console.log(positive)
+    currentItemData = finance;
+
+    export const colorCheck = () => {
+            if (sum >= 0) {
+                colorSum = "is-success"
+            } else {
+                colorSum = "is-danger"
+            }
+            console.log("COLOR CHECKED!")
     }
 
     let showEdit = false
@@ -68,9 +71,11 @@
 
         if(aktArt === "Einnahme"){
             sum = sum - aktBetrag
+            finance.Positiv = true
             console.log("Sum davor: ",sum)
         }else {
             sum = sum + aktBetrag
+            finance.Positiv = false
             console.log("Sum davor: ",sum)
         }
 
@@ -79,7 +84,8 @@
             Name: finance.Name,
             Kategorie: finance.Kategorie,
             Wiederkehrend: finance.Wiederkehrend,
-            Art: finance.Art
+            Art: finance.Art,
+            Positiv: finance.Positiv
         })
 
         aktBetrag = finance.Betrag
@@ -102,7 +108,6 @@
         console.log('erfolgreich geupdated!');
     }
     colorCheck()
-
 </script>
 
 
@@ -130,10 +135,10 @@
                 </span>
             </div>
             <div class="column has-text-left">
-                {#if positive}
-                    <span class="tag is-success is-light">{finance.Betrag}€</span>
-                {:else}
+                {#if finance.Positiv}
                     <span class="tag is-danger is-light">-{finance.Betrag}€</span>
+                {:else}
+                    <span class="tag is-success is-light">{finance.Betrag}€</span>
                 {/if}
             </div>
             <div class="column is-narrow">

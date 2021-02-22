@@ -25,13 +25,15 @@
     }
 
     export let planID = '';
+    export let currentPlanID;
+    export let currentPlanData;
 
     const getID = () => {
         planID = {id};
         console.log(planID);
     }
 
-    let showContent;
+    export let showContent;
     let showEdit;
 
     console.log("showEdit " + showEdit);
@@ -39,15 +41,22 @@
     let string = "column is-two-quarters-mobile is-half-tablet is-half-desktop is-one-third-widescreen is-one-quarter-fullhd";
     let activatedText = "Öffnen";
     const showContentButton = () => {
-        showContent = !showContent
         if (showContent) {
-            activatedText = "Schließen"
-            string = "column is-full-mobile is-full-tablet is-full-desktop is-full-widescreen is-full-fullhd"
-        } else {
             activatedText = "Öffnen"
             string = "column is-two-quarters-mobile is-half-tablet is-half-desktop is-one-third-widescreen is-one-quarter-fullhd"
+            console.log("showContent1: ", showContent)
+            console.log("string1: ", string)
+            console.log("activatedText1: ", activatedText)
+        } else {
+            activatedText = "Schließen"
+            string = "column is-full-mobile is-full-tablet is-full-desktop is-full-widescreen is-full-fullhd"
+            console.log("showContent2: ", showContent)
+            console.log("string2: ", string)
+            console.log("activatedText2: ", activatedText)
         }
-
+        showContent = !showContent
+        currentPlanID = id;
+        currentPlanData = plan;
     }
 
     let showDelete = false;
@@ -59,7 +68,6 @@
     const showEditButton = () => {
         showEdit = !showEdit
     }
-
 
     let datum = plan.Datum.toDate()
     let mm = datum.getMonth() + 1;

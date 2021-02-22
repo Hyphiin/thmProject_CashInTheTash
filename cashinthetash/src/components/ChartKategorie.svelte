@@ -1,4 +1,4 @@
-<canvas id="myChart" width="400" height="400"></canvas>
+<canvas id="myChart" width="250" height="400"></canvas>
 
 
 <script>
@@ -32,7 +32,7 @@
                 let myChart = new Chart(ctx, {
                     type: 'pie',
                     data: {
-                        labels: ['Essen', 'Trinken', 'Kleidung', 'Freizeit', 'Miete', 'Technik', 'Versicherungen', 'Sonstiges'],
+                        labels: array,
                         datasets: [{
                             label: '# of Votes',
                             data: [nums[0], nums[1], nums[2], nums[3], nums[4], nums[5], nums[6], nums[7]],
@@ -42,7 +42,9 @@
                                 'rgba(255, 206, 86, 0.2)',
                                 'rgba(75, 192, 192, 0.2)',
                                 'rgba(153, 102, 255, 0.2)',
-                                'rgba(255, 159, 64, 0.2)'
+                                'rgba(255, 159, 64, 0.2)',
+                                'rgba(65, 180, 20, 0.2)',
+                                'rgba(188, 20, 100, 0.2)'
                             ],
                             borderColor: [
                                 'rgba(255, 99, 132, 1)',
@@ -50,7 +52,9 @@
                                 'rgba(255, 206, 86, 1)',
                                 'rgba(75, 192, 192, 1)',
                                 'rgba(153, 102, 255, 1)',
-                                'rgba(255, 159, 64, 1)'
+                                'rgba(255, 159, 64, 1)',
+                                'rgba(65, 180, 20, 0.2)',
+                                'rgba(188, 20, 100, 0.2)'
                             ],
                             borderWidth: 1
                         }]

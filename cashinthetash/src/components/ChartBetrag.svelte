@@ -1,4 +1,4 @@
-<canvas id="myChart" width="400" height="400"></canvas>
+<canvas id="myChart" width="260" height="400"></canvas>
 
 
 <script>
@@ -36,7 +36,7 @@
                 let myChart = new Chart(ctx, {
                     type: 'bar',
                     data: {
-                        labels: ['Essen', 'Trinken', 'Kleidung', 'Freizeit', 'Miete', 'Technik', 'Versicherungen', 'Sonstiges'],
+                        labels: array,
                         datasets: [{
                             label: 'Betrag in €',
                             data: [nums[0], nums[1], nums[2], nums[3], nums[4], nums[5], nums[6], nums[7]],

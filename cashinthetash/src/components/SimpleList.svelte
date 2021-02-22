@@ -12,8 +12,9 @@
     export let sum;
 
     let showChart = false
-
     let sort = 'Name';
+
+    let simpleListItem;
 
     db.collection('finance').orderBy('Datum').where("planID", "==", planID).onSnapshot(data => {
         finances = data.docs
@@ -24,18 +25,23 @@
         db.collection('finance').orderBy(sort).where("planID", "==", planID).onSnapshot(data => {
             finances = data.docs
         })
-        colorCheck2()
+        colorCheckSum()
     }
 
-    let color2 = "is-success"
-    const colorCheck2 = () => {
+    const changeHandler = () => {
+        onSort();
+    }
+
+    let colorSum = "is-success"
+    let currentItemData;
+
+    const colorCheckSum = () => {
         if (sum >= 0) {
-            color2 = "is-success"
+            colorSum = "is-success"
         } else {
-            color2 = "is-danger"
+            colorSum = "is-danger"
         }
     }
-    colorCheck2()
 
     const showMyChart = () => {
         if (showChart === true) {
@@ -45,7 +51,7 @@
             db.collection('finance').orderBy(sort).where("planID", "==", planID).onSnapshot(data => {
                 finances = data.docs
             })
-            colorCheck2()
+            colorCheckSum()
         }
     }
 </script>
@@ -66,7 +72,7 @@
                 {:else}
                     <label class="has-text-white" style="padding-left: 4px">Sortieren</label>
                     <div class="select is-small is-rounded">
-                        <select bind:value={sort} on:change={onSort}>
+                        <select bind:value={sort} on:change={changeHandler}>
                             <option name="answer" value={"Name"}>Auswählen</option>
                             <option name="answer" value={"Betrag"}>Betrag</option>
                             <option name="answer" value={"Datum"}>Datum</option>
@@ -91,7 +97,6 @@
     </div>
 </div>
 
-
 <hr/>
 
 <div class="container">
@@ -109,14 +114,14 @@
         <div class="rows">
             {#each finances as item}
                 <div class="row is-fullwidth is-2">
-                    <SimpleListItem id={item.id} finance={item.data()} sum={sum} planID={planID}/>
+                    <SimpleListItem bind:this={simpleListItem} id={item.id} finance={item.data()} sum={sum} planID={planID} bind:currentItemData={currentItemData} bind:colorSum={colorSum}/>
                 </div>
                 <div style="height:8px"></div>
             {/each}
         </div>
         {#if finances.length > 0}
         <div class="control">
-            <span class="tag {color2}">{sum}€</span>
+            <span class="tag {colorSum}">{sum}€</span>
         </div>
         {/if}
     {/if}

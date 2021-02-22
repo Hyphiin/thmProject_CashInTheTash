@@ -18,6 +18,11 @@
 
     let limit = 3
 
+    let showContent = false;
+    let planID;
+    let currentPlanID;
+    let currentPlanData;
+
     db.collection('plans').orderBy('Datum').where("UserID", "==", uid).onSnapshot(data => {
         allplans = data.docs
     })
@@ -61,7 +66,7 @@
             db.collection('plans').orderBy(sort).where("UserID", "==", uid).limit(limit).onSnapshot(data => {
                 plans = data.docs
             })
-        }else{
+        } else {
             db.collection('plans').orderBy('Summe').where("UserID", "==", uid).where("Summe", filter, 0).limit(limit).onSnapshot(data => {
                 plans = data.docs
             })
@@ -79,6 +84,7 @@
             })
         }
     }
+
 
 </script>
 
@@ -174,10 +180,14 @@
                 Leider keine passenden Ergebnisse gefunden!
             </div>
         {/if}
+        {#if showContent}
+            <Plan id={currentPlanID} plan={currentPlanData} bind:showContent={showContent}/>
+        {:else}
+            {#each plans as plan}
+                <Plan id={plan.id} plan={plan.data()} bind:showContent={showContent} bind:currentPlanID={currentPlanID} bind:currentPlanData={currentPlanData}/>
+            {/each}
+        {/if}
 
-        {#each plans as plan}
-            <Plan id={plan.id} plan={plan.data()}/>
-        {/each}
     </div>
 </div>
 
