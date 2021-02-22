@@ -29,6 +29,13 @@
 
     const addFinance = () => {
         const Datum = firebase.firestore.Timestamp.fromDate(new Date());
+        if(Art === "Einnahme"){
+            pos = true
+        }else {
+            pos = false
+        }
+        Positiv = pos;
+
         db.collection('finance').add({
             Betrag, Name, Kategorie, Datum, planID, Art, Summe, Positiv
         })
@@ -39,11 +46,9 @@
 
         if(Art === "Einnahme"){
             sum = sum + Betrag
-            pos = true
             console.log("Sum: ",sum)
         }else {
             sum = sum - Betrag
-            pos = false
             console.log("Sum: ",sum)
         }
 
@@ -51,8 +56,8 @@
 
         db.collection('plans').doc(planID).update({
             Summe: sum,
-            Positiv: pos
         })
+
         Betrag = ''
 
     }

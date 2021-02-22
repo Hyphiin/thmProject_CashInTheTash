@@ -16,7 +16,7 @@
     let showChart = false
     let sort = 'Name';
 
-    let allplans = []
+    let allfinance = []
     let limit = 5;
 
 
@@ -25,7 +25,7 @@
     })
 
     db.collection('finance').orderBy('Datum').where("planID", "==", planID).onSnapshot(data => {
-        allplans = data.docs
+        allfinance = data.docs
     })
 
 
@@ -64,7 +64,7 @@
     }
 
     const IncreaseNumber = () => {
-        if (limit <= allplans.length) {
+        if (limit <= allfinance.length) {
             limit += 5
             console.log(limit)
         }
@@ -113,16 +113,16 @@
             </div>
         </div>
         {#if finances.length > 0}
-        {#if showChart === true}
-            <div class="column is-narrow" style="padding-left: 53px;" on:click={showMyChart}>
-                <i class="fas fa-list has-text-white"></i>
-            </div>
-        {:else}
-            <div class="column is-narrow" style="padding-left: 62px;" on:click={showMyChart}>
-                <i class="fas fa-chart-pie has-text-white"></i>
-            </div>
-        {/if}
+            {#if showChart === true}
+                <div class="column is-narrow" style="padding-left: 53px;" on:click={showMyChart}>
+                    <i class="fas fa-list has-text-white"></i>
+                </div>
+            {:else}
+                <div class="column is-narrow" style="padding-left: 62px;" on:click={showMyChart}>
+                    <i class="fas fa-chart-pie has-text-white"></i>
+                </div>
             {/if}
+        {/if}
     </div>
 </div>
 
@@ -143,22 +143,24 @@
         <div class="rows">
             {#each finances as item}
                 <div class="row is-fullwidth is-2">
-                    <SimpleListItem id={item.id} finance={item.data()} sum={sum} pos={pos} planID={planID} bind:currentItemData={currentItemData} bind:colorSum={colorSum}/>
+                    <SimpleListItem id={item.id} finance={item.data()} bind:sum={sum} pos={pos} planID={planID}
+                                    bind:currentItemData={currentItemData} bind:colorSum={colorSum}/>
                 </div>
-                <div style="height:8px"></div>
+                <div style="height:10px"></div>
             {/each}
         </div>
-        {#if finances.length > 5 && limit <= finances.length}
+        {#if allfinance.length > 5 && limit < allfinance.length}
             <button class="button" on:click={IncreaseNumber}>Mehr</button>
         {/if}
 
-        {#if limit >= finances.length && limit > 5}
+        {#if limit > 5}
             <button class="button" on:click={LimitNumber}>Weniger</button>
         {/if}
         {#if finances.length > 0}
-        <div class="control">
-            <span class="tag {colorSum}">{sum}€</span>
-        </div>
+            <div style="height:10px"></div>
+            <div class="control">
+                <span class="tag {colorSum}">{sum}€</span>
+            </div>
         {/if}
     {/if}
 

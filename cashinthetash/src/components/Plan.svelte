@@ -44,8 +44,8 @@
 
     console.log("showEdit " + showEdit);
 
-    let string = "column is-two-quarters-mobile is-half-tablet is-half-desktop is-one-third-widescreen is-one-quarter-fullhd";
-    let activatedText = "Öffnen";
+    $: string = "column is-two-quarters-mobile is-half-tablet is-half-desktop is-one-third-widescreen is-one-quarter-fullhd";
+    $: activatedText = "Öffnen";
     const showContentButton = () => {
         if (showContent) {
             activatedText = "Öffnen"
@@ -131,8 +131,8 @@
                 <p class="modal-card-title">Plan löschen</p>
                 <button class="delete" aria-label="close" on:click={() => {showDelete = !showDelete}}></button>
             </header>
-            <div class="notification primary-color">
-                <a on:click={() => {showDelete = !showDelete; deletePlan()}}>
+            <div class="notification primary-color" on:click={() => {showDelete = !showDelete; deletePlan()}}>
+                <a>
                     <i class="fas fa-trash has-text-white"></i>
                 </a>
             </div>

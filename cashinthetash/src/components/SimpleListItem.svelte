@@ -159,8 +159,8 @@
                 <p class="modal-card-title">Eintrag löschen</p>
                 <button class="delete" aria-label="close" on:click={() => {showDelete = !showDelete;colorCheck()}}></button>
             </header>
-            <div class="notification primary-color">
-                <a on:click={() => {deleteFinance();colorCheck()}}>
+            <div class="notification primary-color" on:click={() => {deleteFinance();colorCheck()}}>
+                <a>
                     <i class="fas fa-trash has-text-white"></i>
                 </a>
             </div>

@@ -182,7 +182,8 @@
             <Plan id={currentPlanID} plan={currentPlanData} bind:showContent={showContent}/>
         {:else}
             {#each plans as plan}
-                <Plan id={plan.id} plan={plan.data()} bind:showContent={showContent} bind:showDelete={showDelete} bind:currentPlanID={currentPlanID} bind:currentPlanData={currentPlanData}/>
+                <Plan id={plan.id} plan={plan.data()} bind:showContent={showContent} bind:showDelete={showDelete}
+                      bind:currentPlanID={currentPlanID} bind:currentPlanData={currentPlanData}/>
             {/each}
         {/if}
 
@@ -190,10 +191,10 @@
 </div>
 
 <hr/>
-{#if  allplans.length > 3 && limit < allplans.length}
+{#if allplans.length > 3 && limit < allplans.length}
     <button class="button" on:click={IncreaseNumber}>Mehr</button>
 {/if}
 
-{#if limit > allplans.length && limit > 3}
+{#if limit > 3}
     <button class="button" on:click={LimitNumber}>Weniger</button>
 {/if}
