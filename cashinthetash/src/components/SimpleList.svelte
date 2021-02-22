@@ -6,6 +6,7 @@
     import ChartKategorie from "./ChartKategorie.svelte";
     import ChartBetrag from "./ChartBetrag.svelte";
 
+
     let finances = [];
 
     export let planID;
@@ -14,10 +15,17 @@
     let showChart = false
     let sort = 'Name';
 
+    let allplans = []
+    let limit = 5;
+
     let simpleListItem;
 
-    db.collection('finance').orderBy('Datum').where("planID", "==", planID).onSnapshot(data => {
+    db.collection('finance').orderBy('Datum').where("planID", "==", planID).limit(limit).onSnapshot(data => {
         finances = data.docs
+    })
+
+    db.collection('finance').orderBy('Datum').where("planID", "==", planID).onSnapshot(data => {
+        allplans = data.docs
     })
 
 
@@ -53,6 +61,27 @@
             })
             colorCheckSum()
         }
+    }
+
+    const IncreaseNumber = () => {
+        if (limit <= allplans.length) {
+            limit += 5
+            console.log(limit)
+        }
+        db.collection('finance').orderBy('Datum').where("planID", "==", planID).limit(limit).onSnapshot(data => {
+            finances = data.docs
+        })
+    }
+
+    const LimitNumber = () => {
+        if (limit >= 10) {
+            limit = limit - 5
+        } else {
+            alert('Mindestanzahl darf nicht unterschritten werden.')
+        }
+        db.collection('finance').orderBy('Datum').where("planID", "==", planID).limit(limit).onSnapshot(data => {
+            finances = data.docs
+        })
     }
 </script>
 
@@ -119,6 +148,13 @@
                 <div style="height:8px"></div>
             {/each}
         </div>
+        {#if finances.length >= 5 && limit <= finances.length}
+            <button class="button" on:click={IncreaseNumber}>Mehr</button>
+        {/if}
+
+        {#if limit >= finances.length && limit > 5}
+            <button class="button" on:click={LimitNumber}>Weniger</button>
+        {/if}
         {#if finances.length > 0}
         <div class="control">
             <span class="tag {colorSum}">{sum}€</span>
