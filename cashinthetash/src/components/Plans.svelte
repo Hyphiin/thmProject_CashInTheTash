@@ -22,6 +22,8 @@
     let currentPlanID;
     let currentPlanData;
 
+    let textTrue = true;
+
     db.collection('plans').orderBy('Datum').where("UserID", "==", uid).onSnapshot(data => {
         allplans = data.docs
     })
@@ -183,7 +185,8 @@
         {:else}
             {#each plans as plan}
                 <Plan id={plan.id} plan={plan.data()} bind:showContent={showContent} bind:showDelete={showDelete}
-                      bind:currentPlanID={currentPlanID} bind:currentPlanData={currentPlanData}/>
+                      bind:currentPlanID={currentPlanID} bind:currentPlanData={currentPlanData}
+                      bind:textTrue={textTrue}/>
             {/each}
         {/if}
 
