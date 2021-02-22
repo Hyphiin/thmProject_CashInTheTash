@@ -1,8 +1,6 @@
 <script>
     import {db} from '../firebase';
     import Plan from './Plan.svelte';
-    import {fade, slide, scale} from 'svelte/transition';
-    import {flip} from 'svelte/animate';
     import firebase from "firebase/app";
 
     export let uid;
@@ -41,7 +39,7 @@
         })
     }
 
-    const LimitNumber = () => {
+    export const LimitNumber = () => {
         if (limit >= 6) {
             limit = limit - 3
         } else {
@@ -84,7 +82,6 @@
             })
         }
     }
-
 
 </script>
 
@@ -132,11 +129,11 @@
 
 <hr/>
 
-{#if plans.length >= 3 && limit <= plans.length}
+{#if allplans.length > 3 && limit < allplans.length}
     <button class="button" on:click={IncreaseNumber}>Mehr</button>
 {/if}
 
-{#if limit >= plans.length && limit > 3}
+{#if limit > allplans.length && limit > 3}
     <button class="button" on:click={LimitNumber}>Weniger</button>
 {/if}
 
@@ -192,10 +189,10 @@
 </div>
 
 <hr/>
-{#if plans.length >= 3 && limit <= plans.length}
+{#if  allplans.length > 3 && limit < allplans.length}
     <button class="button" on:click={IncreaseNumber}>Mehr</button>
 {/if}
 
-{#if limit >= plans.length && limit > 3}
+{#if limit > allplans.length && limit > 3}
     <button class="button" on:click={LimitNumber}>Weniger</button>
 {/if}

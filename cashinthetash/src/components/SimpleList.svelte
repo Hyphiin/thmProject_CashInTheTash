@@ -11,6 +11,7 @@
 
     export let planID;
     export let sum;
+    export let pos;
 
     let showChart = false
     let sort = 'Name';
@@ -18,7 +19,6 @@
     let allplans = []
     let limit = 5;
 
-    let simpleListItem;
 
     db.collection('finance').orderBy('Datum').where("planID", "==", planID).limit(limit).onSnapshot(data => {
         finances = data.docs
@@ -143,12 +143,12 @@
         <div class="rows">
             {#each finances as item}
                 <div class="row is-fullwidth is-2">
-                    <SimpleListItem bind:this={simpleListItem} id={item.id} finance={item.data()} sum={sum} planID={planID} bind:currentItemData={currentItemData} bind:colorSum={colorSum}/>
+                    <SimpleListItem id={item.id} finance={item.data()} sum={sum} pos={pos} planID={planID} bind:currentItemData={currentItemData} bind:colorSum={colorSum}/>
                 </div>
                 <div style="height:8px"></div>
             {/each}
         </div>
-        {#if finances.length >= 5 && limit <= finances.length}
+        {#if finances.length > 5 && limit <= finances.length}
             <button class="button" on:click={IncreaseNumber}>Mehr</button>
         {/if}
 

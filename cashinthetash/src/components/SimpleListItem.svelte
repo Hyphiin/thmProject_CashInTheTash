@@ -5,6 +5,7 @@
     export let finance = {};
     export let planID;
     export let sum;
+    export let pos;
 
     export let currentItemID;
     export let currentItemData;
@@ -19,7 +20,6 @@
     datum = dd + '/' + mm + '/' + yyyy;
 
     export let colorSum;
-
 
     let helper = 0;
     let positive = true;
@@ -71,11 +71,9 @@
 
         if(aktArt === "Einnahme"){
             sum = sum - aktBetrag
-            finance.Positiv = true
             console.log("Sum davor: ",sum)
         }else {
             sum = sum + aktBetrag
-            finance.Positiv = false
             console.log("Sum davor: ",sum)
         }
 
@@ -83,9 +81,7 @@
             Betrag: finance.Betrag,
             Name: finance.Name,
             Kategorie: finance.Kategorie,
-            Wiederkehrend: finance.Wiederkehrend,
-            Art: finance.Art,
-            Positiv: finance.Positiv
+            Art: finance.Art
         })
 
         aktBetrag = finance.Betrag
@@ -95,14 +91,18 @@
 
         if(finance.Art === "Einnahme"){
             sum = sum + finance.Betrag
+            pos = true
             console.log("Sum danach: ",sum)
         }else {
             sum = sum - finance.Betrag
+            pos = false
             console.log("Sum danach: ",sum)
         }
+        console.log("pos: ",pos)
 
         db.collection('plans').doc(planID).update({
-            Summe: sum
+            Summe: sum,
+            Positiv: pos
         })
         colorCheck()
         console.log('erfolgreich geupdated!');
@@ -136,9 +136,9 @@
             </div>
             <div class="column has-text-left">
                 {#if finance.Positiv}
-                    <span class="tag is-danger is-light">-{finance.Betrag}€</span>
-                {:else}
                     <span class="tag is-success is-light">{finance.Betrag}€</span>
+                {:else}
+                    <span class="tag is-danger is-light">-{finance.Betrag}€</span>
                 {/if}
             </div>
             <div class="column is-narrow">
@@ -192,16 +192,6 @@
                                     <option name="answer" value={"Technik"}>Technik</option>
                                     <option name="answer" value={"Versicherung"}>Versicherung</option>
                                     <option name="answer" value={"Sonstige"}>Sonstige</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="control has-text-left has-text-white">
-                            <label>Wiederkehrend?</label>
-                            <div class="select is-small is-rounded">
-                                <select bind:value={finance.Wiederkehrend}>
-                                    <option name="answer" value={""}>Auswählen</option>
-                                    <option name="answer" value={true}>Wiederkehrend</option>
-                                    <option name="answer" value={false}>Einmalig</option>
                                 </select>
                             </div>
                         </div>

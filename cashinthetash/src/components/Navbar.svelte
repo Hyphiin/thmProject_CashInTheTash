@@ -25,7 +25,7 @@
             <div class="navbar-brand">
                 <a class="navbar-item" href="javascript:window.location.href=window.location.href">
                     <img class="tag is-rounded light-color"
-                         src='./images/CashInTheTashLogo2C.png' alt="Logo"/>
+                         src='./images/CashInTheTashLogo.png' alt="Logo"/>
                 </a>
                 <span class="navbar-item">
                     <h1 class="title is-6 has-text-white">
