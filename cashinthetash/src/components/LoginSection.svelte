@@ -14,9 +14,9 @@
     }
 
     // sides
-    let showContend = false;
+    let showContent = false;
 
-    console.log("showContend " + showContend);
+    console.log("showContend " + showContent);
 
 </script>
 
@@ -24,7 +24,7 @@
     {#if user}
         <Profile {...user}/>
 
-        {#if showContend}
+        {#if showContent}
             <Finances/>
         {:else}
             <Plans {...user}/>
@@ -62,7 +62,10 @@
                 <p class="card-footer-item">
       <span>
         <button class="button is-info" on:click={login}>
-            Signin with Google
+            <i class="fab fa-google"></i>
+            <i class="placeholder"> | </i>
+            Login
+
         </button>
       </span>
             </footer>

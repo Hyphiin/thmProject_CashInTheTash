@@ -77,7 +77,7 @@
         {/if}
 </div>
 <div class="container" style="margin-top:15px">
-<button class="button is-success" on:click={showADDButton}>{activatedText}</button>
+<button class="button is-info" on:click={showADDButton}>{activatedText}</button>
 </div>
 
 {#if showAdd}

@@ -15,9 +15,32 @@
     let sort = 'Datum';
     let filter = "==";
 
-    db.collection('plans').orderBy('Datum').where("UserID", "==", uid).onSnapshot(data => {
+    let limit = 3
+
+    db.collection('plans').orderBy('Datum').where("UserID", "==", uid).limit(limit).onSnapshot(data => {
         plans = data.docs
     })
+
+    const IncreaseNumber = () => {
+        if (limit <= plans.length) {
+            limit += 3
+            console.log(limit)
+        }
+        db.collection('plans').orderBy('Datum').where("UserID", "==", uid).limit(limit).onSnapshot(data => {
+            plans = data.docs
+        })
+    }
+
+    const LimitNumber = () => {
+        if (limit >= 6) {
+            limit = limit - 3
+        } else {
+            alert('Mindestanzahl darf nicht unterschritten werden.')
+        }
+        db.collection('plans').orderBy('Datum').where("UserID", "==", uid).limit(limit).onSnapshot(data => {
+            plans = data.docs
+        })
+    }
 
     const addPlan = () => {
         const Datum = firebase.firestore.Timestamp.fromDate(new Date());
@@ -29,18 +52,30 @@
     }
 
     const onSort = () => {
-        db.collection('plans').orderBy(sort).where("UserID", "==", uid).onSnapshot(data => {
-            plans = data.docs
-        })
+        if (filter === "all") {
+            db.collection('plans').orderBy(sort).where("UserID", "==", uid).limit(limit).onSnapshot(data => {
+                plans = data.docs
+            })
+        } else {
+            if (filter === "all") {
+                db.collection('plans').orderBy('Summe').where("UserID", "==", uid).limit(limit).onSnapshot(data => {
+                    plans = data.docs
+                })
+            } else {
+                db.collection('plans').orderBy('Summe').where("UserID", "==", uid).where("Summe", filter, 0).limit(limit).onSnapshot(data => {
+                    plans = data.docs
+                })
+            }
+        }
     }
 
     const onFilter = () => {
-        if(filter === "all"){
-            db.collection('plans').orderBy('Summe').where("UserID", "==", uid).onSnapshot(data => {
+        if (filter === "all") {
+            db.collection('plans').orderBy('Summe').where("UserID", "==", uid).limit(limit).onSnapshot(data => {
                 plans = data.docs
             })
-        }else {
-            db.collection('plans').orderBy('Summe').where("UserID", "==", uid).where("Summe", filter, 0).onSnapshot(data => {
+        } else {
+            db.collection('plans').orderBy('Summe').where("UserID", "==", uid).where("Summe", filter, 0).limit(limit).onSnapshot(data => {
                 plans = data.docs
             })
         }
@@ -59,50 +94,91 @@
     </div>
 </section>
 
-<div class="control has-text-centered">
-    <label class="has-text-white">Sortieren: <i class="fas fa-sort"></i></label>
-    <div class="select is-small is-rounded">
-        <select class="has-icons-left" bind:value={sort} on:change={onSort}>
-            <option name="answer" value={"Datum"}>Auswählen</option>
-            <option name="answer" value={"Summe"}>Summe</option>
-            <option name="answer" value={"Datum"}>Datum</option>
-            <option name="answer" value={"Titel"}>Titel</option>
-        </select>
+
+<div class="columns filterwerkzeug">
+    <div class="column is-half-desktop has-text-right-desktop" style="padding-left: 0px; padding-right: 5px;">
+        <div class="control">
+            <label class="has-text-white">Sortieren:</label>
+            <div class="select is-small is-rounded">
+                <select class="has-icons-left" bind:value={sort} on:change={onSort}>
+                    <option name="answer" value={"Datum"}>Standard</option>
+                    <option name="answer" value={"Summe"}>Summe</option>
+                    <option name="answer" value={"Datum"}>Datum</option>
+                    <option name="answer" value={"Titel"}>Titel</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="column is-half-desktop has-text-left-desktop" style="padding-left: 5px; padding-right: 0px;">
+        <div class="control">
+            <label class="has-text-white">Filtern:</label>
+            <div class="select is-small is-rounded">
+                <select class="has-icons-left" bind:value={filter} on:change={onFilter}>
+                    <option name="answer" value={"all"}>Standard</option>
+                    <option name="answer" value={">="}>Positiv</option>
+                    <option name="answer" value={"<"}>Negativ</option>
+                </select>
+            </div>
+        </div>
     </div>
 </div>
 
-<div class="control has-text-centered">
-    <label class="has-text-white">Filtern: <i class="fas fa-filter"></i></label>
-    <div class="select is-small is-rounded">
-        <select class="has-icons-left" bind:value={filter} on:change={onFilter}>
-            <option name="answer" value={"all"}>Alle</option>
-            <option name="answer" value={">="}>Positiv</option>
-            <option name="answer" value={"<"}>Negativ</option>
-        </select>
-    </div>
-</div>
 
 <hr/>
 
-<div class="container">
-    <div class="columns is-multiline is-variable is-2">
-        {#each plans as plan}
-                <Plan id={plan.id} plan={plan.data()}/>
-        {/each}
-    </div>
-</div>
+{#if plans.length >= 3 && limit <= plans.length}
+    <button class="button is-info" on:click={IncreaseNumber}>Mehr</button>
+{/if}
 
-<div class="section">
-<div class="container">
-        <div class="columns is-multiline is-variable is-2 is-centered">
-            <div class="notification is-info">
-                <form on:submit|preventDefault={addPlan}>
-                    <input class="input is-info" type="text" placeholder="Titel" bind:value={Titel} required/>
-                    <input type="hidden" bind:value={Summe}/>
-                    <hr/>
-                    <button class="button is-info is-inverted">Hinzufügen</button>
-                </form>
+{#if limit >= plans.length && limit > 3}
+    <button class="button is-info" on:click={LimitNumber}>Weniger</button>
+{/if}
+
+{#if plans.length > 0}
+    <hr/>
+{/if}
+
+<div class="newPlan container">
+<article class="message is-medium is-mobile">
+    <form on:submit|preventDefault={addPlan}>
+        <div class="message-header has-background-info addPlan">
+            <p class="subtitle has-text-white is-6">
+                Füge einen neuen Plan hinzu!
+            </p>
+        </div>
+        <div class="message-body">
+            <div class="columns is-mobile list-column addPlan">
+                <div class="column is-narrow">
+                    <input class="input is-info is-small" type="text" placeholder="Titel" bind:value={Titel}
+                           required/>
+                </div>
+                <input type="hidden" bind:value={Summe}/>
+                <div class="column is-narrow">
+                    <button class="button is-small has-background-info">
+                        <span style="color: White;">
+                        <i class="fas fa-plus"></i>
+                        </span>
+                    </button>
+                </div>
             </div>
         </div>
+    </form>
+</article>
 </div>
+
+
+
+<div class="container">
+    <div class="columns is-multiline is-variable is-2 is-mobile">
+        {#if plans.length <= 0}
+            <div class="notification is-info sorry">
+                Leider keine passenden Ergebnisse gefunden!
+            </div>
+        {/if}
+
+        {#each plans as plan}
+            <Plan id={plan.id} plan={plan.data()}/>
+        {/each}
+    </div>
 </div>

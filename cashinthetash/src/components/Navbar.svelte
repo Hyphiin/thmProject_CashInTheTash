@@ -11,7 +11,7 @@
     }
 
     let mobile;
-    const toggleNav = () =>{
+    const toggleNav = () => {
         mobile = !mobile
     }
 
@@ -39,12 +39,6 @@
             </div>
             <div class="navbar-menu" class:is-active={mobile} id="menu">
                 <div class="navbar-end">
-                    <a class="navbar-item">
-                        Home
-                    </a>
-                    <a class="navbar-item">
-                        FAQ
-                    </a>
                     <div class="navbar-item has-dropdown is-hoverable">
                         <span class="navbar-link">
                             Team
@@ -64,7 +58,10 @@
                 <button class="button is-info" on:click={ () => auth.signOut() }>Logout</button>
                 {:else}
                 <button class="button is-info" on:click={login}>
-                    Login
+                    <i class="fab fa-google"></i>
+                    <i class="placeholder"> | </i>
+                        Login
+
                 </button>
                 {/if}
               </a>
