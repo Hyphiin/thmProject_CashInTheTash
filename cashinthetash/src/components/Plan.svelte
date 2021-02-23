@@ -5,6 +5,15 @@
 
     export let id = '';
     export let plan = {};
+    export let showContent;
+    let showEdit;
+    export let showDelete;
+
+    export let planID = '';
+    export let currentPlanID;
+    export let currentPlanData;
+
+
 
     const deletePlan = () => {
         db.collection('plans').doc(id).delete()
@@ -15,6 +24,7 @@
             });
         });
         console.log('erfolgreich gelöscht!');
+        showContent = false;
     }
 
     const updatePlan = () => {
@@ -24,33 +34,52 @@
         console.log('erfolgreich geupdated!');
     }
 
-    export let planID = '';
 
     const getID = () => {
         planID = {id};
         console.log(planID);
     }
 
-    let showContent;
-    let showEdit;
-
     console.log("showEdit " + showEdit);
 
-    let string = "column is-two-quarters-mobile is-half-tablet is-half-desktop is-one-third-widescreen is-one-quarter-fullhd";
-    let activatedText = "Öffnen";
+    export let textTrue;
+    let stringColumn;
+    let activatedText;
+
+    if (textTrue){
+        stringColumn = "column is-two-quarters-mobile is-half-tablet is-half-desktop is-one-third-widescreen is-one-quarter-fullhd";
+        activatedText = "Öffnen";
+    }else{
+        activatedText = "Schließen"
+        stringColumn = "column is-full-mobile is-full-tablet is-half-desktop is-half-widescreen is-half-fullhd"
+    }
+
+    console.log("textTrue: ", textTrue)
+    console.log("string Expo: ", stringColumn)
+    console.log("activatedText Expo: ", activatedText)
+
     const showContentButton = () => {
         showContent = !showContent
         if (showContent) {
             activatedText = "Schließen"
-            string = "column is-full-mobile is-full-tablet is-full-desktop is-full-widescreen is-full-fullhd"
+            stringColumn = "column is-full-mobile is-full-tablet is-half-desktop is-half-widescreen is-half-fullhd"
+            console.log("showContent1: ", showContent)
+            console.log("string1: ", stringColumn)
+            console.log("activatedText1: ", activatedText)
         } else {
             activatedText = "Öffnen"
-            string = "column is-two-quarters-mobile is-half-tablet is-half-desktop is-one-third-widescreen is-one-quarter-fullhd"
+            stringColumn = "column is-two-quarters-mobile is-half-tablet is-half-desktop is-one-third-widescreen is-one-quarter-fullhd"
+            console.log("showContent2: ", showContent)
+            console.log("string2: ", stringColumn)
+            console.log("activatedText2: ", activatedText)
         }
+        currentPlanID = id;
+        currentPlanData = plan;
 
+        console.log("string after: ", stringColumn)
+        console.log("activatedText after: ", activatedText)
     }
 
-    let showDelete = false;
 
     const showDeleteButton = () => {
         showDelete = !showDelete
@@ -60,7 +89,6 @@
         showEdit = !showEdit
     }
 
-
     let datum = plan.Datum.toDate()
     let mm = datum.getMonth() + 1;
     let dd = datum.getDate();
@@ -68,10 +96,11 @@
 
     datum = dd + '/' + mm + '/' + yyyy;
 
+    $: sum = plan.Summe;
 
 </script>
 
-<div class={string}>
+<div class={stringColumn}>
     <article class="message is-medium">
         <div class="message-header">
             <div class="columns is-mobile list-column">
@@ -99,7 +128,7 @@
         </div>
         <div class="message-body">
             {#if showContent}
-                <Finances planID={id} sum={plan.Summe}/>
+                <Finances planID={id} sum={sum}/>
                 <hr class="has-background-white"/>
             {/if}
             <p class="subtitle2 has-text-centered is-size-7 is-uppercase has-text-weight-bold has-text-white">Erstellt: {datum}</p>
@@ -117,8 +146,8 @@
                 <p class="modal-card-title">Plan löschen</p>
                 <button class="delete" aria-label="close" on:click={() => {showDelete = !showDelete}}></button>
             </header>
-            <div class="notification primary-color">
-                <a on:click={deletePlan}>
+            <div class="notification primary-color" on:click={() => {showDelete = !showDelete; deletePlan()}}>
+                <a>
                     <i class="fas fa-trash has-text-white"></i>
                 </a>
             </div>

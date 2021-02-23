@@ -6,17 +6,26 @@
     import ChartKategorie from "./ChartKategorie.svelte";
     import ChartBetrag from "./ChartBetrag.svelte";
 
+
     let finances = [];
 
     export let planID;
     export let sum;
+    export let pos;
 
     let showChart = false
-
     let sort = 'Name';
 
-    db.collection('finance').orderBy('Datum').where("planID", "==", planID).onSnapshot(data => {
+    let allfinance = []
+    let limit = 5;
+
+
+    db.collection('finance').orderBy('Datum').where("planID", "==", planID).limit(limit).onSnapshot(data => {
         finances = data.docs
+    })
+
+    db.collection('finance').orderBy('Datum').where("planID", "==", planID).onSnapshot(data => {
+        allfinance = data.docs
     })
 
 
@@ -24,18 +33,23 @@
         db.collection('finance').orderBy(sort).where("planID", "==", planID).onSnapshot(data => {
             finances = data.docs
         })
-        colorCheck2()
+        colorCheckSum()
     }
 
-    let color2 = "is-success"
-    const colorCheck2 = () => {
+    const changeHandler = () => {
+        onSort();
+    }
+
+    let colorSum = "is-success"
+    let currentItemData;
+
+    const colorCheckSum = () => {
         if (sum >= 0) {
-            color2 = "is-success"
+            colorSum = "is-success"
         } else {
-            color2 = "is-danger"
+            colorSum = "is-danger"
         }
     }
-    colorCheck2()
 
     const showMyChart = () => {
         if (showChart === true) {
@@ -45,8 +59,29 @@
             db.collection('finance').orderBy(sort).where("planID", "==", planID).onSnapshot(data => {
                 finances = data.docs
             })
-            colorCheck2()
+            colorCheckSum()
         }
+    }
+
+    const IncreaseNumber = () => {
+        if (limit <= allfinance.length) {
+            limit += 5
+            console.log(limit)
+        }
+        db.collection('finance').orderBy('Datum').where("planID", "==", planID).limit(limit).onSnapshot(data => {
+            finances = data.docs
+        })
+    }
+
+    const LimitNumber = () => {
+        if (limit >= 10) {
+            limit = limit - 5
+        } else {
+            alert('Mindestanzahl darf nicht unterschritten werden.')
+        }
+        db.collection('finance').orderBy('Datum').where("planID", "==", planID).limit(limit).onSnapshot(data => {
+            finances = data.docs
+        })
     }
 </script>
 
@@ -66,7 +101,7 @@
                 {:else}
                     <label class="has-text-white" style="padding-left: 4px">Sortieren</label>
                     <div class="select is-small is-rounded">
-                        <select bind:value={sort} on:change={onSort}>
+                        <select bind:value={sort} on:change={changeHandler}>
                             <option name="answer" value={"Name"}>Auswählen</option>
                             <option name="answer" value={"Betrag"}>Betrag</option>
                             <option name="answer" value={"Datum"}>Datum</option>
@@ -78,19 +113,18 @@
             </div>
         </div>
         {#if finances.length > 0}
-        {#if showChart === true}
-            <div class="column is-narrow" style="padding-left: 53px;" on:click={showMyChart}>
-                <i class="fas fa-list has-text-white"></i>
-            </div>
-        {:else}
-            <div class="column is-narrow" style="padding-left: 62px;" on:click={showMyChart}>
-                <i class="fas fa-chart-pie has-text-white"></i>
-            </div>
-        {/if}
+            {#if showChart === true}
+                <div class="column is-narrow" style="padding-left: 53px;" on:click={showMyChart}>
+                    <i class="fas fa-list has-text-white"></i>
+                </div>
+            {:else}
+                <div class="column is-narrow" style="padding-left: 62px;" on:click={showMyChart}>
+                    <i class="fas fa-chart-pie has-text-white"></i>
+                </div>
             {/if}
+        {/if}
     </div>
 </div>
-
 
 <hr/>
 
@@ -109,15 +143,24 @@
         <div class="rows">
             {#each finances as item}
                 <div class="row is-fullwidth is-2">
-                    <SimpleListItem id={item.id} finance={item.data()} sum={sum} planID={planID}/>
+                    <SimpleListItem id={item.id} finance={item.data()} bind:sum={sum} pos={pos} planID={planID}
+                                    bind:currentItemData={currentItemData} bind:colorSum={colorSum}/>
                 </div>
-                <div style="height:8px"></div>
+                <div style="height:10px"></div>
             {/each}
         </div>
+        {#if allfinance.length > 5 && limit < allfinance.length}
+            <button class="button" on:click={IncreaseNumber}>Mehr</button>
+        {/if}
+
+        {#if limit > 5}
+            <button class="button" on:click={LimitNumber}>Weniger</button>
+        {/if}
         {#if finances.length > 0}
-        <div class="control">
-            <span class="tag {color2}">{sum}€</span>
-        </div>
+            <div style="height:10px"></div>
+            <div class="control">
+                <span class="tag {colorSum}">{sum}€</span>
+            </div>
         {/if}
     {/if}
 

@@ -1,4 +1,7 @@
+
 <canvas id="myChart" width="400" height="400"></canvas>
+
+
 
 
 <script>
@@ -8,26 +11,26 @@
     export let finance = {};
     export let planID;
 
-    let test = {};
+    let finances = {};
 
 
     import {onMount} from 'svelte'
 
     function createChart() {
-        let array = ["Essen","Trinken",'Kleidung', 'Freizeit', 'Miete', 'Technik', 'Versicherungen', 'Sonstiges']
+        let array = ["Essen","Trinken",'Kleidung', 'Freizeit', 'Miete', 'Technik', 'Versicherung', 'Sonstige']
         let nums = []
         for(let i = 0; i < 8; i++) {
             db.collection('finance').where("planID", "==", planID).where("Kategorie", "==", array[i]).onSnapshot(data => {
-                test = data.docs
-                console.log("TEST: ",test)
+                finances = data.docs
+                console.log("TEST: ",finances)
                 let e = 0
-                for (let j = 0; j < test.length; j++) {
-                    if(test[j].data().Art === "Einnahme"){
-                        e = e + test[j].data().Betrag
+                for (let j = 0; j < finances.length; j++) {
+                    if(finances[j].data().Art === "Einnahme"){
+                        e = e + finances[j].data().Betrag
                     }else{
-                        e = e - test[j].data().Betrag
+                        e = e - finances[j].data().Betrag
                     }
-                    console.log("test[j]: ", test[j].data().Betrag)
+                    console.log("test[j]: ", finances[j].data().Betrag)
                     console.log("Betrag: ", e)
                 }
                 nums [i] = e
@@ -36,17 +39,19 @@
                 let myChart = new Chart(ctx, {
                     type: 'bar',
                     data: {
-                        labels: ['Essen', 'Trinken', 'Kleidung', 'Freizeit', 'Miete', 'Technik', 'Versicherungen', 'Sonstiges'],
+                        labels: array,
                         datasets: [{
                             label: 'Betrag in €',
-                            data: [nums[0], nums[1], nums[2], nums[3], nums[4], nums[5], nums[6], nums[7]],
+                            data: nums,
                             backgroundColor: [
                                 'rgba(255, 99, 132, 0.2)',
                                 'rgba(54, 162, 235, 0.2)',
                                 'rgba(255, 206, 86, 0.2)',
                                 'rgba(75, 192, 192, 0.2)',
                                 'rgba(153, 102, 255, 0.2)',
-                                'rgba(255, 159, 64, 0.2)'
+                                'rgba(255, 159, 64, 0.2)',
+                                'rgba(65, 180, 20, 0.2)',
+                                'rgba(188, 20, 100, 0.2)'
                             ],
                             borderColor: [
                                 'rgba(255, 99, 132, 1)',
@@ -54,7 +59,9 @@
                                 'rgba(255, 206, 86, 1)',
                                 'rgba(75, 192, 192, 1)',
                                 'rgba(153, 102, 255, 1)',
-                                'rgba(255, 159, 64, 1)'
+                                'rgba(255, 159, 64, 1)',
+                                'rgba(65, 180, 20, 0.2)',
+                                'rgba(188, 20, 100, 0.2)'
                             ],
                             borderWidth: 1,
                         }]

@@ -8,7 +8,7 @@
     export let finance = {};
     export let planID;
 
-    let test = {};
+    let finances = {};
 
 
     import {onMount} from 'svelte'
@@ -17,9 +17,9 @@
         let nums = []
         let dates = []
         db.collection('finance').where("planID", "==", planID).orderBy("Datum").onSnapshot(data => {
-            test = data.docs
-            console.log("TEST: ", test)
-            let oldDate = test[0].data().Datum.toDate()
+            finances = data.docs
+            console.log("TEST: ", finances)
+            let oldDate = finances[0].data().Datum.toDate()
             let mm = oldDate.getMonth() + 1;
             let dd = oldDate.getDate();
             let yyyy = oldDate.getFullYear();
@@ -27,32 +27,32 @@
 
             let betrag = 0
 
-            for (let j = 0; j < test.length; j++) {
-                let currentDate = test[j].data().Datum.toDate()
+            for (let j = 0; j < finances.length; j++) {
+                let currentDate = finances[j].data().Datum.toDate()
                 let mm2 = currentDate.getMonth() + 1;
                 let dd2 = currentDate.getDate();
                 let yyyy2 = currentDate.getFullYear();
                 currentDate = dd2 + '/' + mm2 + '/' + yyyy2;
 
                 if (currentDate === oldDate) {
-                    if (test[j].data().Art === "Einnahme") {
-                        betrag = betrag + test[j].data().Betrag
+                    if (finances[j].data().Art === "Einnahme") {
+                        betrag = betrag + finances[j].data().Betrag
                         console.log("oldDate: ", oldDate)
                         console.log("currentDate: ", currentDate)
                         console.log("Betrag: ", betrag)
                         oldDate = currentDate
-                        if (j === test.length - 1) {
+                        if (j === finances.length - 1) {
                             nums.push(betrag)
                             dates.push(oldDate)
                             console.log("push1: ", betrag, " + ", oldDate)
                         }
                     } else {
-                        betrag = betrag - test[j].data().Betrag
+                        betrag = betrag - finances[j].data().Betrag
                         console.log("oldDate: ", oldDate)
                         console.log("currentDate: ", currentDate)
                         console.log("Betrag: ", betrag)
                         oldDate = currentDate
-                        if (j === test.length - 1) {
+                        if (j === finances.length - 1) {
                             nums.push(betrag)
                             dates.push(oldDate)
                             console.log("push2: ", betrag, " + ", oldDate)
@@ -63,13 +63,13 @@
                     nums.push(betrag)
                     dates.push(oldDate)
                     console.log("push: ", betrag, " + ", oldDate)
-                    if (test[j].data().Art === "Einnahme") {
+                    if (finances[j].data().Art === "Einnahme") {
                         console.log("oldDate: ", oldDate)
                         console.log("currentDate: ", currentDate)
-                        console.log("Betrag: ", test[j].data().Betrag)
+                        console.log("Betrag: ", finances[j].data().Betrag)
                         oldDate = currentDate
-                        betrag = test[j].data().Betrag
-                        if (j === test.length - 1) {
+                        betrag = finances[j].data().Betrag
+                        if (j === finances.length - 1) {
                             nums.push(betrag)
                             dates.push(oldDate)
                             console.log("push1: ", betrag, " + ", oldDate)
@@ -77,10 +77,10 @@
                     } else {
                         console.log("oldDate: ", oldDate)
                         console.log("currentDate: ", currentDate)
-                        console.log("Betrag: ", test[j].data().Betrag)
+                        console.log("Betrag: ", finances[j].data().Betrag)
                         oldDate = currentDate
-                        betrag = -test[j].data().Betrag
-                        if (j === test.length - 1) {
+                        betrag = -finances[j].data().Betrag
+                        if (j === finances.length - 1) {
                             nums.push(betrag)
                             dates.push(oldDate)
                             console.log("push1: ", betrag, " + ", oldDate)

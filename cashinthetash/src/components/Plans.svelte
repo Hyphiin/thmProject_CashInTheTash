@@ -1,8 +1,6 @@
 <script>
     import {db} from '../firebase';
     import Plan from './Plan.svelte';
-    import {fade, slide, scale} from 'svelte/transition';
-    import {flip} from 'svelte/animate';
     import firebase from "firebase/app";
 
     export let uid;
@@ -17,6 +15,14 @@
     let filter = "all";
 
     let limit = 3
+
+    let showContent = false;
+    let showDelete = false;
+    let planID;
+    let currentPlanID;
+    let currentPlanData;
+
+    let textTrue = true;
 
     db.collection('plans').orderBy('Datum').where("UserID", "==", uid).onSnapshot(data => {
         allplans = data.docs
@@ -36,7 +42,7 @@
         })
     }
 
-    const LimitNumber = () => {
+    export const LimitNumber = () => {
         if (limit >= 6) {
             limit = limit - 3
         } else {
@@ -61,7 +67,7 @@
             db.collection('plans').orderBy(sort).where("UserID", "==", uid).limit(limit).onSnapshot(data => {
                 plans = data.docs
             })
-        }else{
+        } else {
             db.collection('plans').orderBy('Summe').where("UserID", "==", uid).where("Summe", filter, 0).limit(limit).onSnapshot(data => {
                 plans = data.docs
             })
@@ -126,11 +132,11 @@
 
 <hr/>
 
-{#if plans.length >= 3 && limit <= plans.length}
+{#if allplans.length > 3 && limit < allplans.length}
     <button class="button" on:click={IncreaseNumber}>Mehr</button>
 {/if}
 
-{#if limit >= plans.length && limit > 3}
+{#if limit > allplans.length && limit > 3}
     <button class="button" on:click={LimitNumber}>Weniger</button>
 {/if}
 
@@ -174,18 +180,24 @@
                 Leider keine passenden Ergebnisse gefunden!
             </div>
         {/if}
+        {#if showContent === true}
+            <Plan id={currentPlanID} plan={currentPlanData} bind:showContent={showContent}/>
+        {:else}
+            {#each plans as plan}
+                <Plan id={plan.id} plan={plan.data()} bind:showContent={showContent} bind:showDelete={showDelete}
+                      bind:currentPlanID={currentPlanID} bind:currentPlanData={currentPlanData}
+                      bind:textTrue={textTrue}/>
+            {/each}
+        {/if}
 
-        {#each plans as plan}
-            <Plan id={plan.id} plan={plan.data()}/>
-        {/each}
     </div>
 </div>
 
 <hr/>
-{#if plans.length >= 3 && limit <= plans.length}
+{#if allplans.length > 3 && limit < allplans.length}
     <button class="button" on:click={IncreaseNumber}>Mehr</button>
 {/if}
 
-{#if limit >= plans.length && limit > 3}
+{#if limit > 3}
     <button class="button" on:click={LimitNumber}>Weniger</button>
 {/if}

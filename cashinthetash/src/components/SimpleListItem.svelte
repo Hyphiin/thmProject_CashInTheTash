@@ -5,6 +5,10 @@
     export let finance = {};
     export let planID;
     export let sum;
+    export let pos;
+
+    export let currentItemID;
+    export let currentItemData;
 
     let date = finance.Datum.toDate().toDateString();
 
@@ -15,21 +19,19 @@
 
     datum = dd + '/' + mm + '/' + yyyy;
 
-    let color = ""
+    export let colorSum;
 
     let helper = 0;
-    let positive = true
 
-    const colorCheck = () => {
-        if (finance.Art === "Einnahme") {
-            color = "is-success"
-            positive = true
-        } else {
-            color = "is-danger"
-            positive = false
-        }
-        console.log(color)
-        console.log(positive)
+    currentItemData = finance;
+
+    export const colorCheck = () => {
+            if (sum >= 0) {
+                colorSum = "is-success"
+            } else {
+                colorSum = "is-danger"
+            }
+            console.log("COLOR CHECKED!")
     }
 
     let showEdit = false
@@ -46,10 +48,10 @@
         showDelete = !showDelete
         if(finance.Art === "Einnahme"){
             sum = sum - finance.Betrag
-            console.log("Sum: ",sum)
+            console.log("after delete Sum: ",sum)
         }else {
             sum = sum + finance.Betrag
-            console.log("Sum: ",sum)
+            console.log("after delete Sum: ",sum)
         }
         db.collection('plans').doc(planID).update({
             Summe: sum
@@ -68,41 +70,46 @@
 
         if(aktArt === "Einnahme"){
             sum = sum - aktBetrag
-            console.log("Sum davor: ",sum)
+            console.log("Sum vor Update: ",sum)
         }else {
             sum = sum + aktBetrag
-            console.log("Sum davor: ",sum)
+            console.log("Sum  vor Update: ",sum)
         }
 
         db.collection('finance').doc(id).update({
             Betrag: finance.Betrag,
             Name: finance.Name,
             Kategorie: finance.Kategorie,
-            Wiederkehrend: finance.Wiederkehrend,
             Art: finance.Art
         })
 
         aktBetrag = finance.Betrag
         aktArt = finance.Art
 
-        console.log("Betrag danach: ",finance.Betrag)
+        console.log("Betrag danach: ", aktBetrag)
 
         if(finance.Art === "Einnahme"){
-            sum = sum + finance.Betrag
+            sum = sum + aktBetrag
+            pos = true
             console.log("Sum danach: ",sum)
         }else {
-            sum = sum - finance.Betrag
+            sum = sum - aktBetrag
+            pos = false
             console.log("Sum danach: ",sum)
         }
+        console.log("pos: ",pos)
 
         db.collection('plans').doc(planID).update({
-            Summe: sum
+            Summe: sum,
         })
+        db.collection('finance').doc(id).update({
+            Positiv: pos
+        })
+
         colorCheck()
         console.log('erfolgreich geupdated!');
     }
     colorCheck()
-
 </script>
 
 
@@ -130,7 +137,7 @@
                 </span>
             </div>
             <div class="column has-text-left">
-                {#if positive}
+                {#if finance.Positiv}
                     <span class="tag is-success is-light">{finance.Betrag}€</span>
                 {:else}
                     <span class="tag is-danger is-light">-{finance.Betrag}€</span>
@@ -152,8 +159,8 @@
                 <p class="modal-card-title">Eintrag löschen</p>
                 <button class="delete" aria-label="close" on:click={() => {showDelete = !showDelete;colorCheck()}}></button>
             </header>
-            <div class="notification primary-color">
-                <a on:click={() => {deleteFinance();colorCheck()}}>
+            <div class="notification primary-color" on:click={() => {deleteFinance();colorCheck()}}>
+                <a>
                     <i class="fas fa-trash has-text-white"></i>
                 </a>
             </div>
@@ -187,16 +194,6 @@
                                     <option name="answer" value={"Technik"}>Technik</option>
                                     <option name="answer" value={"Versicherung"}>Versicherung</option>
                                     <option name="answer" value={"Sonstige"}>Sonstige</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="control has-text-left has-text-white">
-                            <label>Wiederkehrend?</label>
-                            <div class="select is-small is-rounded">
-                                <select bind:value={finance.Wiederkehrend}>
-                                    <option name="answer" value={""}>Auswählen</option>
-                                    <option name="answer" value={true}>Wiederkehrend</option>
-                                    <option name="answer" value={false}>Einmalig</option>
                                 </select>
                             </div>
                         </div>

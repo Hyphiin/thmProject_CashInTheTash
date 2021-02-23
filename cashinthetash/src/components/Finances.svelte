@@ -16,8 +16,10 @@
     let Kategorie = '';
     let Art = '';
     export let planID;
-    let Summe;
+    let Summe = 0;
     let helper = 0;
+    let Positiv = false;
+    let pos;
 
 
     db.collection('finance').orderBy('Datum').where("planID", "==", planID).onSnapshot(data => {
@@ -27,8 +29,15 @@
 
     const addFinance = () => {
         const Datum = firebase.firestore.Timestamp.fromDate(new Date());
+        if(Art === "Einnahme"){
+            pos = true
+        }else {
+            pos = false
+        }
+        Positiv = pos;
+
         db.collection('finance').add({
-            Betrag, Name, Kategorie, Datum, planID, Art
+            Betrag, Name, Kategorie, Datum, planID, Art, Summe, Positiv
         })
         console.log('erfolgreich hinzugefügt!');
         Name = ''
@@ -43,9 +52,12 @@
             console.log("Sum: ",sum)
         }
 
+        console.log("pos: ",pos)
+
         db.collection('plans').doc(planID).update({
-            Summe: sum
+            Summe: sum,
         })
+
         Betrag = ''
 
     }
@@ -72,7 +84,7 @@
 
 <div class="container">
         {#if showList}
-            <SimpleList planID={planID} sum={sum}/>
+            <SimpleList planID={planID} sum={sum} pos={pos}/>
         {/if}
     {#if finances.length <= 0}
         <span class="tag is-link is-light">
