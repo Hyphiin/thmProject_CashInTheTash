@@ -51,7 +51,7 @@
         activatedText = "Öffnen";
     }else{
         activatedText = "Schließen"
-        stringColumn = "column is-full-mobile is-full-tablet is-full-desktop is-full-widescreen is-full-fullhd"
+        stringColumn = "column is-full-mobile is-full-tablet is-half-desktop is-half-widescreen is-half-fullhd"
     }
 
     console.log("textTrue: ", textTrue)
@@ -62,7 +62,7 @@
         showContent = !showContent
         if (showContent) {
             activatedText = "Schließen"
-            stringColumn = "column is-full-mobile is-full-tablet is-full-desktop is-full-widescreen is-full-fullhd"
+            stringColumn = "column is-full-mobile is-full-tablet is-half-desktop is-half-widescreen is-half-fullhd"
             console.log("showContent1: ", showContent)
             console.log("string1: ", stringColumn)
             console.log("activatedText1: ", activatedText)

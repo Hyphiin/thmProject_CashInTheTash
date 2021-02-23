@@ -214,3 +214,15 @@ article.message{
     }
 
 }
+
+@media only screen and (max-width: 320px) {
+
+    .addPlan{
+        width: 100%;
+    }
+
+    .newPlan{
+        width: 100%;
+        padding: 12px 0px 24px 0px;
+    }
+}

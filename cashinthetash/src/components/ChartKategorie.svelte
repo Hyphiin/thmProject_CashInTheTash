@@ -1,4 +1,4 @@
-<canvas id="myChart" width="250" height="400"></canvas>
+<canvas id="myChart" width="400" height="400"></canvas>
 
 
 <script>
@@ -18,7 +18,7 @@
 
 
     function createChart() {
-        let array = ["Essen","Trinken",'Kleidung', 'Freizeit', 'Miete', 'Technik', 'Versicherungen', 'Sonstiges']
+        let array = ["Essen","Trinken",'Kleidung', 'Freizeit', 'Miete', 'Technik', 'Versicherung', 'Sonstige']
         let nums = []
         for(let i = 0; i < 8; i++) {
             db.collection('finance').orderBy('Datum').where("planID", "==", planID).where("Kategorie", "==", array[i]).onSnapshot(data => {
@@ -35,7 +35,7 @@
                         labels: array,
                         datasets: [{
                             label: '# of Votes',
-                            data: [nums[0], nums[1], nums[2], nums[3], nums[4], nums[5], nums[6], nums[7]],
+                            data: nums,
                             backgroundColor: [
                                 'rgba(255, 99, 132, 0.2)',
                                 'rgba(54, 162, 235, 0.2)',

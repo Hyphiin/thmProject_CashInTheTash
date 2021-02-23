@@ -1,4 +1,4 @@
-<canvas id="myChart" width="260" height="350"></canvas>
+<canvas id="myChart" width="400" height="400"></canvas>
 
 
 <script>
