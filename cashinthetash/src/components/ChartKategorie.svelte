@@ -9,24 +9,20 @@
     export let finance = {};
     export let planID;
 
-    let test = {};
+    let finances = {};
 
-    let filter = "Essen"
-    let e = 500
-
-
-
+    let betrag = 0
 
     function createChart() {
         let array = ["Essen","Trinken",'Kleidung', 'Freizeit', 'Miete', 'Technik', 'Versicherung', 'Sonstige']
         let nums = []
         for(let i = 0; i < 8; i++) {
             db.collection('finance').orderBy('Datum').where("planID", "==", planID).where("Kategorie", "==", array[i]).onSnapshot(data => {
-                test = data.docs
-                console.log(test)
-                e = test.length
-                nums [i] = e
-                console.log(e)
+                finances = data.docs
+                console.log(finances)
+                betrag = finances.length
+                nums [i] = betrag
+                console.log(betrag)
 
                 let ctx = document.getElementById('myChart').getContext('2d');
                 let myChart = new Chart(ctx, {
@@ -90,7 +86,7 @@
                     }
                 });
             })
-            console.log("in Funktion: ", e)
+            console.log("in Funktion: ", betrag)
         }
 
     }

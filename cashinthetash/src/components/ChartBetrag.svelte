@@ -11,7 +11,7 @@
     export let finance = {};
     export let planID;
 
-    let test = {};
+    let finances = {};
 
 
     import {onMount} from 'svelte'
@@ -21,16 +21,16 @@
         let nums = []
         for(let i = 0; i < 8; i++) {
             db.collection('finance').where("planID", "==", planID).where("Kategorie", "==", array[i]).onSnapshot(data => {
-                test = data.docs
-                console.log("TEST: ",test)
+                finances = data.docs
+                console.log("TEST: ",finances)
                 let e = 0
-                for (let j = 0; j < test.length; j++) {
-                    if(test[j].data().Art === "Einnahme"){
-                        e = e + test[j].data().Betrag
+                for (let j = 0; j < finances.length; j++) {
+                    if(finances[j].data().Art === "Einnahme"){
+                        e = e + finances[j].data().Betrag
                     }else{
-                        e = e - test[j].data().Betrag
+                        e = e - finances[j].data().Betrag
                     }
-                    console.log("test[j]: ", test[j].data().Betrag)
+                    console.log("test[j]: ", finances[j].data().Betrag)
                     console.log("Betrag: ", e)
                 }
                 nums [i] = e
