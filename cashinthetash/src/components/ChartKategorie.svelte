@@ -55,7 +55,35 @@
                             borderWidth: 1
                         }]
                     },
-                    options: {}
+                    options: {
+                        legend: {
+                            labels: {
+                                fontColor: '#FFF',
+                            }
+                        },
+                        scales: {
+                            xAxes: [{
+                                ticks: {
+                                    display: false,
+                                    beginAtZero: true,
+                                    fontColor: '#FFF'
+                                },
+                                gridLines: {
+                                    color: "#14212d"
+                                }
+                            }],
+                            yAxes: [{
+                                ticks: {
+                                    display: false,
+                                    beginAtZero: true,
+                                    fontColor: '#FFF'
+                                },
+                                gridLines: {
+                                    color: "#14212d"
+                                }
+                            }],
+                        },
+                    }
                 });
             })
             console.log("in Funktion: ", e)

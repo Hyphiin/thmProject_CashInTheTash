@@ -72,7 +72,7 @@
 </script>
 
 <div class={string}>
-    <article class="message is-medium is-info">
+    <article class="message is-medium">
         <div class="message-header">
             <div class="columns is-mobile list-column">
                 <div class="column is-narrow">
@@ -92,7 +92,7 @@
                 <div class="column is-narrow">
                 </div>
                 <div class="column is-narrow" style="padding-right:6px;" on:click={showDeleteButton}>
-                    <i class="fas fa-trash is-6"></i>
+                    <i class="fas fa-trash is-6 has-text-white"></i>
                 </div>
             </div>
 
@@ -100,10 +100,10 @@
         <div class="message-body">
             {#if showContent}
                 <Finances planID={id} sum={plan.Summe}/>
-                <hr class="has-background-info"/>
+                <hr class="has-background-white"/>
             {/if}
-            <p class="subtitle has-text-centered is-size-7 is-uppercase has-text-weight-bold">Erstellt: {datum}</p>
-            <button class="button is-info" on:click={showContentButton}>{activatedText}</button>
+            <p class="subtitle2 has-text-centered is-size-7 is-uppercase has-text-weight-bold has-text-white">Erstellt: {datum}</p>
+            <button class="button" on:click={showContentButton}>{activatedText}</button>
         </div>
     </article>
 </div>
@@ -117,9 +117,9 @@
                 <p class="modal-card-title">Plan löschen</p>
                 <button class="delete" aria-label="close" on:click={() => {showDelete = !showDelete}}></button>
             </header>
-            <div class="notification has-background-info">
+            <div class="notification primary-color">
                 <a on:click={deletePlan}>
-                    <i class="fas fa-trash"></i>
+                    <i class="fas fa-trash has-text-white"></i>
                 </a>
             </div>
         </div>

@@ -8,21 +8,26 @@
     export let uid;
 
     let plans = [];
+    let allplans = []
 
     let Titel = '';
     let Summe = 0;
 
     let sort = 'Datum';
-    let filter = "==";
+    let filter = "all";
 
     let limit = 3
+
+    db.collection('plans').orderBy('Datum').where("UserID", "==", uid).onSnapshot(data => {
+        allplans = data.docs
+    })
 
     db.collection('plans').orderBy('Datum').where("UserID", "==", uid).limit(limit).onSnapshot(data => {
         plans = data.docs
     })
 
     const IncreaseNumber = () => {
-        if (limit <= plans.length) {
+        if (limit <= allplans.length) {
             limit += 3
             console.log(limit)
         }
@@ -56,22 +61,16 @@
             db.collection('plans').orderBy(sort).where("UserID", "==", uid).limit(limit).onSnapshot(data => {
                 plans = data.docs
             })
-        } else {
-            if (filter === "all") {
-                db.collection('plans').orderBy('Summe').where("UserID", "==", uid).limit(limit).onSnapshot(data => {
-                    plans = data.docs
-                })
-            } else {
-                db.collection('plans').orderBy('Summe').where("UserID", "==", uid).where("Summe", filter, 0).limit(limit).onSnapshot(data => {
-                    plans = data.docs
-                })
-            }
+        }else{
+            db.collection('plans').orderBy('Summe').where("UserID", "==", uid).where("Summe", filter, 0).limit(limit).onSnapshot(data => {
+                plans = data.docs
+            })
         }
     }
 
     const onFilter = () => {
         if (filter === "all") {
-            db.collection('plans').orderBy('Summe').where("UserID", "==", uid).limit(limit).onSnapshot(data => {
+            db.collection('plans').orderBy(sort).where("UserID", "==", uid).limit(limit).onSnapshot(data => {
                 plans = data.docs
             })
         } else {
@@ -128,11 +127,11 @@
 <hr/>
 
 {#if plans.length >= 3 && limit <= plans.length}
-    <button class="button is-info" on:click={IncreaseNumber}>Mehr</button>
+    <button class="button" on:click={IncreaseNumber}>Mehr</button>
 {/if}
 
 {#if limit >= plans.length && limit > 3}
-    <button class="button is-info" on:click={LimitNumber}>Weniger</button>
+    <button class="button" on:click={LimitNumber}>Weniger</button>
 {/if}
 
 {#if plans.length > 0}
@@ -140,39 +139,38 @@
 {/if}
 
 <div class="newPlan container">
-<article class="message is-medium is-mobile">
-    <form on:submit|preventDefault={addPlan}>
-        <div class="message-header has-background-info addPlan">
-            <p class="subtitle has-text-white is-6">
-                Füge einen neuen Plan hinzu!
-            </p>
-        </div>
-        <div class="message-body">
-            <div class="columns is-mobile list-column addPlan">
-                <div class="column is-narrow">
-                    <input class="input is-info is-small" type="text" placeholder="Titel" bind:value={Titel}
-                           required/>
-                </div>
-                <input type="hidden" bind:value={Summe}/>
-                <div class="column is-narrow">
-                    <button class="button is-small has-background-info">
+    <article class="message is-medium is-mobile">
+        <form on:submit|preventDefault={addPlan}>
+            <div class="message-header addPlan">
+                <p class="subtitle has-text-white is-6">
+                    Füge einen neuen Plan hinzu!
+                </p>
+            </div>
+            <div class="message-body">
+                <div class="columns is-mobile list-column addPlan">
+                    <div class="column is-narrow">
+                        <input class="input is-small" type="text" placeholder="Titel" bind:value={Titel}
+                               required/>
+                    </div>
+                    <input type="hidden" bind:value={Summe}/>
+                    <div class="column is-narrow">
+                        <button class="button is-small">
                         <span style="color: White;">
                         <i class="fas fa-plus"></i>
                         </span>
-                    </button>
+                        </button>
+                    </div>
                 </div>
             </div>
-        </div>
-    </form>
-</article>
+        </form>
+    </article>
 </div>
-
 
 
 <div class="container">
     <div class="columns is-multiline is-variable is-2 is-mobile">
         {#if plans.length <= 0}
-            <div class="notification is-info sorry">
+            <div class="notification primary-color sorry has-text-white">
                 Leider keine passenden Ergebnisse gefunden!
             </div>
         {/if}
@@ -182,3 +180,12 @@
         {/each}
     </div>
 </div>
+
+<hr/>
+{#if plans.length >= 3 && limit <= plans.length}
+    <button class="button" on:click={IncreaseNumber}>Mehr</button>
+{/if}
+
+{#if limit >= plans.length && limit > 3}
+    <button class="button" on:click={LimitNumber}>Weniger</button>
+{/if}
