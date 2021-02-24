@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="427de112-bf1a-4f05-9f6a-be44a7f01a5c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cashinthetash/src/components/ChartBetrag.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/cashinthetash/src/components/ChartBetrag.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cashinthetash/src/components/ChartDatum.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/cashinthetash/src/components/ChartDatum.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cashinthetash/src/components/ChartKategorie.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/cashinthetash/src/components/ChartKategorie.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cashinthetash/src/components/Plan.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/cashinthetash/src/components/Plan.svelte" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,6 +137,7 @@
       <workItem from="1613988852035" duration="25311000" />
       <workItem from="1614031017857" duration="1765000" />
       <workItem from="1614097957090" duration="4531000" />
+      <workItem from="1614153662980" duration="144000" />
     </task>
     <servers />
   </component>

@@ -14,7 +14,6 @@
     export let currentPlanData;
 
 
-
     const deletePlan = () => {
         db.collection('plans').doc(id).delete()
         let deleteFinance = db.collection('finance').where("planID", "==", id);
@@ -46,12 +45,12 @@
     let stringColumn;
     let activatedText;
 
-    if (textTrue){
+    if (textTrue) {
         stringColumn = "column is-two-quarters-mobile is-half-tablet is-half-desktop is-one-third-widescreen is-one-quarter-fullhd";
         activatedText = "Öffnen";
-    }else{
+    } else {
         activatedText = "Schließen"
-        stringColumn = "column is-full-mobile is-full-tablet is-half-desktop is-half-widescreen is-half-fullhd"
+        stringColumn = "column is-full-mobile is-full-tablet is-half-desktop is-offset-one-quarter-desktop is-half-widescreen is-offset-one-quarter-widescreen is-half-fullhd is-offset-one-quarter-fullhd"
     }
 
     console.log("textTrue: ", textTrue)
@@ -62,7 +61,7 @@
         showContent = !showContent
         if (showContent) {
             activatedText = "Schließen"
-            stringColumn = "column is-full-mobile is-full-tablet is-half-desktop is-half-widescreen is-half-fullhd"
+            stringColumn = "column is-full-mobile is-full-tablet is-half-desktop  is-offset-one-quarter-desktop is-half-widescreen is-offset-one-quarter-widescreen is-half-fullhd is-offset-one-quarter-fullhd"
             console.log("showContent1: ", showContent)
             console.log("string1: ", stringColumn)
             console.log("activatedText1: ", activatedText)
@@ -131,7 +130,8 @@
                 <Finances planID={id} sum={sum}/>
                 <hr class="has-background-white"/>
             {/if}
-            <p class="subtitle2 has-text-centered is-size-7 is-uppercase has-text-weight-bold has-text-white">Erstellt: {datum}</p>
+            <p class="subtitle2 has-text-centered is-size-7 is-uppercase has-text-weight-bold has-text-white">
+                Erstellt: {datum}</p>
             <button class="button" on:click={showContentButton}>{activatedText}</button>
         </div>
     </article>
