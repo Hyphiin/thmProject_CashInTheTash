@@ -16,11 +16,11 @@
     let showChart = false
     let sort = 'Name';
 
-    let allfinance = []
-    let limit = 5;
+    // let allfinance = []
+    // let limit = 5;
 
 
-    db.collection('finance').orderBy('Datum').where("planID", "==", planID).limit(limit).onSnapshot(data => {
+    db.collection('finance').orderBy('Datum').where("planID", "==", planID).onSnapshot(data => {
         finances = data.docs
     })
 
@@ -63,26 +63,26 @@
         }
     }
 
-    const IncreaseNumber = () => {
-        if (limit <= allfinance.length) {
-            limit += 5
-            console.log(limit)
-        }
-        db.collection('finance').orderBy('Datum').where("planID", "==", planID).limit(limit).onSnapshot(data => {
-            finances = data.docs
-        })
-    }
+    // const IncreaseNumber = () => {
+    //     if (limit <= allfinance.length) {
+    //         limit += 5
+    //         console.log(limit)
+    //     }
+    //     db.collection('finance').orderBy('Datum').where("planID", "==", planID).limit(limit).onSnapshot(data => {
+    //         finances = data.docs
+    //     })
+    // }
 
-    const LimitNumber = () => {
-        if (limit >= 10) {
-            limit = limit - 5
-        } else {
-            alert('Mindestanzahl darf nicht unterschritten werden.')
-        }
-        db.collection('finance').orderBy('Datum').where("planID", "==", planID).limit(limit).onSnapshot(data => {
-            finances = data.docs
-        })
-    }
+    // const LimitNumber = () => {
+    //     if (limit >= 10) {
+    //         limit = limit - 5
+    //     } else {
+    //         alert('Mindestanzahl darf nicht unterschritten werden.')
+    //     }
+    //     db.collection('finance').orderBy('Datum').where("planID", "==", planID).limit(limit).onSnapshot(data => {
+    //         finances = data.docs
+    //     })
+    // }
 </script>
 
 <div class="container">
@@ -140,7 +140,7 @@
             <ChartBetrag planID={planID}/>
         {/if}
     {:else}
-        <div class="rows">
+        <div class="rows scrollable__container">
             {#each finances as item}
                 <div class="row is-fullwidth is-2">
                     <SimpleListItem id={item.id} finance={item.data()} bind:sum={sum} pos={pos} planID={planID}
@@ -149,13 +149,13 @@
                 <div style="height:10px"></div>
             {/each}
         </div>
-        {#if allfinance.length > 5 && limit < allfinance.length}
+        <!-- {#if allfinance.length > 5 && limit < allfinance.length}
             <button class="button" on:click={IncreaseNumber}>Mehr</button>
         {/if}
 
         {#if limit > 5}
             <button class="button" on:click={LimitNumber}>Weniger</button>
-        {/if}
+        {/if} -->
         {#if finances.length > 0}
             <div style="height:10px"></div>
             <div class="control">

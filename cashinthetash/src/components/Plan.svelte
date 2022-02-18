@@ -127,7 +127,7 @@
         </div>
         <div class="message-body">
             {#if showContent}
-                <Finances planID={id} sum={sum}/>
+                <Finances planID={id} sum={sum} />
                 <hr class="has-background-white"/>
             {/if}
             <p class="subtitle2 has-text-centered is-size-7 is-uppercase has-text-weight-bold has-text-white">
@@ -142,15 +142,14 @@
     <div class="modal is-active">
         <div class="modal-background"></div>
         <div class="modal-card">
-            <header class="modal-card-head">
-                <p class="modal-card-title">Plan löschen</p>
+            <header class="modal-card-head primary-color">
+                <p class="modal-card-title has-text-white">Plan löschen</p>
                 <button class="delete" aria-label="close" on:click={() => {showDelete = !showDelete}}></button>
             </header>
-            <div class="notification primary-color" on:click={() => {showDelete = !showDelete; deletePlan()}}>
-                <a>
-                    <i class="fas fa-trash has-text-white"></i>
-                </a>
-            </div>
+            <footer class="modal-card-foot">
+                <button class="button primary-color" on:click={() => {showDelete = !showDelete; deletePlan()}}>Löschen</button>
+                <button class="button primary-color">Abbrechen</button>
+            </footer>
         </div>
     </div>
 {/if}
@@ -159,10 +158,16 @@
     <div class="modal is-active">
         <div class="modal-background"></div>
         <div class="modal-card">
-            <header class="modal-card-head">
-                <input class="input" on:input={updatePlan} type="text" bind:value={plan.Titel}/>
+            <header class="modal-card-head primary-color">
+                <p class="modal-card-title has-text-white">Plan umbenennen</p>
                 <button class="delete" aria-label="close" on:click={() => {showEdit = !showEdit}}></button>
             </header>
+            <section class="modal-card-body">
+                <input class="input" type="text" on:input={updatePlan} bind:value={plan.Titel}/>
+            </section>
+            <footer class="modal-card-foot">
+                <button class="button primary-color" on:click={() => {showEdit = !showEdit}}>Schließen</button>
+            </footer>
         </div>
     </div>
 {/if}

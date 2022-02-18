@@ -65,7 +65,7 @@
 
 <div class={stringSelected}>
     <input class="input" on:input={updateFinance} type="text" bind:value={finance.Name}/>
-    <input class="input" on:input={updateFinance} type="text" bind:value={finance.Betrag}/>
+    <input class="input" on:input={updateFinance} type="number" bind:value={finance.Betrag}/>
     <hr/>
     <p class="subtitle has-text-centered is-size-7 is-uppercase has-text-weight-bold">Erstellt: {datum}</p>
     <a class="delete is-large is-danger" on:click={deleteFinance}></a>

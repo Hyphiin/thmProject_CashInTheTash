@@ -155,15 +155,14 @@
     <div class="modal is-active">
         <div class="modal-background"></div>
         <div class="modal-card">
-            <header class="modal-card-head">
-                <p class="modal-card-title">Eintrag löschen</p>
+            <header class="modal-card-head primary-color">
+                <p class="modal-card-title has-text-white">Löschvorgang fortsetzen?</p>
                 <button class="delete" aria-label="close" on:click={() => {showDelete = !showDelete;colorCheck()}}></button>
             </header>
-            <div class="notification primary-color" on:click={() => {deleteFinance();colorCheck()}}>
-                <a>
-                    <i class="fas fa-trash has-text-white"></i>
-                </a>
-            </div>
+            <footer class="modal-card-foot">
+                <button class="button primary-color" on:click={() => {deleteFinance();colorCheck()}}>Löschen</button>
+                <button class="button primary-color" on:click={() => {showDelete = !showDelete;colorCheck()}}>Abbrechen</button>
+            </footer>
         </div>
     </div>
 {/if}
@@ -176,8 +175,7 @@
                 <p class="modal-card-title">Eintrag bearbeiten</p>
                 <button class="delete" aria-label="close"  on:click={() => {showEdit = !showEdit; colorCheck()}}></button>
             </header>
-            <section class="modal-card-body">
-                <div class="notification primary-color">
+            <section class="modal-card-body primary-color">
                     <form on:submit|preventDefault={updateFinance}>
                         <input class="input" type="text" placeholder="Name" bind:value={finance.Name} required/>
                         <input class="input" type="number" placeholder="Betrag" bind:value={finance.Betrag} required/>
@@ -193,6 +191,7 @@
                                     <option name="answer" value={"Miete"}>Miete</option>
                                     <option name="answer" value={"Technik"}>Technik</option>
                                     <option name="answer" value={"Versicherung"}>Versicherung</option>
+                                    <option name="answer" value={"Haushalt"}>Haushalt</option>
                                     <option name="answer" value={"Sonstige"}>Sonstige</option>
                                 </select>
                             </div>
@@ -207,11 +206,11 @@
                                 </select>
                             </div>
                         </div>
-                        <hr/>
-                        <button type="button" class="button" on:click={() => {showEdit = !showEdit; colorCheck();updateFinance()}}>Speichern</button>
                     </form>
-                </div>
             </section>
+            <footer class="modal-card-foot">
+                <button type="button" class="button primary-color" on:click={() => {showEdit = !showEdit; colorCheck();updateFinance()}}>Speichern</button>
+            </footer>
         </div>
     </div>
 {/if}
