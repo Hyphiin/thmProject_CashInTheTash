@@ -9,6 +9,8 @@
 
     let finances = [];
 
+    let allfinance = [];
+
     export let planID;
     export let sum;
     export let pos;
@@ -159,7 +161,7 @@
         {#if finances.length > 0}
             <div style="height:10px"></div>
             <div class="control">
-                <span class="tag {colorSum}">{sum}€</span>
+                <span class="tag is-large {colorSum}">{sum}€</span>
             </div>
         {/if}
     {/if}

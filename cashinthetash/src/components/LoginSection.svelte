@@ -5,18 +5,35 @@
     import Finances from "./Finances.svelte";
     import Plans from "./Plans.svelte";
 
+    import {loggingIn} from "../store/store";
+
     let user;
 
     const unsubscribe = authState(auth).subscribe(u => user = u);
 
+    let loading = false;
+
     function login() {
-        auth.signInWithPopup(googleProvider);
+        loggingIn.set(true);
+        auth.signInWithPopup(googleProvider).then(res => {
+            loggingIn.set(false);
+        }).catch(e=>{
+            loggingIn.set(false);
+        });
     }
+
+    auth.onAuthStateChanged(function(user) {
+        if (user) {
+        // User is signed in.
+            
+        } else {
+        // No user is signed in.
+            
+        }
+    });
 
     // sides
     let showContent = false;
-
-    console.log("showContend " + showContent);
 
 </script>
 
@@ -30,8 +47,8 @@
             <Plans {...user}/>
         {/if}
 
-        <hr/>
-        <div class="card">
+        <!-- <hr/> -->
+        <!-- <div class="card">
             <div class="card-content has-background-black">
                 <p class="title has-text-light">
                     “Eine kreative Ökonomie ist der Treibstoff der Wohlfahrt.”
@@ -46,7 +63,7 @@
                         <button class="button" on:click={ () => auth.signOut() }>Logout</button>
                     </span>
             </footer>
-        </div>
+        </div> -->
 
     {:else}
         <div class="card">

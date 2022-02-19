@@ -3,6 +3,16 @@
     import Plan from './Plan.svelte';
     import firebase from "firebase/app";
 
+    import {showAddConfirmation} from "../store/store";
+
+    function addSuccess() {
+		showAddConfirmation.set(true)
+
+        setTimeout(()=>{
+            showAddConfirmation.set(false)	
+        },5000)
+	}
+
     export let uid;
 
     let plans = [];
@@ -18,7 +28,6 @@
 
     let showContent = false;
     let showDelete = false;
-    let planID;
     let currentPlanID;
     let currentPlanData;
 
@@ -28,16 +37,15 @@
         allplans = data.docs
     })
 
-    db.collection('plans').orderBy('Datum').where("UserID", "==", uid).limit(limit).onSnapshot(data => {
+    db.collection('plans').orderBy('Datum').where("UserID", "==", uid).onSnapshot(data => {
         plans = data.docs
     })
 
     const IncreaseNumber = () => {
         if (limit <= allplans.length) {
             limit += 3
-            console.log(limit)
         }
-        db.collection('plans').orderBy('Datum').where("UserID", "==", uid).limit(limit).onSnapshot(data => {
+        db.collection('plans').orderBy('Datum').where("UserID", "==", uid).onSnapshot(data => {
             plans = data.docs
         })
     }
@@ -48,7 +56,7 @@
         } else {
             alert('Mindestanzahl darf nicht unterschritten werden.')
         }
-        db.collection('plans').orderBy('Datum').where("UserID", "==", uid).limit(limit).onSnapshot(data => {
+        db.collection('plans').orderBy('Datum').where("UserID", "==", uid).onSnapshot(data => {
             plans = data.docs
         })
     }
@@ -58,17 +66,17 @@
         db.collection('plans').add({
             Titel, Datum, UserID: uid, Summe
         })
-        console.log('erfolgreich hinzugefügt!');
+        addSuccess();
         Titel = ''
     }
 
     const onSort = () => {
         if (filter === "all") {
-            db.collection('plans').orderBy(sort).where("UserID", "==", uid).limit(limit).onSnapshot(data => {
+            db.collection('plans').orderBy(sort).where("UserID", "==", uid).onSnapshot(data => {
                 plans = data.docs
             })
         } else {
-            db.collection('plans').orderBy('Summe').where("UserID", "==", uid).where("Summe", filter, 0).limit(limit).onSnapshot(data => {
+            db.collection('plans').orderBy('Summe').where("UserID", "==", uid).where("Summe", filter, 0).onSnapshot(data => {
                 plans = data.docs
             })
         }
@@ -76,11 +84,11 @@
 
     const onFilter = () => {
         if (filter === "all") {
-            db.collection('plans').orderBy(sort).where("UserID", "==", uid).limit(limit).onSnapshot(data => {
+            db.collection('plans').orderBy(sort).where("UserID", "==", uid).onSnapshot(data => {
                 plans = data.docs
             })
         } else {
-            db.collection('plans').orderBy('Summe').where("UserID", "==", uid).where("Summe", filter, 0).limit(limit).onSnapshot(data => {
+            db.collection('plans').orderBy('Summe').where("UserID", "==", uid).where("Summe", filter, 0).onSnapshot(data => {
                 plans = data.docs
             })
         }
@@ -88,7 +96,7 @@
 
 </script>
 
-<hr/>
+<!-- <hr/> -->
 
 <section class="section">
     <div class="container">
@@ -103,7 +111,7 @@
 <div class="columns filterwerkzeug">
     <div class="column is-half-desktop has-text-right-desktop" style="padding-left: 0px; padding-right: 5px;">
         <div class="control">
-            <label class="has-text-white">Sortieren:</label>
+            <label for="has-icons-left" class="has-text-white">Sortieren:</label>
             <div class="select is-small is-rounded">
                 <select class="has-icons-left" bind:value={sort} on:change={onSort}>
                     <option name="answer" value={"Datum"}>Standard</option>
@@ -117,7 +125,7 @@
 
     <div class="column is-half-desktop has-text-left-desktop" style="padding-left: 5px; padding-right: 0px;">
         <div class="control">
-            <label class="has-text-white">Filtern:</label>
+            <label for="has-icons-left" class="has-text-white">Filtern:</label>
             <div class="select is-small is-rounded">
                 <select class="has-icons-left" bind:value={filter} on:change={onFilter}>
                     <option name="answer" value={"all"}>Standard</option>
@@ -130,9 +138,9 @@
 </div>
 
 
-<hr/>
+<!-- <hr/> -->
 
-{#if allplans.length > 3 && limit < allplans.length}
+<!-- {#if allplans.length > 3 && limit < allplans.length}
     <button class="button" on:click={IncreaseNumber}>Mehr</button>
 {/if}
 
@@ -142,11 +150,11 @@
 
 {#if plans.length > 0}
     <hr/>
-{/if}
+{/if} -->
 
 <div class="newPlan container">
     <article class="message is-medium is-mobile">
-        <form on:submit|preventDefault={addPlan}>
+        <!-- <form on:submit|preventDefault={addPlan}>
             <div class="message-header addPlan">
                 <p class="subtitle has-text-white is-6">
                     Füge einen neuen Plan hinzu!
@@ -168,7 +176,21 @@
                     </div>
                 </div>
             </div>
-        </form>
+        </form> -->
+        <form class="box primary-color" on:submit|preventDefault={addPlan}>
+            <div class="columns is-mobile list-column addPlan">
+                <div class="column is-narrow">
+                    <input class="input is-small" type="text" placeholder="Titel" bind:value={Titel}
+                           required/>
+                </div>
+                <input type="hidden" bind:value={Summe}/>
+                <div class="column is-narrow">
+                    <button class="button is-small">
+                        Hinzufügen
+                    </button>
+                </div>
+            </div>
+          </form>
     </article>
 </div>
 
@@ -193,11 +215,11 @@
     </div>
 </div>
 
-<hr/>
+<!-- <hr/>
 {#if allplans.length > 3 && limit < allplans.length}
     <button class="button" on:click={IncreaseNumber}>Mehr</button>
 {/if}
 
 {#if limit > 3}
     <button class="button" on:click={LimitNumber}>Weniger</button>
-{/if}
+{/if} -->

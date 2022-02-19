@@ -1,14 +1,19 @@
 <script>
-    import {fade, slide, scale} from 'svelte/transition';
-    import {flip} from 'svelte/animate';
     import {db} from '../firebase';
-    import Finance from './Finance.svelte';
     import firebase from "firebase";
     import SimpleList from "./SimpleList.svelte";
 
+    import {showAddConfirmation} from "../store/store";
+
+    function addSuccess() {
+		showAddConfirmation.set(true)
+
+        setTimeout(()=>{
+            showAddConfirmation.set(false)	
+        },5000)
+	}
 
     let finances = [];
-    let plans = [];
     export let sum;
 
     let Betrag = 0;
@@ -28,6 +33,9 @@
 
 
     const addFinance = () => {
+
+        showAdd = !showAdd;
+
         const Datum = firebase.firestore.Timestamp.fromDate(new Date());
         if(Art === "Einnahme"){
             pos = true
@@ -39,20 +47,14 @@
         db.collection('finance').add({
             Betrag, Name, Kategorie, Datum, planID, Art, Summe, Positiv
         })
-        console.log('erfolgreich hinzugefügt!');
+        addSuccess();
         Name = ''
-
-        console.log(planID);
 
         if(Art === "Einnahme"){
             sum = sum + Betrag
-            console.log("Sum: ",sum)
         }else {
             sum = sum - Betrag
-            console.log("Sum: ",sum)
         }
-
-        console.log("pos: ",pos)
 
         db.collection('plans').doc(planID).update({
             Summe: sum,
@@ -62,18 +64,9 @@
 
     }
 
-    const showPlan = () => {
-        console.log(planID);
-    }
-
     let showAdd = false;
     let showList = true;
     let activatedText = "Hinzufügen"
-
-    console.log("showList " + showList);
-
-    export let finance = {};
-    let activated;
 
     const showADDButton = () => {
         showAdd = !showAdd

@@ -1,6 +1,24 @@
 <script>
     import {db} from '../firebase';
 
+    import {showDeletionConfirmation, showUpdateConfirmation} from "../store/store";
+
+    function deleteSuccess() {
+		showDeletionConfirmation.set(true)
+
+        setTimeout(()=>{
+            showDeletionConfirmation.set(false)	
+        },5000)
+	}
+
+    function updateSuccess() {
+		showUpdateConfirmation.set(true)
+
+        setTimeout(()=>{
+            showUpdateConfirmation.set(false)	
+        },5000)
+	}
+
     export let id = '';
     export let finance = {};
     export let planID;
@@ -9,10 +27,8 @@
     const deleteFinance = () => {
         if(finance.Art === "Einnahme"){
             sum = sum + finance.Betrag
-            console.log("Sum: ",sum)
         }else {
-            sum = sum - finance.Betrag
-            console.log("Sum: ",sum)
+            sum = sum - finance.Betrag 
         }
 
         db.collection('plans').doc(planID).update({
@@ -20,7 +36,7 @@
         })
 
         db.collection('finance').doc(id).delete()
-        console.log('erfolgreich gelöscht!');
+        deleteSuccess();
     }
 
     const updateFinance = () => {
@@ -31,19 +47,15 @@
 
         if(finance.Art === "Einnahme"){
             sum = sum + finance.Betrag
-            console.log("Sum: ",sum)
         }else {
             sum = sum - finance.Betrag
-            console.log("Sum: ",sum)
         }
 
         db.collection('plans').doc(planID).update({
             Summe: sum
         })
-        console.log('erfolgreich geupdated!');
+        updateSuccess();
     }
-
-    let date= finance.Datum.toDate().toDateString();
 
     let datum = finance.Datum.toDate()
     let mm = datum.getMonth() + 1;

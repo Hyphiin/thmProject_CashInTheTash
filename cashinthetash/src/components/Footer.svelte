@@ -1,12 +1,27 @@
 <script>
-    import Chart from "./ChartDatum.svelte";
     import InfoMessages from "./InfoMessages.svelte";
+    import {auth} from "../firebase";
+
+    let loggedIn = false;
+
+    auth.onAuthStateChanged(function(user) {
+        if (user) {
+        // User is signed in.
+            loggedIn = true;
+        } else {
+        // No user is signed in.
+            loggedIn = false;
+        }
+    });
+
 </script>
 <footer class="footer">
     <div class="content has-text-centered">
-        <p class="tag">
+        <p class="tag is-medium">
             CashInTheTash
         </p>
-        <InfoMessages/>
+        {#if loggedIn === false}
+            <InfoMessages/>
+        {/if}
     </div>
 </footer>

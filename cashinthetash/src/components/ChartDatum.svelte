@@ -4,8 +4,6 @@
 <script>
     import {db} from "../firebase";
 
-    export let id = '';
-    export let finance = {};
     export let planID;
 
     let finances = {};
@@ -18,7 +16,6 @@
         let dates = []
         db.collection('finance').where("planID", "==", planID).orderBy("Datum").onSnapshot(data => {
             finances = data.docs
-            console.log("TEST: ", finances)
             let oldDate = finances[0].data().Datum.toDate()
             let mm = oldDate.getMonth() + 1;
             let dd = oldDate.getDate();
@@ -37,53 +34,35 @@
                 if (currentDate === oldDate) {
                     if (finances[j].data().Art === "Einnahme") {
                         betrag = betrag + finances[j].data().Betrag
-                        console.log("oldDate: ", oldDate)
-                        console.log("currentDate: ", currentDate)
-                        console.log("Betrag: ", betrag)
                         oldDate = currentDate
                         if (j === finances.length - 1) {
                             nums.push(betrag)
                             dates.push(oldDate)
-                            console.log("push1: ", betrag, " + ", oldDate)
                         }
                     } else {
                         betrag = betrag - finances[j].data().Betrag
-                        console.log("oldDate: ", oldDate)
-                        console.log("currentDate: ", currentDate)
-                        console.log("Betrag: ", betrag)
                         oldDate = currentDate
                         if (j === finances.length - 1) {
                             nums.push(betrag)
                             dates.push(oldDate)
-                            console.log("push2: ", betrag, " + ", oldDate)
-
                         }
                     }
                 } else {
                     nums.push(betrag)
                     dates.push(oldDate)
-                    console.log("push: ", betrag, " + ", oldDate)
                     if (finances[j].data().Art === "Einnahme") {
-                        console.log("oldDate: ", oldDate)
-                        console.log("currentDate: ", currentDate)
-                        console.log("Betrag: ", finances[j].data().Betrag)
                         oldDate = currentDate
                         betrag = finances[j].data().Betrag
                         if (j === finances.length - 1) {
                             nums.push(betrag)
                             dates.push(oldDate)
-                            console.log("push1: ", betrag, " + ", oldDate)
                         }
                     } else {
-                        console.log("oldDate: ", oldDate)
-                        console.log("currentDate: ", currentDate)
-                        console.log("Betrag: ", finances[j].data().Betrag)
                         oldDate = currentDate
                         betrag = -finances[j].data().Betrag
                         if (j === finances.length - 1) {
                             nums.push(betrag)
                             dates.push(oldDate)
-                            console.log("push1: ", betrag, " + ", oldDate)
                         }
                     }
                 }

@@ -7,7 +7,6 @@
     export let sum;
     export let pos;
 
-    export let currentItemID;
     export let currentItemData;
 
     let date = finance.Datum.toDate().toDateString();
@@ -21,8 +20,6 @@
 
     export let colorSum;
 
-    let helper = 0;
-
     currentItemData = finance;
 
     export const colorCheck = () => {
@@ -31,7 +28,6 @@
             } else {
                 colorSum = "is-danger"
             }
-            console.log("COLOR CHECKED!")
     }
 
     let showEdit = false
@@ -48,10 +44,8 @@
         showDelete = !showDelete
         if(finance.Art === "Einnahme"){
             sum = sum - finance.Betrag
-            console.log("after delete Sum: ",sum)
         }else {
             sum = sum + finance.Betrag
-            console.log("after delete Sum: ",sum)
         }
         db.collection('plans').doc(planID).update({
             Summe: sum
@@ -59,21 +53,16 @@
 
         db.collection('finance').doc(id).delete()
         colorCheck()
-        console.log('erfolgreich gelöscht!');
     }
 
     let aktBetrag = finance.Betrag
     let aktArt = finance.Art
 
     const updateFinance = () => {
-        console.log("Betrag davor: ",aktBetrag)
-
         if(aktArt === "Einnahme"){
             sum = sum - aktBetrag
-            console.log("Sum vor Update: ",sum)
         }else {
             sum = sum + aktBetrag
-            console.log("Sum  vor Update: ",sum)
         }
 
         db.collection('finance').doc(id).update({
@@ -86,18 +75,13 @@
         aktBetrag = finance.Betrag
         aktArt = finance.Art
 
-        console.log("Betrag danach: ", aktBetrag)
-
         if(finance.Art === "Einnahme"){
             sum = sum + aktBetrag
             pos = true
-            console.log("Sum danach: ",sum)
         }else {
             sum = sum - aktBetrag
             pos = false
-            console.log("Sum danach: ",sum)
         }
-        console.log("pos: ",pos)
 
         db.collection('plans').doc(planID).update({
             Summe: sum,
@@ -107,7 +91,6 @@
         })
 
         colorCheck()
-        console.log('erfolgreich geupdated!');
     }
     colorCheck()
 </script>

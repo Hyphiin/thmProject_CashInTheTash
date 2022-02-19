@@ -14,6 +14,8 @@
     background-attachment: scroll;
     background-size: cover;
     background-color: #999;
+
+    position: relative;
 }
 
 .bg-image2 {
@@ -165,14 +167,15 @@ article.message{
 }
 
 .scrollable__container{
-    overflow: auto; 
-    max-height: 375px;
+    overflow-y: auto;
+    overflow-x: hidden; 
+    max-height: 400px;
+    min-height: 200px;
 }
 
     /* width */
     ::-webkit-scrollbar {
         width: 10px;
-        margin-left: 5px;
     }
   
     /* Track */
@@ -189,6 +192,16 @@ article.message{
     ::-webkit-scrollbar-thumb:hover {
         background: #555; 
     }
+
+.alertNotification {
+    position: fixed;
+
+    width: 100%;
+
+    text-align: center;
+
+    z-index: 3000;
+}
 
 
 @media only screen and (max-width: 600px) {

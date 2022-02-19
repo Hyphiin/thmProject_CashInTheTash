@@ -3,13 +3,30 @@
     import Finances from "./Finances.svelte";
     import '@fortawesome/fontawesome-free/js/all.js';
 
+    import {showDeletionConfirmation, showUpdateConfirmation} from "../store/store";
+
+    function deleteSuccess() {
+		showDeletionConfirmation.set(true)
+
+        setTimeout(()=>{
+            showDeletionConfirmation.set(false)	
+        },5000)
+	}
+
+    function updateSuccess() {
+		showUpdateConfirmation.set(true)
+
+        setTimeout(()=>{
+            showUpdateConfirmation.set(false)	
+        },5000)
+	}
+
     export let id = '';
     export let plan = {};
     export let showContent;
     let showEdit;
     export let showDelete;
 
-    export let planID = '';
     export let currentPlanID;
     export let currentPlanData;
 
@@ -22,7 +39,7 @@
                 doc.ref.delete();
             });
         });
-        console.log('erfolgreich gelöscht!');
+        deleteSuccess();
         showContent = false;
     }
 
@@ -30,16 +47,8 @@
         db.collection('plans').doc(id).update({
             Titel: plan.Titel
         })
-        console.log('erfolgreich geupdated!');
+        updateSuccess()
     }
-
-
-    const getID = () => {
-        planID = {id};
-        console.log(planID);
-    }
-
-    console.log("showEdit " + showEdit);
 
     export let textTrue;
     let stringColumn;
@@ -53,30 +62,17 @@
         stringColumn = "column is-full-mobile is-full-tablet is-half-desktop is-offset-one-quarter-desktop is-half-widescreen is-offset-one-quarter-widescreen is-half-fullhd is-offset-one-quarter-fullhd"
     }
 
-    console.log("textTrue: ", textTrue)
-    console.log("string Expo: ", stringColumn)
-    console.log("activatedText Expo: ", activatedText)
-
     const showContentButton = () => {
         showContent = !showContent
         if (showContent) {
             activatedText = "Schließen"
             stringColumn = "column is-full-mobile is-full-tablet is-half-desktop  is-offset-one-quarter-desktop is-half-widescreen is-offset-one-quarter-widescreen is-half-fullhd is-offset-one-quarter-fullhd"
-            console.log("showContent1: ", showContent)
-            console.log("string1: ", stringColumn)
-            console.log("activatedText1: ", activatedText)
         } else {
             activatedText = "Öffnen"
-            stringColumn = "column is-two-quarters-mobile is-half-tablet is-half-desktop is-one-third-widescreen is-one-quarter-fullhd"
-            console.log("showContent2: ", showContent)
-            console.log("string2: ", stringColumn)
-            console.log("activatedText2: ", activatedText)
+            stringColumn = "column is-two-quarters-mobile is-half-tablet is-half-desktop is-one-third-widescreen is-one-quarter-fullhd"   
         }
         currentPlanID = id;
         currentPlanData = plan;
-
-        console.log("string after: ", stringColumn)
-        console.log("activatedText after: ", activatedText)
     }
 
 
@@ -148,7 +144,7 @@
             </header>
             <footer class="modal-card-foot">
                 <button class="button primary-color" on:click={() => {showDelete = !showDelete; deletePlan()}}>Löschen</button>
-                <button class="button primary-color">Abbrechen</button>
+                <button class="button primary-color" on:click={() => {showDelete = !showDelete}}>Abbrechen</button>
             </footer>
         </div>
     </div>

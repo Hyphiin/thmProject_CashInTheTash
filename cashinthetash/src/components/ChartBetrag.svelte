@@ -7,8 +7,6 @@
 <script>
     import {db} from "../firebase";
 
-    export let id = '';
-    export let finance = {};
     export let planID;
 
     let finances = {};
@@ -17,21 +15,18 @@
     import {onMount} from 'svelte'
 
     function createChart() {
-        let array = ["Essen","Trinken",'Kleidung', 'Freizeit', 'Miete', 'Technik', 'Versicherung', 'Sonstige']
+        let array = ["Essen","Trinken",'Kleidung', 'Freizeit', 'Miete', 'Technik', 'Versicherung', 'Haushalt' , 'Sonstige']
         let nums = []
         for(let i = 0; i < 8; i++) {
             db.collection('finance').where("planID", "==", planID).where("Kategorie", "==", array[i]).onSnapshot(data => {
                 finances = data.docs
-                console.log("TEST: ",finances)
                 let e = 0
                 for (let j = 0; j < finances.length; j++) {
                     if(finances[j].data().Art === "Einnahme"){
                         e = e + finances[j].data().Betrag
                     }else{
                         e = e - finances[j].data().Betrag
-                    }
-                    console.log("test[j]: ", finances[j].data().Betrag)
-                    console.log("Betrag: ", e)
+                    }    
                 }
                 nums [i] = e
 
