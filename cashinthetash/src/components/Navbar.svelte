@@ -2,12 +2,38 @@
     import {auth, googleProvider} from '../firebase';
     import {authState} from 'rxfire/auth';
 
+    import {loggingIn, loggingOut, loginSuccess, loginFailure} from "../store/store";
+
     let user;
 
     const unsubscribe = authState(auth).subscribe(u => user = u);
 
     function login() {
-        auth.signInWithPopup(googleProvider);
+        loggingIn.set(true);
+        auth.signInWithPopup(googleProvider).then(res => {
+            loggingIn.set(false);
+            loginSuccess.set(true);
+            setTimeout(()=>{
+                loginSuccess.set(false);
+            }, 3000);
+        }).catch(e=>{
+            loggingIn.set(false);
+            loginFailure.set(true);
+            setTimeout(()=>{
+                loginFailure.set(false);
+            }, 3000);
+        });
+    }
+
+    function logout() {
+        auth.signOut().then(()=>{
+            loggingOut.set(true);
+            setTimeout(()=>{
+                loggingOut.set(false);
+            }, 3000)
+        }).catch(e=>{
+            loggingOut.set(false);
+        })
     }
 
     let mobile;
@@ -56,7 +82,7 @@
                     </div>
                     <span class="navbar-item">
                 {#if user}
-                <button class="button" on:click={ () => auth.signOut() }>Logout</button>
+                <button class="button" on:click={ () => logout() }>Logout</button>
                 {:else}
                 <button class="button" on:click={login}>
                     <i class="fab fa-google"></i>

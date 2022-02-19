@@ -4,13 +4,17 @@
     import Banner from "./components/Banner.svelte";
     import LoginSection from "./components/LoginSection.svelte";
 
-    import {showDeletionConfirmation, showUpdateConfirmation, showAddConfirmation, loggingIn} from "./store/store";
+    import {showDeletionConfirmation, showUpdateConfirmation, showAddConfirmation, loggingIn, loggingOut, loginSuccess, loginFailure} from "./store/store";
 
     let showDeletionConfirmationValue;
     let showUpdateConfirmationValue;
     let showAddConfirmationValue;
 
     let logInProcess;
+    let logOutProcess;
+
+    let loginSuc;
+    let loginFail;
 
 	showDeletionConfirmation.subscribe(value => {
 		showDeletionConfirmationValue = value;
@@ -26,6 +30,18 @@
 
     loggingIn.subscribe(value => {
 		logInProcess = value;
+	});
+
+    loggingOut.subscribe(value => {
+		logOutProcess = value;
+	});
+
+    loginSuccess.subscribe(value => {
+		loginSuc = value;
+	});
+
+    loginFailure.subscribe(value => {
+		loginFail = value;
 	});
 
 </script>
@@ -53,12 +69,27 @@
     </div>
     {/if}
     <Banner/>
-    {#if logInProcess === false}
+    {#if logInProcess === false && logOutProcess === false}
     <LoginSection/>
-    {:else}
+    {:else if logInProcess === true && logOutProcess === false}
         <div style="min-height: 500px; display: flex; justify-content: center; align-items: center;">
             <p class="title is-2 has-text-white">Wir loggen dich ein...</p>
         </div>
+    {:else}
+        <div class="notification is-success is-light alertNotification">
+            Erfolgreich ausgeloggt!
+        </div>
+        <LoginSection/>
     {/if}
     <Footer/>
+    {#if loginSuc}
+        <div class="notification is-success is-light alertNotification">
+            Erfolgreich eingeloggt!
+        </div>
+    {/if}
+    {#if loginFail}
+        <div class="notification is-danger is-light alertNotification">
+            Fehlgeschlagen!
+        </div>
+    {/if}
 </main>

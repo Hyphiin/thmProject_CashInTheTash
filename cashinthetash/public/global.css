@@ -196,11 +196,18 @@ article.message{
 .alertNotification {
     position: fixed;
 
+    top:0;
+
+    margin-top: 10px;
+    margin-bottom: 10px;
+
     width: 100%;
 
     text-align: center;
 
     z-index: 3000;
+
+    opacity: 0.7;
 }
 
 

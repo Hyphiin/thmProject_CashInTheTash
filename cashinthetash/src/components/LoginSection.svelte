@@ -5,20 +5,26 @@
     import Finances from "./Finances.svelte";
     import Plans from "./Plans.svelte";
 
-    import {loggingIn} from "../store/store";
+    import {loggingIn, loginSuccess, loginFailure} from "../store/store";
 
     let user;
 
     const unsubscribe = authState(auth).subscribe(u => user = u);
 
-    let loading = false;
-
     function login() {
         loggingIn.set(true);
         auth.signInWithPopup(googleProvider).then(res => {
             loggingIn.set(false);
+            loginSuccess.set(true);
+            setTimeout(()=>{
+                loginSuccess.set(false);
+            }, 3000);
         }).catch(e=>{
             loggingIn.set(false);
+            loginFailure.set(true);
+            setTimeout(()=>{
+                loginFailure.set(false);
+            }, 3000);
         });
     }
 

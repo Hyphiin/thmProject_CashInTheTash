@@ -10,7 +10,7 @@
 
         setTimeout(()=>{
             showDeletionConfirmation.set(false)	
-        },5000)
+        },3000)
 	}
 
     function updateSuccess() {
@@ -18,7 +18,7 @@
 
         setTimeout(()=>{
             showUpdateConfirmation.set(false)	
-        },5000)
+        },3000)
 	}
 
     export let id = '';

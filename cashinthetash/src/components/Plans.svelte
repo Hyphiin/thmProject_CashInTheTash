@@ -10,7 +10,7 @@
 
         setTimeout(()=>{
             showAddConfirmation.set(false)	
-        },5000)
+        },3000)
 	}
 
     export let uid;
