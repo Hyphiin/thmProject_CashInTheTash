@@ -98,46 +98,6 @@
 
 <!-- <hr/> -->
 
-<section class="section">
-    <div class="container">
-        <h1 class="title has-text-white fcolor">Finanzplaner</h1>
-        <h2 class="subtitle has-text-white fcolor">
-            Wähle deinen Plan
-        </h2>
-    </div>
-</section>
-
-
-<div class="columns filterwerkzeug">
-    <div class="column is-half-desktop has-text-right-desktop" style="padding-left: 0px; padding-right: 5px;">
-        <div class="control">
-            <label for="has-icons-left" class="has-text-white">Sortieren:</label>
-            <div class="select is-small is-rounded">
-                <select class="has-icons-left" bind:value={sort} on:change={onSort}>
-                    <option name="answer" value={"Datum"}>Standard</option>
-                    <option name="answer" value={"Summe"}>Summe</option>
-                    <option name="answer" value={"Datum"}>Datum</option>
-                    <option name="answer" value={"Titel"}>Titel</option>
-                </select>
-            </div>
-        </div>
-    </div>
-
-    <div class="column is-half-desktop has-text-left-desktop" style="padding-left: 5px; padding-right: 0px;">
-        <div class="control">
-            <label for="has-icons-left" class="has-text-white">Filtern:</label>
-            <div class="select is-small is-rounded">
-                <select class="has-icons-left" bind:value={filter} on:change={onFilter}>
-                    <option name="answer" value={"all"}>Standard</option>
-                    <option name="answer" value={">="}>Positiv</option>
-                    <option name="answer" value={"<"}>Negativ</option>
-                </select>
-            </div>
-        </div>
-    </div>
-</div>
-
-
 <!-- <hr/> -->
 
 <!-- {#if allplans.length > 3 && limit < allplans.length}
@@ -177,6 +137,11 @@
                 </div>
             </div>
         </form> -->
+        <div class="message-header addPlan">
+            <p class="subtitle has-text-white is-6">
+                Füge einen neuen Plan hinzu!
+            </p>
+        </div>
         <form class="box primary-color" on:submit|preventDefault={addPlan}>
             <div class="columns is-mobile list-column addPlan">
                 <div class="column is-narrow">
@@ -194,6 +159,43 @@
     </article>
 </div>
 
+<section class="section">
+    <div class="container">
+        <h1 class="title has-text-white fcolor">Finanzplaner</h1>
+        <h2 class="subtitle has-text-white fcolor">
+            Wähle deinen Plan
+        </h2>
+    </div>
+</section>
+
+<div class="columns filterwerkzeug">
+    <div class="column is-half-desktop has-text-right-desktop" style="padding-left: 0px; padding-right: 5px;">
+        <div class="control">
+            <label for="has-icons-left" class="has-text-white">Sortieren:</label>
+            <div class="select is-small is-rounded">
+                <select class="has-icons-left" bind:value={sort} on:change={onSort}>
+                    <option name="answer" value={"Datum"}>Standard</option>
+                    <option name="answer" value={"Summe"}>Summe</option>
+                    <option name="answer" value={"Datum"}>Datum</option>
+                    <option name="answer" value={"Titel"}>Titel</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="column is-half-desktop has-text-left-desktop" style="padding-left: 5px; padding-right: 0px;">
+        <div class="control">
+            <label for="has-icons-left" class="has-text-white">Filtern:</label>
+            <div class="select is-small is-rounded">
+                <select class="has-icons-left" bind:value={filter} on:change={onFilter}>
+                    <option name="answer" value={"all"}>Standard</option>
+                    <option name="answer" value={">="}>Positiv</option>
+                    <option name="answer" value={"<"}>Negativ</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div class="container">
     <div class="columns is-multiline is-variable is-2 is-mobile">
