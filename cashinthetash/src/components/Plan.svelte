@@ -106,10 +106,6 @@
                         {plan.Titel}
                     </p>
                 </div>
-                <div class="column is-narrow">
-                </div>
-                <div class="column is-narrow">
-                </div>
                 <div class="column is-narrow" style="padding-right:2px;" on:click={showEditButton}>
                     <i class="fas fa-pen is-6"></i>
                 </div>

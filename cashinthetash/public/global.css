@@ -64,7 +64,7 @@
 }
 
 .name{
-    width:100px;
+    width:200px;
     white-space:nowrap;
     overflow:hidden;
     text-overflow:ellipsis;
@@ -170,7 +170,6 @@ article.message{
     overflow-y: auto;
     overflow-x: hidden; 
     max-height: 400px;
-    min-height: 200px;
 }
 
     /* width */
@@ -192,6 +191,12 @@ article.message{
     ::-webkit-scrollbar-thumb:hover {
         background: #555; 
     }
+
+.form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 .alertNotification {
     position: fixed;
@@ -259,6 +264,9 @@ article.message{
         width:976px;
     }
 
+    .financeTitle{
+        max-width: 80%;
+    }
 }
 
 @media only screen and (max-width: 320px) {
@@ -270,5 +278,38 @@ article.message{
     .newPlan{
         width: 100%;
         padding: 12px 0px 24px 0px;
+    }
+
+    .column{
+        max-width: 300px;
+    }
+
+    .message-header{
+        max-width: 300px;
+    }
+
+    .message-body{
+        max-width: 300px;
+    }
+
+    .columns{
+        max-width: 300px;
+    }
+
+    .name{
+        font-size: 12px;
+        max-width: 150px;
+    }
+
+    .input{
+        max-width: 100px;
+    }
+
+    .row{
+        max-width: 200px;
+    }
+
+    .financeTitle{
+        max-width: 75%;
     }
 }

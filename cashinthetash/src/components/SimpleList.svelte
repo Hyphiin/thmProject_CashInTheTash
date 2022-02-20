@@ -116,11 +116,11 @@
         </div>
         {#if finances.length > 0}
             {#if showChart === true}
-                <div class="column is-narrow" style="padding-left: 53px;" on:click={showMyChart}>
+                <div class="column is-narrow" on:click={showMyChart}>
                     <i class="fas fa-list has-text-white"></i>
                 </div>
             {:else}
-                <div class="column is-narrow" style="padding-left: 62px;" on:click={showMyChart}>
+                <div class="column is-narrow" on:click={showMyChart}>
                     <i class="fas fa-chart-pie has-text-white"></i>
                 </div>
             {/if}

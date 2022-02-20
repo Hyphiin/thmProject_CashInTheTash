@@ -99,13 +99,12 @@
 <article class="message is-small">
     <div class="message-header" style="padding-right: 0">
         <div class="columns is-mobile list-column">
-            <div class="column">
+            <div class="column financeTitle">
                 <p class="has-text-left name">{finance.Kategorie}</p>
             </div>
             <div class="column is-narrow" on:click={showEditButton}>
                 <i class="fas fa-pen is-6"></i>
             </div>
-            <div class="column is-narrow"></div>
             <div class="column is-narrow" style="padding-right:0" on:click={showDeleteButton}>
                 <i class="fas fa-trash is-6 has-text-white"></i>
             </div>
@@ -163,7 +162,7 @@
                         <input class="input" type="text" placeholder="Name" bind:value={finance.Name} required/>
                         <input class="input" type="number" placeholder="Betrag" bind:value={finance.Betrag} required/>
                         <div class="control has-text-left has-text-white">
-                            <label>Kategorie:</label>
+                            <label for="select">Kategorie:</label>
                             <div class="select is-small is-rounded">
                                 <select bind:value={finance.Kategorie}>
                                     <option name="answer" value={""}>Auswählen</option>
@@ -180,7 +179,7 @@
                             </div>
                         </div>
                         <div class="control has-text-left has-text-white">
-                            <label>Art?</label>
+                            <label for="select">Art?</label>
                             <div class="select is-small is-rounded">
                                 <select bind:value={finance.Art}>
                                     <option name="answer" value={""}>Auswählen</option>
