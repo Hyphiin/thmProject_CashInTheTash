@@ -47,8 +47,8 @@
         <div class="card-content">
             <div class="media">
                 <div class="media-left">
-                    <figure class="image">
-                        <img src={ photoURL } alt="Placeholder image">
+                    <figure class="image is-128x128">
+                        <img src={ photoURL } alt="Profilbild des Nutzers."/>
                     </figure>
                 </div>
                 <div class="media-content">
@@ -56,10 +56,10 @@
                     <p class="subtitle sub">{ email }</p>
                     {#if user}
                         <span>
-                            <button class="button" on:click={ () => logout() }>Logout</button>
+                            <button class="button primary-color" on:click={ () => logout() }>Logout</button>
                         </span>
                     {:else}
-                        <button class="button" on:click={login}>
+                        <button class="button primary-color" on:click={login}>
                             Login
                         </button>
                     {/if}

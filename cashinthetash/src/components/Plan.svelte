@@ -124,7 +124,7 @@
             {/if}
             <p class="subtitle2 has-text-centered is-size-7 is-uppercase has-text-weight-bold has-text-white">
                 Erstellt: {datum}</p>
-            <button class="button" on:click={showContentButton}>{activatedText}</button>
+            <button class="button primary-color" on:click={showContentButton}>{activatedText}</button>
         </div>
     </article>
 </div>

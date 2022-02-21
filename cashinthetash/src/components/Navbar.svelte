@@ -82,9 +82,9 @@
                     </div>
                     <span class="navbar-item">
                 {#if user}
-                <button class="button" on:click={ () => logout() }>Logout</button>
+                <button class="button primary-color" on:click={ () => logout() }>Logout</button>
                 {:else}
-                <button class="button" on:click={login}>
+                <button class="button primary-color" on:click={login}>
                     <i class="fab fa-google"></i>
                     <i class="placeholder"> | </i>
                         Login
@@ -93,7 +93,7 @@
                 {/if}
             </span>
                     <span class="navbar-item">
-                        <button class="button" on:click={() => {info = !info}}>Info</button>
+                        <button class="button primary-color" on:click={() => {info = !info}}>Info</button>
                     </span>
                 </div>
             </div>
@@ -114,24 +114,24 @@
             <section class="modal-card-body">
                 <div class="notification primary-color">
                     <p class="has-text-white">Hier kann ein Plan erstellt werden:</p>
-                    <img src="images/Info/Plan_erstellen.png"/>
+                    <img src="images/Info/Plan_erstellen.png" alt="Plan erstellen."/>
                     <hr/>
                     <p class="has-text-white">Ein erstellter Plan kann außerdem noch bearbeitet und bei Bedarf auch vollständig gelöscht werden.</p>
-                    <img src="images/Info/Plan_Edit_and_Open.png"/>
+                    <img src="images/Info/Plan_Edit_and_Open.png" alt="Plan editieren und öffnen."/>
                     <p class="has-text-white">Der Pfeil zeigt, wo ein Plan mit einem Klicken geöffnet werden kann.</p>
                     <hr/>
                     <p class="has-text-white">Die Einträge eines Plans können in 2 Varianten angezeigt werden. Standardäßig werden sie in einer klassischen Liste angezeigt, worauf der Nutzer durch Anlicken des Icons die Ansicht auf eine Diagrammansicht und auch wieder zurück wechseln kann.</p>
-                    <img src="images/Info/Plan_Ansicht_Wechsel.png"/>
+                    <img src="images/Info/Plan_Ansicht_Wechsel.png" alt="Ansicht Wechsel."/>
                     <hr/>
                     <p class="has-text-white">Ein erstmal erstellter Eintrag, kann ähnlich wie der Plan, auch editiert und gelöscht werden.</p>
-                    <img src="images/Info/Eintrag_Edit_And_Delete.png"/>
+                    <img src="images/Info/Eintrag_Edit_And_Delete.png" alt="Eintrag editieren und öffnen."/>
                     <hr/>
                     <p class="has-text-white">Umkreist sieht man hier einmal den Betrag eines Eintrags, welcher entsprechend seiner Wertigkeit, bei Positivität grün und bei Negativität rot hinterlegt ist</p>
-                    <img src="images/Info/Eintraege_Sum.png"/>
+                    <img src="images/Info/Eintraege_Sum.png" alt="Die Gesamtsumme der Einträge eines Plans."/>
                     <p class="has-text-white">Unter der Liste der Einträge wird außerdem die Summe der gesamten Liste angezeigt und ähnlich wie die Summe der einzelnen Einträge, nach ihrer Wertigkeit farbig hinterlegt.</p>
                     <hr/>
                     <p class="has-text-white">Über folgenden Button, kann ein neuer Eintrag für einen Plan erstellt werden.</p>
-                    <img src="images/Info/Eintrag_erstellen.png"/>
+                    <img src="images/Info/Eintrag_erstellen.png" alt="Eintrag erstellen."/>
                 </div>
             </section>
         </div>

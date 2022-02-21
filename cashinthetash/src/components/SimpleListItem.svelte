@@ -191,7 +191,7 @@
                     </form>
             </section>
             <footer class="modal-card-foot">
-                <button type="button" class="button primary-color" on:click={() => {showEdit = !showEdit; colorCheck();updateFinance()}}>Speichern</button>
+                <button type="button primary-color" class="button primary-color" on:click={() => {showEdit = !showEdit; colorCheck();updateFinance()}}>Speichern</button>
             </footer>
         </div>
     </div>

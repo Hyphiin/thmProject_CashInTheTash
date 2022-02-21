@@ -86,7 +86,7 @@
     {/if}
 </div>
 <div class="container" style="margin-top:15px">
-<button class="button" on:click={showADDButton}>{activatedText}</button>
+<button class="button primary-color" on:click={showADDButton}>{activatedText}</button>
 </div>
 
 {#if showAdd}
@@ -130,7 +130,7 @@
                                     </div>
                                 </div>
                                 <hr/>
-                                <button class="button">Hinzufügen</button>
+                                <button class="button primary-color">Hinzufügen</button>
                             </form>
                         </div>
              </section>

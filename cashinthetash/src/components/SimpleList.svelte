@@ -152,11 +152,11 @@
             {/each}
         </div>
         <!-- {#if allfinance.length > 5 && limit < allfinance.length}
-            <button class="button" on:click={IncreaseNumber}>Mehr</button>
+            <button class="button primary-color" on:click={IncreaseNumber}>Mehr</button>
         {/if}
 
         {#if limit > 5}
-            <button class="button" on:click={LimitNumber}>Weniger</button>
+            <button class="button primary-color" on:click={LimitNumber}>Weniger</button>
         {/if} -->
         {#if finances.length > 0}
             <div style="height:10px"></div>

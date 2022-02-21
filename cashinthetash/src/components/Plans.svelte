@@ -101,11 +101,11 @@
 <!-- <hr/> -->
 
 <!-- {#if allplans.length > 3 && limit < allplans.length}
-    <button class="button" on:click={IncreaseNumber}>Mehr</button>
+    <button class="button primary-color" on:click={IncreaseNumber}>Mehr</button>
 {/if}
 
 {#if limit > allplans.length && limit > 3}
-    <button class="button" on:click={LimitNumber}>Weniger</button>
+    <button class="button primary-color" on:click={LimitNumber}>Weniger</button>
 {/if}
 
 {#if plans.length > 0}
@@ -150,7 +150,7 @@
                 </div>
                 <input type="hidden" bind:value={Summe}/>
                 <div class="column is-narrow">
-                    <button class="button is-small">
+                    <button class="button primary-color is-small">
                         Hinzufügen
                     </button>
                 </div>
@@ -219,9 +219,9 @@
 
 <!-- <hr/>
 {#if allplans.length > 3 && limit < allplans.length}
-    <button class="button" on:click={IncreaseNumber}>Mehr</button>
+    <button class="button primary-color" on:click={IncreaseNumber}>Mehr</button>
 {/if}
 
 {#if limit > 3}
-    <button class="button" on:click={LimitNumber}>Weniger</button>
+    <button class="button primary-color" on:click={LimitNumber}>Weniger</button>
 {/if} -->

@@ -11,9 +11,9 @@
             <h1 class="title is-1-mobile has-text-white">
                 CashInTheTash
             </h1>
-            <h6 class="subtitle is-6 has-text-white">
+            <h2 class="subtitle is-6 has-text-white">
                 Plane deine Finanzen!
-            </h6>
+            </h2>
         </div>
     </div>
 </section>
