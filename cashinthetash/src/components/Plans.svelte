@@ -129,9 +129,9 @@
                     <input type="hidden" bind:value={Summe}/>
                     <div class="column is-narrow">
                         <button class="button is-small">
-                        <span style="color: White;">
+                        <div style="color: White;">
                         <i class="fas fa-plus"></i>
-                        </span>
+                        </div>
                         </button>
                     </div>
                 </div>

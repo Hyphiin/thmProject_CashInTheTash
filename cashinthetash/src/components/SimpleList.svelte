@@ -161,7 +161,7 @@
         {#if finances.length > 0}
             <div style="height:10px"></div>
             <div class="control">
-                <span class="tag is-large {colorSum}">{sum}€</span>
+                <div class="tag is-large {colorSum}">{sum}€</div>
             </div>
         {/if}
     {/if}

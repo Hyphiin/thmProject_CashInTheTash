@@ -49,28 +49,28 @@
     <nav class="navbar">
         <div class="container">
             <div class="navbar-brand">
-                <a class="navbar-item" href="javascript:window.location.href=window.location.href">
+                <a class="navbar-item" >
                     <img class="tag is-rounded light-color"
                          src='./images/CashInTheTashLogo.png' alt="Logo"/>
                 </a>
-                <span class="navbar-item">
+                <div class="navbar-item">
                     <h1 class="title is-6 has-text-white">
                         CashInTheTash
                     </h1>
-                </span>
-                <span class="navbar-burger burger has-text-white" class:is-active={mobile} id="burger"
+                </div>
+                <div class="navbar-burger burger has-text-white" class:is-active={mobile} id="burger"
                       on:click={toggleNav}>
-            <span></span>
-            <span></span>
-            <span></span>
-          </span>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
             </div>
             <div class="navbar-menu" class:is-active={mobile} id="menu">
                 <div class="navbar-end">
                     <div class="navbar-item has-dropdown is-hoverable">
-                        <span class="navbar-link fontlight-color">
+                        <div class="navbar-link fontlight-color">
                             Team
-                        </span>
+                        </div>
                         <div class="navbar-dropdown is-boxed primary-color">
                             <p class="navbar-item has-text-white" href="">
                                 Felix
@@ -80,7 +80,7 @@
                             </p>
                         </div>
                     </div>
-                    <span class="navbar-item">
+                    <div class="navbar-item">
                 {#if user}
                 <button class="button primary-color" on:click={ () => logout() }>Logout</button>
                 {:else}
@@ -91,10 +91,10 @@
 
                 </button>
                 {/if}
-            </span>
-                    <span class="navbar-item">
+            </div>
+                    <div class="navbar-item">
                         <button class="button primary-color" on:click={() => {info = !info}}>Info</button>
-                    </span>
+                    </div>
                 </div>
             </div>
         </div>

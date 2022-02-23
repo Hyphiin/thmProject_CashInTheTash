@@ -216,6 +216,13 @@ article.message{
     opacity: 0.7;
 }
 
+.finance__name div{
+    max-width: 200px;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
 
 @media only screen and (max-width: 600px) {
     .bg-image {
@@ -312,5 +319,12 @@ article.message{
 
     .financeTitle{
         max-width: 75%;
+    }
+
+    .finance__name div{
+        max-width: 50px;
+        white-space:nowrap;
+        overflow:hidden;
+        text-overflow:ellipsis;
     }
 }

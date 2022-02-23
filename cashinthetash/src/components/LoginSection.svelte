@@ -65,9 +65,9 @@
             </div>
             <footer class="card-footer">
                 <p class="card-footer-item">
-                    <span>
+                    <div>
                         <button class="button primary-color" on:click={ () => auth.signOut() }>Logout</button>
-                    </span>
+                    </div>
             </footer>
         </div> -->
 
@@ -83,13 +83,13 @@
             </div>
             <footer class="card-footer">
                 <p class="card-footer-item">
-      <span>
+      <div>
         <button class="button primary-color" on:click={login}>
             <i class="fab fa-google"></i>
             <i class="placeholder"> | </i>
             Login
         </button>
-      </span>
+      </div>
             </footer>
         </div>
     {/if}

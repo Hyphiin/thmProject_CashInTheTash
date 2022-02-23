@@ -113,20 +113,20 @@
     </div>
     <div class="message-body has-background-white">
         <div class="columns is-mobile">
-            <div class="column has-text-left">
-                <span>
+            <div class="finance__name column has-text-left">
+                <div>
                     {finance.Name}
-                </span>
+                </div>
             </div>
             <div class="column has-text-left">
                 {#if finance.Positiv}
-                    <span class="tag is-success is-light">{finance.Betrag}€</span>
+                    <div class="tag is-success is-light">{finance.Betrag}€</div>
                 {:else}
-                    <span class="tag is-danger is-light">-{finance.Betrag}€</span>
+                    <div class="tag is-danger is-light">-{finance.Betrag}€</div>
                 {/if}
             </div>
             <div class="column is-narrow">
-                <span>{datum}</span>
+                <div>{datum}</div>
             </div>
         </div>
     </div>

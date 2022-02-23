@@ -80,9 +80,9 @@
             <SimpleList planID={planID} sum={sum} pos={pos}/>
         {/if}
     {#if finances.length <= 0}
-        <span class="tag is-link is-light">
+        <div class="tag is-link is-light">
             Leider noch keine Einträge vorhanden!
-        </span>
+        </div>
     {/if}
 </div>
 <div class="container" style="margin-top:15px">
