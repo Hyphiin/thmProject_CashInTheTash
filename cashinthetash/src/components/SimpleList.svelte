@@ -6,6 +6,9 @@
     import ChartKategorie from "./ChartKategorie.svelte";
     import ChartBetrag from "./ChartBetrag.svelte";
 
+    import Fa from 'svelte-fa'
+    import {faList, faChartPie} from '@fortawesome/free-solid-svg-icons'
+
 
     let finances = [];
 
@@ -92,11 +95,11 @@
         {#if finances.length > 0}
             {#if showChart === true}
                 <div class="column is-narrow" on:click={showMyChart}>
-                    <i class="fas fa-list has-text-white"></i>
+                    <Fa icon={faList} class="has-text-white"/>
                 </div>
             {:else}
                 <div class="column is-narrow" on:click={showMyChart}>
-                    <i class="fas fa-chart-pie has-text-white"></i>
+                    <Fa icon={faChartPie} class="has-text-white"/>
                 </div>
             {/if}
         {/if}

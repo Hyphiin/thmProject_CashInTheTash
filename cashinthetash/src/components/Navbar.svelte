@@ -49,10 +49,6 @@
     <nav class="navbar">
         <div class="container">
             <div class="navbar-brand">
-                <!-- <div class="navbar-item logo" >
-                    <img class="tag is-rounded light-color logo"
-                         src='./images/CashInTheTashLogo.png' alt="Logo"/>
-                </div> -->
                 <div class="navbar-item">
                     <h1 class="title is-6 has-text-white">
                         CashInTheTash
@@ -85,8 +81,7 @@
                 <button class="button primary-color" on:click={ () => logout() }>Logout</button>
                 {:else}
                 <button class="button primary-color" on:click={login}>
-                    <i class="fab fa-google"></i>
-                    <i class="placeholder"> | </i>
+                    
                         Login
 
                 </button>

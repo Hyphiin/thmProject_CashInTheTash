@@ -1,9 +1,11 @@
 <script>
     import {db} from '../firebase';
     import Finances from "./Finances.svelte";
-    import '@fortawesome/fontawesome-free/js/all.js';
 
     import {showDeletionConfirmation, showUpdateConfirmation} from "../store/store";
+
+    import Fa from 'svelte-fa'
+    import {faPen, faTrash} from '@fortawesome/free-solid-svg-icons'
 
     function deleteSuccess() {
 		showDeletionConfirmation.set(true)
@@ -107,12 +109,12 @@
                     </p>
                 </div>
                 <div class="column is-narrow" style="padding-right:2px;" on:click={showEditButton}>
-                    <i class="fas fa-pen is-6"></i>
+                    <Fa icon={faPen} class="is-6"/>
                 </div>
                 <div class="column is-narrow">
                 </div>
                 <div class="column is-narrow" style="padding-right:6px;" on:click={showDeleteButton}>
-                    <i class="fas fa-trash is-6 has-text-white"></i>
+                    <Fa icon={faTrash} class="is-6"/>
                 </div>
             </div>
 

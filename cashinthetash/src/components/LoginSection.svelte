@@ -57,8 +57,6 @@
                 <div class="card-footer-item">
                     <span>
                         <button class="button primary-color" on:click={login}>
-                            <i class="fab fa-google"></i>
-                            <i class="placeholder"> | </i>
                                 Login
                         </button>
                     </span>

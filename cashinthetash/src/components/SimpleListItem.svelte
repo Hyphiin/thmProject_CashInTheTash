@@ -1,6 +1,9 @@
 <script>
     import {db} from "../firebase";
 
+    import Fa from 'svelte-fa'
+    import {faPen, faTrash} from '@fortawesome/free-solid-svg-icons'
+
     export let id = '';
     export let finance = {};
     export let planID;
@@ -103,10 +106,10 @@
                 <p class="has-text-left name">{finance.Kategorie}</p>
             </div>
             <div class="column is-narrow" on:click={showEditButton}>
-                <i class="fas fa-pen is-6"></i>
+                <Fa icon={faPen} class="is-6"/>
             </div>
             <div class="column is-narrow" style="padding-right:0" on:click={showDeleteButton}>
-                <i class="fas fa-trash is-6 has-text-white"></i>
+                <Fa icon={faTrash} class="is-6 has-text-white"/>
             </div>
         </div>
 
