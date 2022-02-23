@@ -18,10 +18,6 @@
     let showChart = false
     let sort = 'Name';
 
-    // let allfinance = []
-    // let limit = 5;
-
-
     db.collection('finance').orderBy('Datum').where("planID", "==", planID).onSnapshot(data => {
         finances = data.docs
     })
@@ -64,27 +60,6 @@
             colorCheckSum()
         }
     }
-
-    // const IncreaseNumber = () => {
-    //     if (limit <= allfinance.length) {
-    //         limit += 5
-    //         console.log(limit)
-    //     }
-    //     db.collection('finance').orderBy('Datum').where("planID", "==", planID).limit(limit).onSnapshot(data => {
-    //         finances = data.docs
-    //     })
-    // }
-
-    // const LimitNumber = () => {
-    //     if (limit >= 10) {
-    //         limit = limit - 5
-    //     } else {
-    //         alert('Mindestanzahl darf nicht unterschritten werden.')
-    //     }
-    //     db.collection('finance').orderBy('Datum').where("planID", "==", planID).limit(limit).onSnapshot(data => {
-    //         finances = data.docs
-    //     })
-    // }
 </script>
 
 <div class="container">
@@ -151,13 +126,6 @@
                 <div style="height:10px"></div>
             {/each}
         </div>
-        <!-- {#if allfinance.length > 5 && limit < allfinance.length}
-            <button class="button primary-color" on:click={IncreaseNumber}>Mehr</button>
-        {/if}
-
-        {#if limit > 5}
-            <button class="button primary-color" on:click={LimitNumber}>Weniger</button>
-        {/if} -->
         {#if finances.length > 0}
             <div style="height:10px"></div>
             <div class="control">

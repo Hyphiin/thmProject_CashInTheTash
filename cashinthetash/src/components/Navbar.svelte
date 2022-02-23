@@ -49,10 +49,10 @@
     <nav class="navbar">
         <div class="container">
             <div class="navbar-brand">
-                <a class="navbar-item" >
-                    <img class="tag is-rounded light-color"
+                <!-- <div class="navbar-item logo" >
+                    <img class="tag is-rounded light-color logo"
                          src='./images/CashInTheTashLogo.png' alt="Logo"/>
-                </a>
+                </div> -->
                 <div class="navbar-item">
                     <h1 class="title is-6 has-text-white">
                         CashInTheTash
@@ -60,9 +60,9 @@
                 </div>
                 <div class="navbar-burger burger has-text-white" class:is-active={mobile} id="burger"
                       on:click={toggleNav}>
-            <div></div>
-            <div></div>
-            <div></div>
+            <span></span>
+            <span></span>
+            <span></span>
           </div>
             </div>
             <div class="navbar-menu" class:is-active={mobile} id="menu">

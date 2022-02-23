@@ -28,16 +28,6 @@
         });
     }
 
-    auth.onAuthStateChanged(function(user) {
-        if (user) {
-        // User is signed in.
-            
-        } else {
-        // No user is signed in.
-            
-        }
-    });
-
     // sides
     let showContent = false;
 
@@ -53,24 +43,6 @@
             <Plans {...user}/>
         {/if}
 
-        <!-- <hr/> -->
-        <!-- <div class="card">
-            <div class="card-content has-background-black">
-                <p class="title has-text-light">
-                    “Eine kreative Ökonomie ist der Treibstoff der Wohlfahrt.”
-                </p>
-                <p class="subtitle has-text-light">
-                    Ralph Waldo Emerson
-                </p>
-            </div>
-            <footer class="card-footer">
-                <p class="card-footer-item">
-                    <div>
-                        <button class="button primary-color" on:click={ () => auth.signOut() }>Logout</button>
-                    </div>
-            </footer>
-        </div> -->
-
     {:else}
         <div class="card">
             <div class="card-content has-background-black ">
@@ -82,14 +54,15 @@
                 </p>
             </div>
             <footer class="card-footer">
-                <p class="card-footer-item">
-      <div>
-        <button class="button primary-color" on:click={login}>
-            <i class="fab fa-google"></i>
-            <i class="placeholder"> | </i>
-            Login
-        </button>
-      </div>
+                <div class="card-footer-item">
+                    <span>
+                        <button class="button primary-color" on:click={login}>
+                            <i class="fab fa-google"></i>
+                            <i class="placeholder"> | </i>
+                                Login
+                        </button>
+                    </span>
+                </div>
             </footer>
         </div>
     {/if}

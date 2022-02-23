@@ -1,6 +1,5 @@
 <canvas id="myChart" width="400" height="400"></canvas>
 
-
 <script>
     import {db} from "../firebase";
     import {onMount} from 'svelte'

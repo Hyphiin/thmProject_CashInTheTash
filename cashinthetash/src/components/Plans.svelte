@@ -41,26 +41,6 @@
         plans = data.docs
     })
 
-    const IncreaseNumber = () => {
-        if (limit <= allplans.length) {
-            limit += 3
-        }
-        db.collection('plans').orderBy('Datum').where("UserID", "==", uid).onSnapshot(data => {
-            plans = data.docs
-        })
-    }
-
-    export const LimitNumber = () => {
-        if (limit >= 6) {
-            limit = limit - 3
-        } else {
-            alert('Mindestanzahl darf nicht unterschritten werden.')
-        }
-        db.collection('plans').orderBy('Datum').where("UserID", "==", uid).onSnapshot(data => {
-            plans = data.docs
-        })
-    }
-
     const addPlan = () => {
         const Datum = firebase.firestore.Timestamp.fromDate(new Date());
         db.collection('plans').add({
@@ -96,47 +76,8 @@
 
 </script>
 
-<!-- <hr/> -->
-
-<!-- <hr/> -->
-
-<!-- {#if allplans.length > 3 && limit < allplans.length}
-    <button class="button primary-color" on:click={IncreaseNumber}>Mehr</button>
-{/if}
-
-{#if limit > allplans.length && limit > 3}
-    <button class="button primary-color" on:click={LimitNumber}>Weniger</button>
-{/if}
-
-{#if plans.length > 0}
-    <hr/>
-{/if} -->
-
 <div class="newPlan container">
     <article class="message is-medium is-mobile">
-        <!-- <form on:submit|preventDefault={addPlan}>
-            <div class="message-header addPlan">
-                <p class="subtitle has-text-white is-6">
-                    Füge einen neuen Plan hinzu!
-                </p>
-            </div>
-            <div class="message-body">
-                <div class="columns is-mobile list-column addPlan">
-                    <div class="column is-narrow">
-                        <input class="input is-small" type="text" placeholder="Titel" bind:value={Titel}
-                               required/>
-                    </div>
-                    <input type="hidden" bind:value={Summe}/>
-                    <div class="column is-narrow">
-                        <button class="button is-small">
-                        <div style="color: White;">
-                        <i class="fas fa-plus"></i>
-                        </div>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </form> -->
         <div class="message-header addPlan">
             <p class="subtitle has-text-white is-6">
                 Füge einen neuen Plan hinzu!
@@ -216,12 +157,3 @@
 
     </div>
 </div>
-
-<!-- <hr/>
-{#if allplans.length > 3 && limit < allplans.length}
-    <button class="button primary-color" on:click={IncreaseNumber}>Mehr</button>
-{/if}
-
-{#if limit > 3}
-    <button class="button primary-color" on:click={LimitNumber}>Weniger</button>
-{/if} -->
