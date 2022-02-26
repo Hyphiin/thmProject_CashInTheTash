@@ -33,7 +33,7 @@
 
 </script>
 
-<section class="section has-text-centered">
+<section class="section has-text-centered mainsection">
     {#if user}
         <Profile {...user}/>
 

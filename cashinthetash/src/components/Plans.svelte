@@ -138,7 +138,7 @@
     </div>
 </div>
 
-<div class="container">
+<div class="container plans">
     <div class="columns is-multiline is-variable is-2 is-mobile">
         {#if plans.length <= 0}
             <div class="notification primary-color sorry has-text-white">
