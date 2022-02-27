@@ -5,7 +5,6 @@
     import {loggingIn, loggingOut, loginSuccess, loginFailure} from "../store/store";
 
     export let displayName;
-    export let photoURL;
     export let email;
 
     let user;
@@ -46,11 +45,6 @@
     <div class="card profile">
         <div class="card-content">
             <div class="media">
-                <div class="media-left">
-                    <figure class="image is-96x96">
-                        <img class="profile__pic" src={ photoURL } alt="Profilbild des Nutzers."/>
-                    </figure>
-                </div>
                 <div class="media-content">
                     <p class="title is-4 is-size-6-mobile">{ displayName }</p>
                     <p class="subtitle sub">{ email }</p>

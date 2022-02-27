@@ -64,7 +64,7 @@
             <div class="navbar-menu" class:is-active={mobile} id="menu">
                 <div class="navbar-end">
                     <div class="navbar-item has-dropdown is-hoverable">
-                        <div class="navbar-link fontlight-color">
+                        <div class="navbar-link">
                             Team
                         </div>
                         <div class="navbar-dropdown is-boxed primary-color">
