@@ -101,7 +101,7 @@
                         <div class="notification primary-color">
                             <form on:submit|preventDefault={addFinance}>
                                 <input class="input" type="text" placeholder="Name" bind:value={Name} required/>
-                                <input class="input" type="number" bind:value={Betrag} required/>
+                                <input class="input" type="number" step=".01" min="0" bind:value={Betrag} required/>
                                 <div class="control has-text-left has-text-white">
                                     <label>Kategorie:  </label>
                                     <div class="select is-small is-rounded">
