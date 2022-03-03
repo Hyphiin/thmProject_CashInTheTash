@@ -1,5 +1,4 @@
 <script>
-    import InfoMessages from "./InfoMessages.svelte";
     import {auth} from "../firebase";
 
     let loggedIn = false;
@@ -20,8 +19,5 @@
         <p class="tag is-medium">
             CashInTheTash
         </p>
-        {#if loggedIn === false}
-            <InfoMessages/>
-        {/if}
     </div>
 </footer>

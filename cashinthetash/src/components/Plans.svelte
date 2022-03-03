@@ -86,7 +86,7 @@
         <form class="box primary-color" on:submit|preventDefault={addPlan}>
             <div class="columns is-mobile list-column addPlan">
                 <div class="column is-narrow">
-                    <input class="input is-small" type="text" placeholder="Titel" bind:value={Titel}
+                    <input class="input is-small specialInput" type="text" placeholder="Titel" bind:value={Titel}
                            required/>
                 </div>
                 <input type="hidden" bind:value={Summe}/>
