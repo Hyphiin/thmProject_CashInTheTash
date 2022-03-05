@@ -290,6 +290,10 @@ form{
         min-width: 300px;
         max-width: 300px;
     }
+    .chartContainer{
+        max-width: 220px;
+        min-width: 220px;
+    }
     .fcolor {
         color: whitesmoke;
     }
@@ -328,6 +332,11 @@ form{
         width: 300px;
         min-width: 300px;
         max-width: 300px;
+    }
+
+    .chartContainer{
+        max-width: 220px;
+        min-width: 220px;
     }
 
     .addPlan{

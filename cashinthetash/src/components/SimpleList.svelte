@@ -108,7 +108,7 @@
 
 <hr/>
 
-<div class="container">
+<div class="container chartContainer">
     {#if showChart}
         {#if (sort === "Datum")}
             <ChartDatum planID={planID}/>

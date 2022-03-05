@@ -57,21 +57,21 @@
     let activatedText;
 
     if (textTrue) {
-        stringColumn = "column is-two-quarters-mobile is-half-tablet is-half-desktop is-half-widescreen is-half-fullhd";
+        stringColumn = "column is-two-quarters-mobile is-half-tablet is-two-quarters-desktop is-half-widescreen is-half-fullhd";
         activatedText = "Öffnen";
     } else {
         activatedText = "Schließen"
-        stringColumn = "column is-full-mobile is-full-tablet is-half-desktop"
+        stringColumn = "column is-full-mobile is-full-tablet is-two-quarters-desktop"
     }
 
     const showContentButton = () => {
         showContent = !showContent
         if (showContent) {
             activatedText = "Schließen"
-            stringColumn = "column is-full-mobile is-full-tablet is-half-desktop"
+            stringColumn = "column is-full-mobile is-full-tablet is-two-quarters-desktop"
         } else {
             activatedText = "Öffnen"
-            stringColumn = "column is-two-quarters-mobile is-half-tablet is-half-desktop is-half-widescreen is-half-fullhd"   
+            stringColumn = "column is-two-quarters-mobile is-half-tablet is-two-quarters-desktop is-half-widescreen is-half-fullhd"   
         }
         currentPlanID = id;
         currentPlanData = plan;
