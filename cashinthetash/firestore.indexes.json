@@ -1,0 +1,189 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "finance",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "Kategorie",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "planID",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "Datum",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "finance",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "planID",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "Betrag",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "finance",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "planID",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "Datum",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "finance",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "planID",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "Kategorie",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "finance",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "planID",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "Name",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "plans",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "id",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "Datum",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "plans",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "planID",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "Datum",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "plans",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "Summe",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "Titel",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "UserID",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "Datum",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "plans",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "Summe",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "UserID",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "Datum",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "plans",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "UserID",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "Datum",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "plans",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "UserID",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "Summe",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "plans",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "UserID",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "Titel",
+          "order": "ASCENDING"
+        }
+      ]
+    }
+  ],
+  "fieldOverrides": []
+}
