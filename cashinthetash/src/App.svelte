@@ -1,6 +1,5 @@
 <script>
     import Navbar from "./components/Navbar.svelte";
-    import Footer from "./components/Footer.svelte";
     import Banner from "./components/Banner.svelte";
     import LoginSection from "./components/LoginSection.svelte";
 
@@ -81,7 +80,6 @@
         </div>
         <LoginSection/>
     {/if}
-    <Footer/>
     {#if loginSuc}
         <div class="notification is-success is-light alertNotification">
             Erfolgreich eingeloggt!

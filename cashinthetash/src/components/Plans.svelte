@@ -100,7 +100,7 @@
     </article>
 </div>
 
-<section class="section">
+<section class="section textsection">
     <div class="container">
         <h1 class="title has-text-white fcolor">Finanzplaner</h1>
         <h2 class="subtitle has-text-white fcolor">
